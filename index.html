@@ -178,14 +178,14 @@ a:hover { color: var(--red); }
   font-size: clamp(3rem, 9vw, 9rem);
   line-height: 0.94;
   letter-spacing: -0.035em;
-  font-variation-settings: "opsz" 144, "SOFT" 0;
+  font-variation-settings: "opsz" 96;
   max-width: 15ch;
 }
 .abertura h2 em {
   font-style: italic;
   font-weight: 300;
   color: var(--red);
-  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  font-variation-settings: "opsz" 96;
 }
 .abertura .body {
   margin-top: clamp(48px, 7vw, 100px);
@@ -198,6 +198,98 @@ a:hover { color: var(--red); }
 .abertura .body p { margin-bottom: 1.2em; }
 .abertura .body p strong { font-weight: 700; color: var(--ink); }
 .abertura .body .col-right { padding-top: clamp(48px, 8vw, 120px); }
+
+/* Dropcap (first letter ornamental) */
+.dropcap::first-letter {
+  float: left;
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 5.2em;
+  line-height: 0.85;
+  padding: 0.02em 0.08em 0 0;
+  color: var(--red);
+  font-variation-settings: "opsz" 96;
+}
+
+/* === PULL QUOTE INTERSTITIALS === */
+.pullquote {
+  padding: clamp(80px, 12vw, 180px) var(--gutter);
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+.pullquote::before {
+  /* Grain intensified */
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  opacity: 0.09;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+.pullquote .marker {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: clamp(24px, 4vw, 48px);
+  display: block;
+}
+.pullquote .marker::before { content: "§ "; font-family: var(--display); font-size: 1.2em; font-weight: 700; }
+.pullquote blockquote {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 8vw, 9rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  font-variation-settings: "opsz" 96;
+  max-width: 22ch;
+  position: relative;
+}
+.pullquote.dark { background: var(--ink); color: var(--paper); border-bottom: 1px solid var(--ink); }
+.pullquote.dark blockquote { color: var(--paper); }
+.pullquote.dark .marker { color: var(--red); }
+.pullquote.dark blockquote em {
+  color: var(--red);
+  font-style: italic;
+  font-weight: 500;
+  font-variation-settings: "opsz" 96;
+  display: inline-block;
+  transform: scale(1.08);
+  transform-origin: left center;
+}
+.pullquote.with-rule blockquote {
+  position: relative;
+  padding-left: clamp(32px, 4vw, 72px);
+}
+.pullquote.with-rule blockquote::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.15em; bottom: 0.15em;
+  width: 4px;
+  background: var(--red);
+}
+.pullquote .strike {
+  position: relative;
+  display: inline-block;
+}
+.pullquote .strike::after {
+  content: "";
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  top: 54%;
+  height: 6px;
+  background: var(--red);
+  transform: rotate(-2deg);
+  pointer-events: none;
+}
 
 /* === BLOCK 2: DOGMA vs DESEJO === */
 .dogma {
@@ -230,7 +322,7 @@ a:hover { color: var(--red); }
   line-height: 1.12;
   letter-spacing: -0.02em;
   font-style: italic;
-  font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
+  font-variation-settings: "opsz" 96;
   margin-bottom: 32px;
   color: var(--paper);
 }
@@ -249,22 +341,110 @@ a:hover { color: var(--red); }
 .dogma-list.desire li::before { content: "→ "; color: var(--red); font-family: var(--mono); }
 .dogma-list.dogma-items li::before { content: "// "; color: rgba(255,0,80,0.6); font-family: var(--mono); font-style: normal; }
 
-/* === BLOCK 3: HIPOTESE === */
-.hipotese h2 {
+/* === BLOCK 3: HIPOTESE (SPLIT IA × HUMANO) === */
+.hipotese { padding: 0; border-bottom: 1px solid var(--ink); }
+.hipotese .section-head { padding: clamp(56px, 6vw, 96px) var(--gutter) clamp(32px, 4vw, 56px); margin-bottom: 0; }
+.hipotese-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  border-top: 1px solid var(--ink);
+  min-height: 60vh;
+}
+.hipotese-split::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 4px;
+  background: var(--red);
+  transform: translateX(-50%);
+  z-index: 2;
+}
+.hipotese-split .half {
+  padding: clamp(40px, 6vw, 80px) clamp(24px, 4vw, 72px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+.hipotese-split .half.dark {
+  background: var(--ink);
+  color: var(--paper);
+}
+.hipotese-split .half .role {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: clamp(24px, 3vw, 48px);
+}
+.hipotese-split .half .big {
   font-family: var(--display);
   font-weight: 900;
-  font-size: clamp(3.5rem, 12vw, 14rem);
-  line-height: 0.88;
+  font-size: clamp(5rem, 16vw, 18rem);
+  line-height: 0.9;
   letter-spacing: -0.04em;
-  font-variation-settings: "opsz" 144, "WONK" 1;
+  font-variation-settings: "opsz" 96;
+  color: currentColor;
 }
-.hipotese h2 .br { display: block; }
-.hipotese h2 em {
+.hipotese-split .half.dark .big { color: var(--paper); }
+.hipotese-split .half .verb {
+  font-family: var(--mono);
+  font-size: clamp(0.85rem, 1.1vw, 1.15rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: currentColor;
+  opacity: 0.9;
+  margin-top: clamp(24px, 3vw, 48px);
+  padding-top: 16px;
+  border-top: 1px solid currentColor;
+}
+.hipotese-split .half.dark .verb { opacity: 0.85; }
+.hipotese-split .half .verb strong {
   color: var(--red);
-  font-style: italic;
-  font-weight: 300;
-  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  font-weight: 500;
+  display: inline-block;
+  margin-right: 6px;
 }
+.hipotese-types {
+  padding: clamp(40px, 6vw, 80px) var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 4vw, 64px);
+  border-top: 1px solid var(--ink);
+}
+.hipotese-types .clause {
+  padding-top: 16px;
+  border-top: 2px solid var(--ink);
+}
+.hipotese-types .clause .tag {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+.hipotese-types .clause h4 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 1.8vw, 1.8rem);
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  margin-bottom: 8px;
+  font-variation-settings: "opsz" 96;
+}
+.hipotese-types .clause p {
+  font-family: var(--body);
+  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+  line-height: 1.55;
+  color: var(--muted);
+}
+.hipotese-types .clause.tipo1 { border-top-color: var(--red); }
+.hipotese-types .clause.tipo1 h4 strong { color: var(--red); }
+
 .hipotese-body {
   margin-top: clamp(48px, 6vw, 80px);
   display: grid;
@@ -298,25 +478,53 @@ a:hover { color: var(--red); }
 .hipotese-body .text .type-block div:first-child { margin-bottom: 8px; }
 .hipotese-body .text .type-block b { color: var(--red); font-weight: 500; }
 
-/* === BLOCK 4: 3 CAMADAS === */
+/* === BLOCK 4: 3 CAMADAS (asymetrico) === */
 .camadas {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1.4fr 1fr;
   gap: 0;
   border-top: 1px solid var(--ink);
   margin-top: clamp(40px, 6vw, 80px);
+  align-items: stretch;
 }
 .camada {
   padding: clamp(32px, 4vw, 56px);
   border-right: 1px solid var(--ink);
   position: relative;
-  min-height: 420px;
+  min-height: 440px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
 }
 .camada:last-child { border-right: none; }
-.camada.coracao { background: var(--red); color: var(--paper); }
+.camada.coracao {
+  background: var(--red);
+  color: var(--paper);
+  min-height: 580px;
+  margin-top: -40px;
+  margin-bottom: -40px;
+  z-index: 2;
+  box-shadow: 0 20px 60px rgba(255,0,80,0.25);
+}
+.camada.coracao::before {
+  content: "02";
+  position: absolute;
+  right: -0.18em;
+  bottom: -0.3em;
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 26vw;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  color: rgba(250,250,247,0.1);
+  font-variation-settings: "opsz" 96;
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
+}
+.camada.coracao > * { position: relative; z-index: 1; }
+.camada:not(.coracao) { margin-top: 20px; }
 .camada-n {
   font-family: var(--mono);
   font-size: 0.72rem;
@@ -332,7 +540,7 @@ a:hover { color: var(--red); }
   line-height: 0.95;
   letter-spacing: -0.025em;
   margin-bottom: 12px;
-  font-variation-settings: "opsz" 144, "WONK" 1;
+  font-variation-settings: "opsz" 96;
 }
 .camada .role {
   font-family: var(--mono);
@@ -359,6 +567,86 @@ a:hover { color: var(--red); }
   opacity: 0.7;
 }
 
+/* === PROVA FLAGSHIP MOMENT (full-bleed 539%) === */
+.flagship-moment {
+  background: var(--ink);
+  color: var(--paper);
+  min-height: 95vh;
+  padding: clamp(80px, 10vw, 160px) var(--gutter);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  border-bottom: 1px solid var(--ink);
+  overflow: hidden;
+}
+.flagship-moment::before {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  opacity: 0.09;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+.flagship-moment .eyebrow {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: clamp(24px, 3vw, 48px);
+}
+.flagship-moment .eyebrow::before { content: "§ "; font-family: var(--display); font-weight: 700; }
+.flagship-moment .big-number {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(8rem, 26vw, 28rem);
+  line-height: 0.82;
+  letter-spacing: -0.055em;
+  color: var(--red);
+  font-variation-settings: "opsz" 96;
+  margin-bottom: clamp(24px, 3vw, 48px);
+  transform: scale(0.95);
+  transition: transform 1.2s cubic-bezier(0.19,1,0.22,1), opacity 1.2s cubic-bezier(0.19,1,0.22,1);
+  opacity: 0;
+}
+.flagship-moment.on .big-number {
+  transform: scale(1);
+  opacity: 1;
+}
+.flagship-moment .attribution {
+  font-family: var(--mono);
+  font-size: clamp(0.78rem, 0.9vw, 0.95rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(250,250,247,0.7);
+  margin-bottom: 20px;
+}
+.flagship-moment .attribution::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 2px;
+  background: var(--red);
+  margin-top: 20px;
+}
+.flagship-moment .tagline {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.3rem, 2.2vw, 2rem);
+  line-height: 1.35;
+  max-width: 34ch;
+  color: var(--paper);
+  font-variation-settings: "opsz" 96;
+  margin-top: clamp(16px, 2vw, 28px);
+}
+.flagship-moment .tagline strong {
+  color: var(--red);
+  font-weight: 500;
+  font-style: normal;
+}
+
 /* === BLOCK 5: PROVA (NUMBERS) === */
 .prova { padding: 0; }
 .prova .section-head { padding: clamp(80px, 10vw, 160px) var(--gutter) 0; }
@@ -367,6 +655,7 @@ a:hover { color: var(--red); }
   grid-template-columns: 2fr 1fr 1fr;
   border-top: 1px solid var(--ink);
 }
+.proof-grid.proof-grid-4 { grid-template-columns: repeat(4, 1fr); }
 .proof {
   padding: clamp(32px, 5vw, 72px) clamp(24px, 4vw, 56px);
   border-right: 1px solid var(--ink);
@@ -390,7 +679,7 @@ a:hover { color: var(--red); }
   line-height: 0.85;
   letter-spacing: -0.05em;
   color: var(--red);
-  font-variation-settings: "opsz" 144, "WONK" 1;
+  font-variation-settings: "opsz" 96;
 }
 .proof.flagship .number { font-size: clamp(6rem, 18vw, 20rem); }
 .proof .client {
@@ -400,7 +689,7 @@ a:hover { color: var(--red); }
   line-height: 1.1;
   margin-top: 16px;
   letter-spacing: -0.015em;
-  font-variation-settings: "opsz" 144;
+  font-variation-settings: "opsz" 96;
 }
 .proof .industry {
   font-family: var(--mono);
@@ -433,34 +722,120 @@ a:hover { color: var(--red); }
 .chamado {
   background: var(--paper);
   text-align: left;
-  padding: clamp(120px, 15vw, 240px) var(--gutter);
+  padding: 0;
+}
+.chamado-question {
+  min-height: 92vh;
+  padding: clamp(56px, 6vw, 120px) var(--gutter);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+}
+.chamado-question .section-head {
+  margin-bottom: clamp(40px, 5vw, 72px);
 }
 .chamado .q {
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(2.6rem, 7vw, 7.5rem);
-  line-height: 0.95;
+  font-size: clamp(3rem, 9vw, 10rem);
+  line-height: 0.94;
   letter-spacing: -0.035em;
   max-width: 18ch;
-  font-variation-settings: "opsz" 144, "WONK" 1;
+  font-variation-settings: "opsz" 96;
 }
 .chamado .q em {
   font-style: italic;
   color: var(--red);
-  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
-  font-weight: 300;
+  font-variation-settings: "opsz" 96;
+  font-weight: 500;
+}
+.chamado .q-sub {
+  margin-top: clamp(32px, 4vw, 56px);
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(1.2rem, 1.8vw, 1.8rem);
+  line-height: 1.35;
+  max-width: 32ch;
+  color: var(--muted);
+  font-variation-settings: "opsz" 96;
+}
+.chamado .q-sub strong {
+  color: var(--red);
+  font-style: normal;
+  font-weight: 500;
+}
+.chamado-cta-zone {
+  padding: clamp(80px, 10vw, 140px) var(--gutter);
 }
 .chamado-cta {
-  margin-top: clamp(60px, 8vw, 120px);
-  border-top: 1px solid var(--ink);
-  padding-top: clamp(40px, 5vw, 72px);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(24px, 4vw, 60px);
 }
 .chamado-cta .step {
-  border-top: 2px solid var(--red);
-  padding-top: 16px;
+  position: relative;
+  padding: clamp(24px, 3vw, 40px) clamp(20px, 2.5vw, 32px);
+  border: 1.5px dashed var(--ink);
+  background: var(--paper);
+  box-shadow: 4px 4px 0 0 var(--ink);
+  transition: transform 0.3s cubic-bezier(0.19,1,0.22,1), box-shadow 0.3s cubic-bezier(0.19,1,0.22,1);
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+}
+.chamado-cta .step:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 0 var(--red);
+}
+.chamado-cta .step-big-n {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(4rem, 7vw, 7rem);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--red);
+  font-variation-settings: "opsz" 96;
+  margin-bottom: clamp(16px, 2vw, 32px);
+  display: block;
+}
+.chamado-sign {
+  padding: clamp(40px, 5vw, 72px) var(--gutter) clamp(60px, 7vw, 100px);
+  border-top: 1px solid var(--ink);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: end;
+}
+.chamado-sign .lbl {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+.chamado-sign .sig {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.4vw, 2.2rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 96;
+  color: var(--ink);
+  transform: rotate(-1.5deg);
+  transform-origin: left center;
+  display: inline-block;
+}
+.chamado-sign .date {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: right;
 }
 .chamado-cta .step-n {
   font-family: var(--mono);
@@ -513,9 +888,9 @@ a:hover { color: var(--red); }
   letter-spacing: -0.04em;
   line-height: 0.9;
   text-transform: none;
-  font-variation-settings: "opsz" 144, "WONK" 1;
+  font-variation-settings: "opsz" 96;
 }
-.colophon-logo .accent { color: var(--red); font-style: italic; font-weight: 300; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1; }
+.colophon-logo .accent { color: var(--red); font-style: italic; font-weight: 300; font-variation-settings: "opsz" 96; }
 .colophon-meta { text-align: right; color: rgba(250,250,247,0.7); line-height: 1.7; }
 .colophon-meta a:hover { color: var(--red); }
 .colophon-bottom {
@@ -540,10 +915,15 @@ a:hover { color: var(--red); }
   .abertura .body .col-right { padding-top: 0; }
   .dogma-grid { grid-template-columns: 1fr; }
   .hipotese-body { grid-template-columns: 1fr; }
+  .hipotese-split { grid-template-columns: 1fr; }
+  .hipotese-split::before { left: 0; right: 0; top: 50%; bottom: auto; width: auto; height: 4px; transform: translateY(-50%); }
+  .hipotese-types { grid-template-columns: 1fr; }
   .camadas { grid-template-columns: 1fr; }
-  .camada { border-right: none; border-bottom: 1px solid var(--ink); min-height: auto; }
+  .camada { border-right: none; border-bottom: 1px solid var(--ink); min-height: auto; margin-top: 0 !important; }
+  .camada.coracao { min-height: auto; margin-top: 0 !important; margin-bottom: 0 !important; box-shadow: none; }
+  .camada.coracao::before { font-size: 40vw; right: -0.1em; bottom: -0.25em; }
   .camada:last-child { border-bottom: none; }
-  .proof-grid { grid-template-columns: 1fr; }
+  .proof-grid, .proof-grid.proof-grid-4 { grid-template-columns: 1fr; }
   .proof { border-right: none; border-bottom: 1px solid var(--ink); }
   .proof.flagship { grid-row: auto; min-height: 360px; }
   .chamado-cta { grid-template-columns: 1fr; }
@@ -605,7 +985,7 @@ a:hover { color: var(--red); }
 
   <div class="body">
     <div class="col-left reveal d2">
-      <p>Pagou a agencia. Pagou a consultoria. Agora paga pela IA.</p>
+      <p class="dropcap">Pagou a agencia. Pagou a consultoria. Agora paga pela IA.</p>
       <p>E continua <strong>sem saber por que</strong> esta tomando as decisoes que toma.</p>
       <p>O relatorio da McKinsey foi arquivado. O dashboard do HubSpot nao conta a historia. O ChatGPT concorda com voce antes mesmo de entender a pergunta.</p>
     </div>
@@ -615,6 +995,12 @@ a:hover { color: var(--red); }
       <p>E cada vez que voce compra, voce pensa menos.</p>
     </div>
   </div>
+</section>
+
+<!-- === PULL QUOTE 01 === -->
+<section class="pullquote reveal">
+  <span class="marker">Quebra · Evidencia 01</span>
+  <blockquote>Todas as landing pages <em style="color: var(--red); font-style: italic; font-weight: 500;">ficaram iguais.</em></blockquote>
 </section>
 
 <!-- === DOGMA vs DESEJO === -->
@@ -651,30 +1037,45 @@ a:hover { color: var(--red); }
 </section>
 
 <!-- === HIPOTESE === -->
-<section class="section hipotese">
+<section class="hipotese">
   <div class="section-head reveal">
     <div class="n">§ 03</div>
     <div class="t">Hipotese · O que acreditamos</div>
   </div>
 
-  <h2 class="reveal d1">
-    IA executa <em>volume.</em><br>
-    Humano governa <span class="br"></span><em>estrategia.</em>
-  </h2>
-
-  <div class="hipotese-body">
-    <div class="key reveal d2">Regra inviolavel / Pipeline de governanca</div>
-    <div class="text reveal d3">
-      <p>Nenhuma decisao que importa pode ser terceirizada para uma caixa-preta. Nenhuma pagina que vende passa sem revisao humana. Nenhuma campanha estrategica depende do Gemini adivinhar o contexto da sua marca.</p>
-
-      <p>Mas tambem nao vamos fingir que o humano deve fazer tudo a mao. A IA executa volume cinco vezes mais rapido — deixa ela fazer. O humano entra onde o custo do erro e <strong>irreversivel.</strong></p>
-
-      <div class="type-block">
-        <div><b>Decisoes tipo 2</b> (reversiveis) → use IA, va rapido, teste mais. Custo do erro: baixo.</div>
-        <div><b>Decisoes tipo 1</b> (irreversiveis) → humano no volante. Sempre. Custo do erro: alto.</div>
-      </div>
+  <!-- SPLIT IA × HUMANO -->
+  <div class="hipotese-split reveal">
+    <div class="half">
+      <div class="role">// Lado 01 · Maquina</div>
+      <div class="big">IA</div>
+      <div class="verb"><strong>executa</strong> volume</div>
+    </div>
+    <div class="half dark">
+      <div class="role">→ Lado 02 · Consciencia</div>
+      <div class="big">Humano</div>
+      <div class="verb"><strong>governa</strong> estrategia</div>
     </div>
   </div>
+
+  <!-- TIPO 2 vs TIPO 1 -->
+  <div class="hipotese-types">
+    <div class="clause reveal d1">
+      <div class="tag">// Decisoes tipo 02</div>
+      <h4>Reversiveis.</h4>
+      <p>Copy de anuncio. Variacao de landing. Ajuste de segmentacao. Use IA, va rapido, teste mais. Custo do erro: baixo.</p>
+    </div>
+    <div class="clause tipo1 reveal d2">
+      <div class="tag">→ Decisoes tipo 01</div>
+      <h4><strong>Irreversiveis.</strong></h4>
+      <p>Entrar em mercado. Fazer M&A. Descontinuar produto. Reposicionar categoria. Humano no volante. Sempre. Custo do erro: alto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- === PULL QUOTE 02 === -->
+<section class="pullquote dark with-rule reveal">
+  <span class="marker">Regra inviolavel · §</span>
+  <blockquote>Humano no volante. <em>Sempre.</em></blockquote>
 </section>
 
 <!-- === 3 CAMADAS === -->
@@ -685,7 +1086,7 @@ a:hover { color: var(--red); }
   </div>
 
   <div style="margin-bottom: clamp(40px, 5vw, 64px);" class="reveal d1">
-    <p style="font-family: var(--display); font-weight: 500; font-size: clamp(1.8rem, 3.2vw, 3rem); line-height: 1.05; letter-spacing: -0.02em; max-width: 22ch; font-style: italic; font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 1;">
+    <p style="font-family: var(--display); font-weight: 500; font-size: clamp(1.8rem, 3.2vw, 3rem); line-height: 1.05; letter-spacing: -0.02em; max-width: 22ch; font-style: italic; font-variation-settings: 'opsz' 96;">
       Nao somos uma empresa. <br>Somos uma casa com <span style="color: var(--red);">tres pilares</span> — que se sustentam.
     </p>
   </div>
@@ -723,23 +1124,29 @@ a:hover { color: var(--red); }
   </div>
 </section>
 
-<!-- === PROVA === -->
+<!-- === PULL QUOTE 03 === -->
+<section class="pullquote reveal">
+  <span class="marker">Tese central</span>
+  <blockquote>Se voce nao tem <span class="strike">estrategia,</span><br>voce tem <span class="strike">acesso.</span></blockquote>
+</section>
+
+<!-- === FLAGSHIP MOMENT (full-bleed 539%) === -->
+<section class="flagship-moment reveal">
+  <div class="eyebrow">Prova · Flagship · Ntiva · MSP IT · EUA</div>
+  <div class="big-number">+539%</div>
+  <div class="attribution">ROI acumulado · 2022 — 2025</div>
+  <p class="tagline">$6.2M em receita adicional. +161% revenue growth. +27% YoY. E isso foi <strong>sem escalar IA ainda</strong> — so com estrategia humana sob Toyota Partnership mode.</p>
+  <p class="tagline" style="margin-top: clamp(24px, 3vw, 48px); font-size: clamp(0.95rem, 1.1vw, 1.15rem); font-style: italic; border-left: 2px solid var(--red); padding-left: 20px; color: rgba(250,250,247,0.82); font-family: var(--body);">"EPIC isn't just there to collect a paycheck. If we win, they win — and that mindset is felt every day. I trust them and their opinions."<br><span style="color: rgba(250,250,247,0.55); font-style: normal; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 8px; display: inline-block;">— Shannon Delmarle · Marketing Director, Ntiva</span></p>
+</section>
+
+<!-- === PROVA (outros cases) === -->
 <section class="section prova">
   <div class="section-head reveal">
-    <div class="n">§ 05</div>
-    <div class="t">Prova · Evidencia em numero</div>
+    <div class="n">§ 05+</div>
+    <div class="t">Outros cases · evidencia em numero</div>
   </div>
 
-  <div class="proof-grid">
-    <div class="proof flagship reveal">
-      <div class="label">// Flagship · NTIVA · Managed IT Services · USA</div>
-      <div class="number">+539%</div>
-      <div class="client">Ntiva</div>
-      <div class="industry">ROI acumulado · 2022 — 2025</div>
-      <p class="detail" style="color: rgba(250,250,247,0.88);">$6.2M em receita adicional. +161% revenue growth. +27% YoY. E isso foi <strong style="color: var(--red); font-style: normal;">sem escalar IA ainda</strong> — so com estrategia humana sob Toyota Partnership mode. Com IA estruturada, o potencial dobra.</p>
-      <p class="quote">"EPIC isn't just there to collect a paycheck. If we win, they win — and that mindset is felt every day. I trust them and their opinions."<br><span style="color: rgba(250,250,247,0.55); font-style: normal; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;">— Shannon Delmarle · Marketing Director, Ntiva</span></p>
-    </div>
-
+  <div class="proof-grid proof-grid-4">
     <div class="proof reveal d1">
       <div class="label">// iFood Ads · Retail Media · BR</div>
       <div class="number">+294%</div>
@@ -775,37 +1182,57 @@ a:hover { color: var(--red); }
 </section>
 
 <!-- === CHAMADO === -->
-<section class="section chamado">
-  <div class="section-head reveal">
-    <div class="n">§ 06</div>
-    <div class="t">O chamado</div>
+<section class="chamado">
+
+  <!-- FULL-SCREEN QUESTION -->
+  <div class="chamado-question">
+    <div class="section-head reveal">
+      <div class="n">§ 06</div>
+      <div class="t">O chamado</div>
+    </div>
+
+    <h2 class="q reveal d1">
+      Voce tem uma <em>decisao</em> pela frente que voce <em>nao pode</em> voltar atras?
+    </h2>
+
+    <p class="q-sub reveal d2">
+      Voce nao precisa de mais informacao. Voce precisa de um <strong>ambiente para pensar melhor.</strong>
+    </p>
   </div>
 
-  <h2 class="q reveal d1">
-    Voce tem uma <em>decisao</em> pela frente que voce <em>nao pode</em> voltar atras?
-  </h2>
-
-  <p class="reveal d2" style="margin-top: clamp(32px, 5vw, 64px); font-family: var(--display); font-weight: 400; font-size: clamp(1.3rem, 1.8vw, 1.8rem); line-height: 1.3; letter-spacing: -0.01em; max-width: 30ch; font-style: italic; color: var(--muted);">
-    Voce nao precisa de mais informacao. Voce precisa de um <span style="color: var(--red); font-style: normal; font-weight: 500;">ambiente para pensar melhor.</span>
-  </p>
-
-  <div class="chamado-cta">
-    <div class="step reveal d2">
-      <div class="step-n">Passo 01 · Conectar</div>
-      <div class="step-t">LinkedIn + manifesto.</div>
-      <div class="step-d">Me adiciona no LinkedIn. Le a tese completa aqui em <a href="https://governedbyhuman.com">governedbyhuman.com</a>.</div>
-    </div>
-    <div class="step reveal d3">
-      <div class="step-n">Passo 02 · Mergulhar</div>
-      <div class="step-t">Diagnostico 45 min.</div>
-      <div class="step-d">Gratuito. Saimos com 3 pontos cegos da sua operacao de receita mapeados. Sem compromisso.</div>
-    </div>
-    <div class="step reveal d4">
-      <div class="step-n">Passo 03 · Construir</div>
-      <div class="step-t">Raio-X pago · 2 semanas.</div>
-      <div class="step-d">R$25-40k / US$25-40k. Mapa de Metabolismo Decisorio + Custo da Nao-Metabolizacao em USD. Creditado no proximo programa.</div>
+  <!-- CTA TICKETS -->
+  <div class="chamado-cta-zone">
+    <div class="chamado-cta">
+      <div class="step reveal d1">
+        <span class="step-big-n">01</span>
+        <div class="step-n">Passo · Conectar</div>
+        <div class="step-t">LinkedIn + manifesto.</div>
+        <div class="step-d">Me adiciona no LinkedIn. Le a tese completa aqui em <a href="https://governedbyhuman.com">governedbyhuman.com</a>.</div>
+      </div>
+      <div class="step reveal d2">
+        <span class="step-big-n">02</span>
+        <div class="step-n">Passo · Mergulhar</div>
+        <div class="step-t">Diagnostico 45 min.</div>
+        <div class="step-d">Gratuito. Saimos com 3 pontos cegos da sua operacao de receita mapeados. Sem compromisso.</div>
+      </div>
+      <div class="step reveal d3">
+        <span class="step-big-n">03</span>
+        <div class="step-n">Passo · Construir</div>
+        <div class="step-t">Raio-X pago · 2 semanas.</div>
+        <div class="step-d">R$25-40k / US$25-40k. Mapa de Metabolismo Decisorio + Custo da Nao-Metabolizacao em USD. Creditado no proximo programa.</div>
+      </div>
     </div>
   </div>
+
+  <!-- SIGNATURE -->
+  <div class="chamado-sign reveal">
+    <div>
+      <div class="lbl">Assinam</div>
+      <span class="sig">Fabio Munhoz × Jeferson Venancio</span>
+    </div>
+    <div class="date">Manifesto v1.0<br>17 Abr 2026 · Sao Paulo</div>
+  </div>
+
 </section>
 
 <!-- === COLOPHON === -->
