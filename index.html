@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Powered by AI. Governed by Human. — EPIC Digital</title>
+
+<meta name="description" content="A tese da EPIC Digital: IA executa volume, humano governa estrategia. Um manifesto contra a homogeneizacao algoritmica.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#FAFAF7">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Powered by AI. Governed by Human.">
+<meta property="og:description" content="Voce ja terceirizou demais. Pagou a agencia, pagou a consultoria, agora paga pela IA. E continua sem saber por que esta tomando as decisoes que toma.">
+<meta property="og:url" content="https://governedbyhuman.com">
+<meta property="og:site_name" content="EPIC Digital">
+<meta property="og:locale" content="pt_BR">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Powered by AI. Governed by Human.">
+<meta name="twitter:description" content="A tese da EPIC Digital contra a homogeneizacao algoritmica. Um manifesto.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=JetBrains+Mono:wght@300;400;500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #FAFAF7;
+  --ink: #0A0A0A;
+  --ink-soft: #1A1A1A;
+  --muted: rgba(10,10,10,0.62);
+  --rule: rgba(10,10,10,0.14);
+  --red: #FF0050;
+  --gutter: clamp(16px, 4vw, 80px);
+  --max: 1440px;
+  --display: 'Fraunces', Georgia, serif;
+  --body: 'Source Serif 4', Georgia, serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--body);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: clamp(16px, 1.05vw, 19px);
+  line-height: 1.55;
+  font-feature-settings: "ss01","kern","liga";
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Grain overlay */
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+::selection { background: var(--red); color: var(--paper); }
+
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--red); }
+
+.mono { font-family: var(--mono); font-weight: 400; letter-spacing: 0.02em; text-transform: uppercase; font-size: 0.72rem; }
+.rule { height: 1px; background: var(--ink); width: 100%; }
+.rule-soft { height: 1px; background: var(--rule); width: 100%; }
+
+/* === MASTHEAD === */
+.masthead {
+  padding: 20px var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  align-items: center;
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--mono);
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+}
+.masthead .left { text-align: left; }
+.masthead .center { text-align: center; font-weight: 500; }
+.masthead .right { text-align: right; }
+.masthead a:hover { color: var(--red); }
+
+/* === HERO === */
+.hero {
+  padding: clamp(80px, 12vw, 200px) var(--gutter) clamp(60px, 10vw, 160px);
+  position: relative;
+  border-bottom: 1px solid var(--ink);
+}
+.hero-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: clamp(40px, 6vw, 80px);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.hero-meta .r { text-align: right; }
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(4rem, 18vw, 22rem);
+  line-height: 0.85;
+  letter-spacing: -0.045em;
+  font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 1;
+  text-transform: none;
+  color: var(--ink);
+}
+.hero h1 em {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  color: var(--red);
+  font-weight: 300;
+}
+.hero h1 .line { display: block; }
+.hero h1 .indent { padding-left: clamp(40px, 10vw, 240px); }
+
+.hero-kicker {
+  max-width: 560px;
+  margin-top: clamp(32px, 5vw, 72px);
+  font-family: var(--body);
+  font-size: clamp(1.1rem, 1.6vw, 1.45rem);
+  line-height: 1.5;
+  color: var(--muted);
+  padding-left: clamp(40px, 10vw, 240px);
+  font-style: italic;
+}
+.hero-kicker::before {
+  content: "§";
+  color: var(--red);
+  margin-right: 12px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* === SECTION SHARED === */
+.section {
+  padding: clamp(80px, 10vw, 160px) var(--gutter);
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+}
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(80px, 12%) 1fr;
+  gap: clamp(24px, 4vw, 60px);
+  margin-bottom: clamp(40px, 6vw, 96px);
+  align-items: baseline;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.section-head .n { color: var(--red); font-weight: 500; }
+.section-head .t { color: var(--ink); font-weight: 500; }
+
+/* === BLOCK 1: ABERTURA === */
+.abertura h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(3rem, 9vw, 9rem);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+  font-variation-settings: "opsz" 144, "SOFT" 0;
+  max-width: 15ch;
+}
+.abertura h2 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--red);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+.abertura .body {
+  margin-top: clamp(48px, 7vw, 100px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 80px);
+  font-size: clamp(1.15rem, 1.4vw, 1.45rem);
+  line-height: 1.55;
+}
+.abertura .body p { margin-bottom: 1.2em; }
+.abertura .body p strong { font-weight: 700; color: var(--ink); }
+.abertura .body .col-right { padding-top: clamp(48px, 8vw, 120px); }
+
+/* === BLOCK 2: DOGMA vs DESEJO === */
+.dogma {
+  background: var(--ink);
+  color: var(--paper);
+  border-bottom: 1px solid var(--ink);
+}
+.dogma .section-head .n { color: var(--red); }
+.dogma .section-head .t { color: var(--paper); }
+.dogma-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 100px);
+  padding-top: 0;
+}
+.dogma-col-head {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  color: var(--red);
+  border-top: 1px solid rgba(250,250,247,0.25);
+  padding-top: 16px;
+}
+.dogma-quote {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3.6vw, 3.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
+  margin-bottom: 32px;
+  color: var(--paper);
+}
+.dogma-quote .dash { color: var(--red); }
+.dogma-list { list-style: none; padding-left: 0; }
+.dogma-list li {
+  font-size: clamp(0.95rem, 1.1vw, 1.15rem);
+  padding: 12px 0;
+  border-top: 1px solid rgba(250,250,247,0.16);
+  font-family: var(--body);
+  font-style: italic;
+  color: rgba(250,250,247,0.82);
+}
+.dogma-list li:last-child { border-bottom: 1px solid rgba(250,250,247,0.16); }
+.dogma-list.desire li { color: var(--paper); font-style: normal; }
+.dogma-list.desire li::before { content: "→ "; color: var(--red); font-family: var(--mono); }
+.dogma-list.dogma-items li::before { content: "// "; color: rgba(255,0,80,0.6); font-family: var(--mono); font-style: normal; }
+
+/* === BLOCK 3: HIPOTESE === */
+.hipotese h2 {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(3.5rem, 12vw, 14rem);
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  font-variation-settings: "opsz" 144, "WONK" 1;
+}
+.hipotese h2 .br { display: block; }
+.hipotese h2 em {
+  color: var(--red);
+  font-style: italic;
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+.hipotese-body {
+  margin-top: clamp(48px, 6vw, 80px);
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: clamp(32px, 5vw, 80px);
+}
+.hipotese-body .key {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  border-top: 2px solid var(--red);
+  padding-top: 12px;
+}
+.hipotese-body .text p {
+  font-size: clamp(1.05rem, 1.3vw, 1.35rem);
+  line-height: 1.55;
+  margin-bottom: 1.2em;
+}
+.hipotese-body .text p strong { color: var(--red); font-weight: 700; }
+.hipotese-body .text .type-block {
+  margin-top: 32px;
+  padding: 24px;
+  border: 1px solid var(--ink);
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.hipotese-body .text .type-block div:first-child { margin-bottom: 8px; }
+.hipotese-body .text .type-block b { color: var(--red); font-weight: 500; }
+
+/* === BLOCK 4: 3 CAMADAS === */
+.camadas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--ink);
+  margin-top: clamp(40px, 6vw, 80px);
+}
+.camada {
+  padding: clamp(32px, 4vw, 56px);
+  border-right: 1px solid var(--ink);
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.camada:last-child { border-right: none; }
+.camada.coracao { background: var(--red); color: var(--paper); }
+.camada-n {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 24px;
+}
+.camada h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 3.6vw, 3.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  margin-bottom: 12px;
+  font-variation-settings: "opsz" 144, "WONK" 1;
+}
+.camada .role {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  color: var(--red);
+}
+.camada.coracao .role { color: var(--paper); opacity: 0.8; }
+.camada p {
+  font-size: 0.98rem;
+  line-height: 1.55;
+  margin-bottom: 1em;
+}
+.camada .tag {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid currentColor;
+  opacity: 0.7;
+}
+
+/* === BLOCK 5: PROVA (NUMBERS) === */
+.prova { padding: 0; }
+.prova .section-head { padding: clamp(80px, 10vw, 160px) var(--gutter) 0; }
+.proof-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  border-top: 1px solid var(--ink);
+}
+.proof {
+  padding: clamp(32px, 5vw, 72px) clamp(24px, 4vw, 56px);
+  border-right: 1px solid var(--ink);
+  position: relative;
+}
+.proof:last-child { border-right: none; }
+.proof.flagship { grid-row: span 2; background: var(--ink); color: var(--paper); min-height: 520px; }
+.proof .label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-bottom: 16px;
+}
+.proof.flagship .label { color: var(--red); opacity: 1; }
+.proof .number {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(4rem, 11vw, 12rem);
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  color: var(--red);
+  font-variation-settings: "opsz" 144, "WONK" 1;
+}
+.proof.flagship .number { font-size: clamp(6rem, 18vw, 20rem); }
+.proof .client {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  line-height: 1.1;
+  margin-top: 16px;
+  letter-spacing: -0.015em;
+  font-variation-settings: "opsz" 144;
+}
+.proof .industry {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.proof.flagship .industry { color: rgba(250,250,247,0.62); }
+.proof .detail {
+  margin-top: 24px;
+  font-family: var(--body);
+  font-style: italic;
+  font-size: clamp(0.95rem, 1vw, 1.08rem);
+  line-height: 1.5;
+}
+.proof .quote {
+  font-family: var(--body);
+  font-style: italic;
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  line-height: 1.5;
+  border-left: 2px solid var(--red);
+  padding-left: 16px;
+  margin-top: 24px;
+  color: rgba(250,250,247,0.85);
+}
+
+/* === BLOCK 6: CHAMADO === */
+.chamado {
+  background: var(--paper);
+  text-align: left;
+  padding: clamp(120px, 15vw, 240px) var(--gutter);
+}
+.chamado .q {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 7vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  max-width: 18ch;
+  font-variation-settings: "opsz" 144, "WONK" 1;
+}
+.chamado .q em {
+  font-style: italic;
+  color: var(--red);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  font-weight: 300;
+}
+.chamado-cta {
+  margin-top: clamp(60px, 8vw, 120px);
+  border-top: 1px solid var(--ink);
+  padding-top: clamp(40px, 5vw, 72px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 4vw, 60px);
+}
+.chamado-cta .step {
+  border-top: 2px solid var(--red);
+  padding-top: 16px;
+}
+.chamado-cta .step-n {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+.chamado-cta .step-t {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 1.8vw, 1.8rem);
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+.chamado-cta .step-d {
+  font-size: clamp(0.9rem, 1vw, 1.02rem);
+  line-height: 1.5;
+  color: var(--muted);
+}
+.chamado-cta .step-d a {
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 1px;
+}
+
+/* === COLOPHON === */
+.colophon {
+  background: var(--ink);
+  color: var(--paper);
+  padding: clamp(60px, 7vw, 100px) var(--gutter);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.colophon-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  border-bottom: 1px solid rgba(250,250,247,0.25);
+  padding-bottom: 32px;
+  margin-bottom: 32px;
+  align-items: end;
+}
+.colophon-logo {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  text-transform: none;
+  font-variation-settings: "opsz" 144, "WONK" 1;
+}
+.colophon-logo .accent { color: var(--red); font-style: italic; font-weight: 300; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1; }
+.colophon-meta { text-align: right; color: rgba(250,250,247,0.7); line-height: 1.7; }
+.colophon-meta a:hover { color: var(--red); }
+.colophon-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  color: rgba(250,250,247,0.62);
+}
+.colophon-bottom strong { color: var(--paper); font-weight: 500; display: block; margin-bottom: 6px; }
+
+/* === REVEAL ANIMATION === */
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.9s cubic-bezier(0.19,1,0.22,1), transform 0.9s cubic-bezier(0.19,1,0.22,1); }
+.reveal.on { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 0.1s; }
+.reveal.d2 { transition-delay: 0.22s; }
+.reveal.d3 { transition-delay: 0.34s; }
+.reveal.d4 { transition-delay: 0.46s; }
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .abertura .body { grid-template-columns: 1fr; }
+  .abertura .body .col-right { padding-top: 0; }
+  .dogma-grid { grid-template-columns: 1fr; }
+  .hipotese-body { grid-template-columns: 1fr; }
+  .camadas { grid-template-columns: 1fr; }
+  .camada { border-right: none; border-bottom: 1px solid var(--ink); min-height: auto; }
+  .camada:last-child { border-bottom: none; }
+  .proof-grid { grid-template-columns: 1fr; }
+  .proof { border-right: none; border-bottom: 1px solid var(--ink); }
+  .proof.flagship { grid-row: auto; min-height: 360px; }
+  .chamado-cta { grid-template-columns: 1fr; }
+  .colophon-top, .colophon-bottom { grid-template-columns: 1fr; }
+  .colophon-meta { text-align: left; }
+  .hero h1 .indent { padding-left: 0; }
+  .hero-kicker { padding-left: 0; }
+  .masthead { grid-template-columns: 1fr; text-align: center; gap: 8px; }
+  .masthead .left, .masthead .center, .masthead .right { text-align: center; }
+}
+
+/* === PRINT === */
+@media print {
+  body::before { display: none; }
+  .masthead { border-bottom: 2px solid black; }
+  .hero h1 { font-size: 5rem; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- === MASTHEAD === -->
+<header class="masthead">
+  <div class="left">EPIC Digital · Revenue Architecture · Est. 2017</div>
+  <div class="center"><a href="#manifesto">Manifesto v1.0 / 17 Abr 2026</a></div>
+  <div class="right"><a href="https://revenueintelligence.app">revenueintelligence.app</a> · <a href="https://epic.digital">epic.digital</a></div>
+</header>
+
+<!-- === HERO === -->
+<section class="hero" id="manifesto">
+  <div class="hero-meta reveal">
+    <div>§ Powered by AI. Governed by Human.</div>
+    <div class="r">By Fabio Munhoz + Jeferson Venancio</div>
+  </div>
+
+  <h1 class="reveal d1">
+    <span class="line">Powered</span>
+    <span class="line indent">by AI.</span>
+    <span class="line"><em>Governed</em></span>
+    <span class="line indent"><em>by Human.</em></span>
+  </h1>
+
+  <p class="hero-kicker reveal d3">
+    Um manifesto contra a homogeneizacao algoritmica — e uma declaracao de principios para a agencia que ainda acredita em julgamento humano sobre decisoes que nao podem voltar atras.
+  </p>
+</section>
+
+<!-- === ABERTURA === -->
+<section class="section abertura">
+  <div class="section-head reveal">
+    <div class="n">§ 01</div>
+    <div class="t">Abertura · A situacao</div>
+  </div>
+
+  <h2 class="reveal d1">
+    Voce ja terceirizou <em>demais.</em>
+  </h2>
+
+  <div class="body">
+    <div class="col-left reveal d2">
+      <p>Pagou a agencia. Pagou a consultoria. Agora paga pela IA.</p>
+      <p>E continua <strong>sem saber por que</strong> esta tomando as decisoes que toma.</p>
+      <p>O relatorio da McKinsey foi arquivado. O dashboard do HubSpot nao conta a historia. O ChatGPT concorda com voce antes mesmo de entender a pergunta.</p>
+    </div>
+    <div class="col-right reveal d3">
+      <p>Todo o mercado de crescimento funciona com a mesma premissa escondida:</p>
+      <p><strong>"inteligencia e um recurso que voce compra de fora."</strong></p>
+      <p>E cada vez que voce compra, voce pensa menos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- === DOGMA vs DESEJO === -->
+<section class="section dogma">
+  <div class="section-head reveal">
+    <div class="n">§ 02</div>
+    <div class="t">Diagnostico · Dogma x Desejo reprimido</div>
+  </div>
+
+  <div class="dogma-grid">
+    <div class="col-left reveal d1">
+      <div class="dogma-col-head">// O Dogma</div>
+      <p class="dogma-quote">"Inteligencia e um recurso que voce compra <span class="dash">—</span> de fora."</p>
+      <ul class="dogma-list dogma-items">
+        <li>Opacidade — nao da para saber como a IA chegou aquela resposta.</li>
+        <li>Extracao silenciosa — seus dados alimentam o modelo de outra empresa.</li>
+        <li>Lock-in estrutural — voce fica dependente do fornecedor.</li>
+        <li>Alucinacao sem dono — a IA erra, e ninguem se responsabiliza.</li>
+        <li>Homogeneizacao — se voce e seu concorrente usam o mesmo modelo para decidir, voces chegam na mesma conclusao. Girard em escala algoritmica.</li>
+      </ul>
+    </div>
+    <div class="col-right reveal d2">
+      <div class="dogma-col-head">→ O Desejo Reprimido</div>
+      <p class="dogma-quote"><em>"Eu quero voltar a entender profundamente — as coisas."</em></p>
+      <ul class="dogma-list desire">
+        <li>Nao ter respostas rapidas — ter compreensao real.</li>
+        <li>Nao output — capacidade instalada.</li>
+        <li>Nao cobertura politica — conviccao.</li>
+        <li>Nao seguro contra responsabilidade — coragem de decidir.</li>
+        <li>Nao "a IA sugeriu" — "eu decidi, e sei exatamente por que".</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- === HIPOTESE === -->
+<section class="section hipotese">
+  <div class="section-head reveal">
+    <div class="n">§ 03</div>
+    <div class="t">Hipotese · O que acreditamos</div>
+  </div>
+
+  <h2 class="reveal d1">
+    IA executa <em>volume.</em><br>
+    Humano governa <span class="br"></span><em>estrategia.</em>
+  </h2>
+
+  <div class="hipotese-body">
+    <div class="key reveal d2">Regra inviolavel / Pipeline de governanca</div>
+    <div class="text reveal d3">
+      <p>Nenhuma decisao que importa pode ser terceirizada para uma caixa-preta. Nenhuma pagina que vende passa sem revisao humana. Nenhuma campanha estrategica depende do Gemini adivinhar o contexto da sua marca.</p>
+
+      <p>Mas tambem nao vamos fingir que o humano deve fazer tudo a mao. A IA executa volume cinco vezes mais rapido — deixa ela fazer. O humano entra onde o custo do erro e <strong>irreversivel.</strong></p>
+
+      <div class="type-block">
+        <div><b>Decisoes tipo 2</b> (reversiveis) → use IA, va rapido, teste mais. Custo do erro: baixo.</div>
+        <div><b>Decisoes tipo 1</b> (irreversiveis) → humano no volante. Sempre. Custo do erro: alto.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === 3 CAMADAS === -->
+<section class="section" style="padding-top: clamp(80px, 10vw, 160px);">
+  <div class="section-head reveal">
+    <div class="n">§ 04</div>
+    <div class="t">Arquitetura · Como operamos</div>
+  </div>
+
+  <div style="margin-bottom: clamp(40px, 5vw, 64px);" class="reveal d1">
+    <p style="font-family: var(--display); font-weight: 500; font-size: clamp(1.8rem, 3.2vw, 3rem); line-height: 1.05; letter-spacing: -0.02em; max-width: 22ch; font-style: italic; font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 1;">
+      Nao somos uma empresa. <br>Somos uma casa com <span style="color: var(--red);">tres pilares</span> — que se sustentam.
+    </p>
+  </div>
+
+  <div class="camadas reveal d2">
+    <div class="camada">
+      <div>
+        <div class="camada-n">01 · A casa</div>
+        <h3>EPIC</h3>
+        <div class="role">Agencia · reposicionada</div>
+        <p>9 anos de mercado. 10 paises. Mais de 100 implementacoes HubSpot. NTIVA, iFood, Eduzz, Sinch, ClearSale, Techfino.</p>
+      </div>
+      <div class="tag">epic.digital</div>
+    </div>
+
+    <div class="camada coracao">
+      <div>
+        <div class="camada-n">02 · A engine interna</div>
+        <h3>ROF</h3>
+        <div class="role">Revenue Orchestration</div>
+        <p>4 pilares. 5 agentes de IA. 5 camadas tecnicas. 17 arquivos .md por cliente. Reduz 37 etapas para 19. Reduz 30 dias para 7. <strong>Nao vendemos.</strong> O cliente ve o resultado.</p>
+      </div>
+      <div class="tag">Infraestrutura proprietaria</div>
+    </div>
+
+    <div class="camada">
+      <div>
+        <div class="camada-n">03 · O produto</div>
+        <h3>Revenue Intelligence</h3>
+        <div class="role">Arquitetura Decisoria</div>
+        <p>Programa de 12 semanas para <strong>decisoes tipo 1</strong>. Onde crescer. Quem comprar. O que descontinuar. Como reposicionar categoria. US$150-250k.</p>
+      </div>
+      <div class="tag">revenueintelligence.app</div>
+    </div>
+  </div>
+</section>
+
+<!-- === PROVA === -->
+<section class="section prova">
+  <div class="section-head reveal">
+    <div class="n">§ 05</div>
+    <div class="t">Prova · Evidencia em numero</div>
+  </div>
+
+  <div class="proof-grid">
+    <div class="proof flagship reveal">
+      <div class="label">// Flagship · NTIVA · Managed IT Services · USA</div>
+      <div class="number">+539%</div>
+      <div class="client">Ntiva</div>
+      <div class="industry">ROI acumulado · 2022 — 2025</div>
+      <p class="detail" style="color: rgba(250,250,247,0.88);">$6.2M em receita adicional. +161% revenue growth. +27% YoY. E isso foi <strong style="color: var(--red); font-style: normal;">sem escalar IA ainda</strong> — so com estrategia humana sob Toyota Partnership mode. Com IA estruturada, o potencial dobra.</p>
+      <p class="quote">"EPIC isn't just there to collect a paycheck. If we win, they win — and that mindset is felt every day. I trust them and their opinions."<br><span style="color: rgba(250,250,247,0.55); font-style: normal; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;">— Shannon Delmarle · Marketing Director, Ntiva</span></p>
+    </div>
+
+    <div class="proof reveal d1">
+      <div class="label">// iFood Ads · Retail Media · BR</div>
+      <div class="number">+294%</div>
+      <div class="client">iFood</div>
+      <div class="industry">Capacidade de campanhas</div>
+      <p class="detail">De 250 para 850 campanhas/mes. 90% faturamento automatizado. -60% tempo de processamento.</p>
+    </div>
+
+    <div class="proof reveal d2">
+      <div class="label">// Quave ONE · SaaS · BR</div>
+      <div class="number" style="font-size: clamp(3rem, 7vw, 7rem);">Categoria</div>
+      <div class="client">Quave</div>
+      <div class="industry">Salto publicado</div>
+      <p class="detail">Reposicionamento completo em 4 meses. Framework Category Leap aplicado. Landing em quave.categoryleap.com.</p>
+    </div>
+
+    <div class="proof reveal d3">
+      <div class="label">// MedConnect · Healthcare Mentoria</div>
+      <div class="number" style="font-size: clamp(3rem, 7vw, 7rem);">R$25k<span style="font-size: 0.3em; color: var(--ink); opacity: 0.5;">+10%</span></div>
+      <div class="client">MedConnect</div>
+      <div class="industry">Modelo hibrido · fixo + revenue share</div>
+      <p class="detail">Fee fixo mensal mais participacao de 10% em receita nova trazida. SMU (Scope Metric Units) em pratica.</p>
+    </div>
+
+    <div class="proof reveal d4">
+      <div class="label">// DOT · Tech · Design velocity</div>
+      <div class="number" style="font-size: clamp(3rem, 7vw, 7rem);">15 dias</div>
+      <div class="client">DOT</div>
+      <div class="industry">15 paginas · biblioteca de componentes</div>
+      <p class="detail">Design premium. Pipeline IA sob governanca humana. Velocidade sem perder qualidade.</p>
+    </div>
+  </div>
+</section>
+
+<!-- === CHAMADO === -->
+<section class="section chamado">
+  <div class="section-head reveal">
+    <div class="n">§ 06</div>
+    <div class="t">O chamado</div>
+  </div>
+
+  <h2 class="q reveal d1">
+    Voce tem uma <em>decisao</em> pela frente que voce <em>nao pode</em> voltar atras?
+  </h2>
+
+  <p class="reveal d2" style="margin-top: clamp(32px, 5vw, 64px); font-family: var(--display); font-weight: 400; font-size: clamp(1.3rem, 1.8vw, 1.8rem); line-height: 1.3; letter-spacing: -0.01em; max-width: 30ch; font-style: italic; color: var(--muted);">
+    Voce nao precisa de mais informacao. Voce precisa de um <span style="color: var(--red); font-style: normal; font-weight: 500;">ambiente para pensar melhor.</span>
+  </p>
+
+  <div class="chamado-cta">
+    <div class="step reveal d2">
+      <div class="step-n">Passo 01 · Conectar</div>
+      <div class="step-t">LinkedIn + manifesto.</div>
+      <div class="step-d">Me adiciona no LinkedIn. Le a tese completa aqui em <a href="https://governedbyhuman.com">governedbyhuman.com</a>.</div>
+    </div>
+    <div class="step reveal d3">
+      <div class="step-n">Passo 02 · Mergulhar</div>
+      <div class="step-t">Diagnostico 45 min.</div>
+      <div class="step-d">Gratuito. Saimos com 3 pontos cegos da sua operacao de receita mapeados. Sem compromisso.</div>
+    </div>
+    <div class="step reveal d4">
+      <div class="step-n">Passo 03 · Construir</div>
+      <div class="step-t">Raio-X pago · 2 semanas.</div>
+      <div class="step-d">R$25-40k / US$25-40k. Mapa de Metabolismo Decisorio + Custo da Nao-Metabolizacao em USD. Creditado no proximo programa.</div>
+    </div>
+  </div>
+</section>
+
+<!-- === COLOPHON === -->
+<footer class="colophon">
+  <div class="colophon-top">
+    <div class="colophon-logo">
+      Powered<br>by AI. <span class="accent">Governed<br>by Human.</span>
+    </div>
+    <div class="colophon-meta">
+      <a href="https://revenueintelligence.app">revenueintelligence.app</a> /<br>
+      <a href="https://categoryleap.com">categoryleap.com</a> /<br>
+      <a href="https://epic.digital">epic.digital</a>
+    </div>
+  </div>
+  <div class="colophon-bottom">
+    <div>
+      <strong>Autores</strong>
+      Fabio Munhoz — CEO, EPIC Digital<br>
+      Jeferson Venancio — Head of Paid Media
+    </div>
+    <div>
+      <strong>Documento</strong>
+      Manifesto v1.0 · 17 Abr 2026<br>
+      Sao Paulo · Joinville · Orlando
+    </div>
+    <div>
+      <strong>Proxima conversa</strong>
+      <a href="mailto:hello@epic.digital">hello@epic.digital</a><br>
+      <a href="https://revenueintelligence.app">Raio-X 45min gratuito</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Intersection Observer for reveal animations
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(el => el.classList.add('on'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('on');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  els.forEach(el => io.observe(el));
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>EPIC Deck · Powered by AI. Governed by Human.</title>
+<meta name="description" content="EPIC Digital · Deck · Abr 2026">
+<meta name="theme-color" content="#0A0A0A">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=JetBrains+Mono:wght@300;400;500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #FAFAF7;
+  --ink: #0A0A0A;
+  --muted: rgba(10,10,10,0.62);
+  --rule: rgba(10,10,10,0.14);
+  --red: #FF0050;
+  --display: 'Fraunces', Georgia, serif;
+  --body: 'Source Serif 4', Georgia, serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow: hidden; }
+body {
+  font-family: var(--body);
+  background: var(--paper);
+  color: var(--ink);
+  font-feature-settings: "ss01","kern","liga";
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+::selection { background: var(--red); color: var(--paper); }
+
+/* Grain overlay */
+body::after {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 200;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* === SLIDE FRAMEWORK === */
+.deck {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  padding: clamp(24px, 4vw, 72px) clamp(24px, 5vw, 96px);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.6s cubic-bezier(0.19,1,0.22,1), transform 0.6s cubic-bezier(0.19,1,0.22,1);
+  pointer-events: none;
+}
+.slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+.slide.prev {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+/* Dark variants */
+.slide.dark { background: var(--ink); color: var(--paper); }
+.slide.dark ::selection { background: var(--red); color: var(--ink); }
+
+/* === UNIVERSAL SLIDE PARTS === */
+.slide-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: baseline;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding-bottom: 16px;
+  border-bottom: 1px solid currentColor;
+  margin-bottom: clamp(40px, 6vh, 80px);
+  opacity: 0.6;
+}
+.slide.dark .slide-header { border-bottom: 1px solid rgba(250,250,247,0.22); }
+.slide-header .right { text-align: right; }
+.slide-header .chapter { color: var(--red); font-weight: 500; opacity: 1; }
+
+.slide-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slide-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid currentColor;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+.slide.dark .slide-footer { border-top: 1px solid rgba(250,250,247,0.22); }
+.slide-footer .center { text-align: center; }
+.slide-footer .right { text-align: right; }
+
+/* === TYPOGRAPHY TOKENS === */
+h1.display, h2.display, h3.display {
+  font-family: var(--display);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  font-variation-settings: "opsz" 144, "WONK" 1;
+}
+.em-soft {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--red);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+.body-serif {
+  font-family: var(--body);
+  line-height: 1.55;
+}
+.mono-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+/* === SLIDE 1 · HERO === */
+#s1 { background: var(--paper); }
+#s1 .hero-title {
+  font-size: clamp(3.5rem, 12vw, 14rem);
+  font-family: var(--display);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-variation-settings: "opsz" 144, "WONK" 1;
+}
+#s1 .hero-title .a { display: block; }
+#s1 .hero-title .b { display: block; padding-left: clamp(40px, 10vw, 200px); }
+#s1 .hero-title em {
+  color: var(--red);
+  font-style: italic;
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+#s1 .kicker {
+  margin-top: clamp(32px, 5vh, 72px);
+  font-family: var(--body);
+  font-style: italic;
+  font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+  color: var(--muted);
+  max-width: 48ch;
+  padding-left: clamp(40px, 10vw, 200px);
+}
+
+/* === SLIDE 2 · A PERGUNTA === */
+#s2 { background: var(--ink); color: var(--paper); }
+#s2 .q1 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(1.8rem, 3.2vw, 3.2rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  max-width: 24ch;
+  font-variation-settings: "opsz" 144, "SOFT" 60, "WONK" 1;
+  opacity: 0.7;
+}
+#s2 .q2 {
+  margin-top: clamp(40px, 6vh, 80px);
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(3rem, 9vw, 9rem);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  font-variation-settings: "opsz" 144, "WONK" 1;
+  max-width: 16ch;
+}
+#s2 .q2 em {
+  color: var(--red);
+  font-style: italic;
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+
+/* === SLIDE 3 · DIAGNOSTICO === */
+#s3 { background: var(--paper); }
+#s3 h2 {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(2.8rem, 7vw, 7rem);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  font-variation-settings: "opsz" 144, "WONK" 1;
+  max-width: 18ch;
+  margin-bottom: clamp(32px, 5vh, 64px);
+}
+#s3 h2 em {
+  color: var(--red);
+  font-style: italic;
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+#s3 .items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 3vw, 48px);
+  margin-top: 24px;
+}
+#s3 .item {
+  border-top: 2px solid var(--red);
+  padding-top: 16px;
+}
+#s3 .item .n {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+#s3 .item p {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(1.3rem, 1.8vw, 1.7rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 144;
+}
+#s3 .quote {
+  margin-top: clamp(48px, 6vh, 80px);
+  padding-top: 24px;
+  border-top: 1px solid var(--ink);
+  font-family: var(--display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.2vw, 2.2rem);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  max-width: 36ch;
+  font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
+}
+#s3 .quote::before { content: "§ "; color: var(--red); font-style: normal; font-weight: 700; font-variation-settings: "opsz" 144; }
+#s3 .quote small {
+  display: block;
+  margin-top: 16px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-style: normal;
+  color: var(--muted);
+}
+
+/* === SLIDE 4 · DOGMA + DESEJO === */
+#s4 { background: var(--paper); color: var(--ink); }
+#s4 .split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 80px);
+  height: 100%;
+}
+#s4 .col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#s4 .col-head {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  padding-top: 12px;
+  border-top: 2px solid;
+}
+#s4 .col-left .col-head { color: var(--ink); border-color: var(--ink); }
+#s4 .col-right .col-head { color: var(--red); border-color: var(--red); }
+#s4 .col-quote {
+  font-family: var(--display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(1.6rem, 3vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 144, "SOFT" 60, "WONK" 1;
+  margin-bottom: clamp(24px, 3vh, 40px);
+}
+#s4 .col-list { list-style: none; }
+#s4 .col-list li {
+  padding: 10px 0;
+  border-top: 1px solid var(--rule);
+  font-family: var(--body);
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  line-height: 1.5;
+}
+#s4 .col-list li:last-child { border-bottom: 1px solid var(--rule); }
+#s4 .col-list.items li::before { content: "//"; color: rgba(255,0,80,0.6); font-family: var(--mono); font-size: 0.72rem; margin-right: 8px; }
+#s4 .col-list.desire li::before { content: "→"; color: var(--red); font-family: var(--mono); margin-right: 8px; }
+#s4 .col-right .col-quote { color: var(--red); }
+
+/* === SLIDE 5 · O SALTO === */
+#s5 { background: var(--paper); color: var(--ink); }
+#s5 .salto-title {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+  font-variation-settings: "opsz" 144, "WONK" 1;
+  margin-bottom: clamp(32px, 5vh, 64px);
+  max-width: 22ch;
+}
+#s5 .salto-title em {
+  color: var(--red);
+  font-style: italic;
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+#s5 .table {
+  border-top: 2px solid var(--ink);
+}
+#s5 .row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: clamp(24px, 3vw, 64px);
+  padding: clamp(14px, 1.8vh, 22px) 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: center;
+}
+#s5 .row .de {
+  font-family: var(--body);
+  color: var(--muted);
+  font-style: italic;
+  font-size: clamp(0.95rem, 1.3vw, 1.3rem);
+  text-decoration: line-through;
+  text-decoration-color: rgba(10,10,10,0.3);
+}
+#s5 .row .para {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  font-variation-settings: "opsz" 144;
+}
+#s5 .row .para strong { color: var(--red); font-weight: 900; }
+#s5 .row .arrow {
+  font-family: var(--mono);
+  color: var(--red);
+  font-size: 0.9rem;
+}
+
+/* === SLIDE 6 · 3 CAMADAS === */
+#s6 { background: var(--paper); color: var(--ink); padding: 0; }
+#s6 .slide-header, #s6 .slide-footer { padding-left: clamp(24px, 5vw, 96px); padding-right: clamp(24px, 5vw, 96px); }
+#s6 .slide-header { padding-top: clamp(24px, 4vw, 72px); margin-bottom: 0; padding-bottom: 16px; }
+#s6 .slide-footer { padding-bottom: clamp(24px, 4vw, 72px); }
+#s6 .title-box {
+  padding: clamp(32px, 5vh, 64px) clamp(24px, 5vw, 96px);
+  border-bottom: 1px solid var(--ink);
+}
+#s6 .title-box h2 {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(2.4rem, 6vw, 6rem);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  font-variation-settings: "opsz" 144, "WONK" 1;
+  max-width: 22ch;
+}
+#s6 .title-box h2 em {
+  color: var(--red);
+  font-style: italic;
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+#s6 .grid3 {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  min-height: 0;
+}
+#s6 .card {
+  padding: clamp(24px, 3vw, 48px);
+  border-right: 1px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#s6 .card:last-child { border-right: none; }
+#s6 .card.heart { background: var(--red); color: var(--paper); }
+#s6 .card .n {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  opacity: 0.7;
+}
+#s6 .card h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  line-height: 0.95;
+  letter-spacing: -0.022em;
+  margin-bottom: 8px;
+  font-variation-settings: "opsz" 144, "WONK" 1;
+}
+#s6 .card .role {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 16px;
+}
+#s6 .card.heart .role { color: var(--paper); opacity: 0.85; }
+#s6 .card p {
+  font-family: var(--body);
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  line-height: 1.5;
+}
+#s6 .card .tag {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid currentColor;
+  opacity: 0.6;
+}
+
+/* === SLIDE 7 · FRAMEWORKS === */
+#s7 { background: var(--paper); color: var(--ink); }
+#s7 .pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 4vw, 80px);
+  height: 100%;
+}
+#s7 .fw {
+  display: flex;
+  flex-direction: column;
+  padding-top: 16px;
+  border-top: 2px solid var(--ink);
+}
+#s7 .fw .n {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+#s7 .fw h3 {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+  margin-bottom: 4px;
+  font-variation-settings: "opsz" 144, "WONK" 1;
+}
+#s7 .fw .sub {
+  font-family: var(--body);
+  font-style: italic;
+  color: var(--muted);
+  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+  margin-bottom: 24px;
+}
+#s7 .fw ol { list-style: none; counter-reset: step; }
+#s7 .fw ol li {
+  counter-increment: step;
+  padding: 10px 0;
+  border-top: 1px solid var(--rule);
+  font-family: var(--body);
+  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+  line-height: 1.45;
+}
+#s7 .fw ol li:last-child { border-bottom: 1px solid var(--rule); }
+#s7 .fw ol li::before {
+  content: counter(step, decimal-leading-zero) " ";
+  font-family: var(--mono);
+  color: var(--red);
+  font-size: 0.8em;
+  margin-right: 12px;
+}
+#s7 .fw .tag {
+  margin-top: 24px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* === SLIDE 8 · PIPELINE === */
+#s8 { background: var(--ink); color: var(--paper); }
+#s8 h2 {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  font-variation-settings: "opsz" 144, "WONK" 1;
+  margin-bottom: clamp(32px, 5vh, 64px);
+  max-width: 18ch;
+}
+#s8 h2 em {
+  color: var(--red);
+  font-style: italic;
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+#s8 .pipeline {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr) auto;
+  gap: 0;
+  align-items: stretch;
+  margin-bottom: clamp(32px, 5vh, 56px);
+  border-top: 1px solid rgba(250,250,247,0.25);
+  border-bottom: 1px solid rgba(250,250,247,0.25);
+}
+#s8 .step {
+  padding: clamp(18px, 2.5vh, 32px) clamp(10px, 1.5vw, 24px);
+  border-right: 1px solid rgba(250,250,247,0.2);
+  text-align: left;
+}
+#s8 .step:last-child { border-right: none; }
+#s8 .step .st-n {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 8px;
+}
+#s8 .step .st-t {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.2rem, 1.6vw, 1.6rem);
+  letter-spacing: -0.015em;
+  line-height: 1;
+  font-variation-settings: "opsz" 144, "WONK" 1;
+}
+#s8 .rule-alert {
+  padding: clamp(20px, 3vh, 32px);
+  border: 2px solid var(--red);
+  border-left-width: 8px;
+  background: rgba(255,0,80,0.08);
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 144;
+}
+#s8 .rule-alert strong {
+  color: var(--red);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85em;
+  display: block;
+  margin-bottom: 8px;
+}
+#s8 .types {
+  margin-top: clamp(24px, 3vh, 32px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 2vw, 32px);
+  font-family: var(--body);
+  font-size: clamp(0.9rem, 1vw, 1.05rem);
+  line-height: 1.45;
+}
+#s8 .types div { padding-top: 12px; border-top: 1px solid rgba(250,250,247,0.22); }
+#s8 .types b { color: var(--red); font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 6px; }
+
+/* === SLIDE 9 · PROVA === */
+#s9 { background: var(--paper); color: var(--ink); padding: 0; }
+#s9 .slide-header, #s9 .slide-footer { padding-left: clamp(24px, 5vw, 96px); padding-right: clamp(24px, 5vw, 96px); }
+#s9 .slide-header { padding-top: clamp(24px, 4vw, 72px); margin-bottom: 0; padding-bottom: 16px; }
+#s9 .slide-footer { padding-bottom: clamp(24px, 4vw, 72px); }
+#s9 .grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  min-height: 0;
+}
+#s9 .cell {
+  padding: clamp(24px, 3vw, 48px);
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#s9 .cell.flag {
+  grid-row: span 2;
+  background: var(--ink);
+  color: var(--paper);
+  border-right: 1px solid var(--ink);
+  border-bottom: none;
+}
+#s9 .cell:nth-child(3) { border-bottom: none; }
+#s9 .cell .l {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0.65;
+}
+#s9 .cell.flag .l { color: var(--red); opacity: 1; }
+#s9 .cell .num {
+  font-family: var(--display);
+  font-weight: 900;
+  color: var(--red);
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  font-variation-settings: "opsz" 144, "WONK" 1;
+}
+#s9 .cell .num.mega { font-size: clamp(4.5rem, 12vw, 14rem); }
+#s9 .cell .num.normal { font-size: clamp(3rem, 7vw, 7rem); }
+#s9 .cell .client {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 1.8vw, 1.8rem);
+  letter-spacing: -0.015em;
+  margin-top: 12px;
+  font-variation-settings: "opsz" 144;
+}
+#s9 .cell .ind {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+#s9 .cell.flag .ind { color: rgba(250,250,247,0.6); }
+#s9 .cell .d {
+  font-family: var(--body);
+  font-style: italic;
+  font-size: clamp(0.85rem, 0.95vw, 1rem);
+  line-height: 1.5;
+}
+#s9 .cell.flag .d strong { color: var(--red); font-style: normal; }
+
+/* === SLIDE 10 · CHAMADO === */
+#s10 { background: var(--paper); color: var(--ink); }
+#s10 h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 5.5vw, 5.5rem);
+  line-height: 0.96;
+  letter-spacing: -0.032em;
+  max-width: 20ch;
+  font-variation-settings: "opsz" 144, "WONK" 1;
+  margin-bottom: clamp(32px, 4vh, 56px);
+}
+#s10 h2 em {
+  color: var(--red);
+  font-style: italic;
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+#s10 .sub {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(1.2rem, 1.8vw, 1.8rem);
+  line-height: 1.3;
+  max-width: 34ch;
+  color: var(--muted);
+  margin-bottom: clamp(40px, 6vh, 80px);
+  font-variation-settings: "opsz" 144, "SOFT" 70, "WONK" 1;
+}
+#s10 .sub strong { color: var(--red); font-style: normal; font-weight: 500; }
+#s10 .steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 3vw, 48px);
+}
+#s10 .step {
+  border-top: 2px solid var(--red);
+  padding-top: 16px;
+}
+#s10 .step .n {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 10px;
+}
+#s10 .step .t {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+  line-height: 1.15;
+  margin-bottom: 6px;
+  letter-spacing: -0.015em;
+  font-variation-settings: "opsz" 144;
+}
+#s10 .step .d {
+  font-family: var(--body);
+  font-size: clamp(0.82rem, 0.9vw, 0.95rem);
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* === CONTROLS === */
+.controls {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 300;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  padding: 8px 12px;
+  mix-blend-mode: difference;
+  filter: invert(1);
+}
+.controls button {
+  background: transparent;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  padding: 4px 10px;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 0.15s;
+}
+.controls button:hover { background: var(--ink); color: var(--paper); }
+.controls .counter { min-width: 56px; text-align: center; }
+.controls .bar {
+  width: 120px;
+  height: 2px;
+  background: rgba(10,10,10,0.2);
+  position: relative;
+}
+.controls .bar-fill {
+  position: absolute;
+  top: 0; left: 0; height: 100%;
+  background: var(--red);
+  transition: width 0.4s cubic-bezier(0.19,1,0.22,1);
+}
+
+/* === PROGRESS BAR === */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: transparent;
+  z-index: 400;
+  mix-blend-mode: difference;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--red);
+  transition: width 0.4s cubic-bezier(0.19,1,0.22,1);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 820px) {
+  #s1 .hero-title .b, #s1 .kicker { padding-left: 0; }
+  #s3 .items { grid-template-columns: 1fr; gap: 16px; }
+  #s4 .split { grid-template-columns: 1fr; gap: 24px; }
+  #s5 .row { grid-template-columns: 1fr; gap: 6px; }
+  #s5 .row .arrow { display: none; }
+  #s5 .row .de { order: 1; }
+  #s5 .row .para { order: 2; }
+  #s6 .grid3 { grid-template-columns: 1fr; }
+  #s6 .card { border-right: none; border-bottom: 1px solid var(--ink); }
+  #s6 .card:last-child { border-bottom: none; }
+  #s7 .pair { grid-template-columns: 1fr; gap: 24px; }
+  #s8 .pipeline { grid-template-columns: repeat(2, 1fr); }
+  #s8 .step { border-right: 1px solid rgba(250,250,247,0.2); border-bottom: 1px solid rgba(250,250,247,0.2); }
+  #s8 .types { grid-template-columns: 1fr; }
+  #s9 .grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+  #s9 .cell { border-right: none !important; }
+  #s9 .cell.flag { grid-row: span 1; }
+  #s10 .steps { grid-template-columns: 1fr; gap: 20px; }
+  .slide-header, .slide-footer { font-size: 0.6rem; }
+}
+
+@media (min-height: 800px) and (min-width: 1400px) {
+  .slide { max-width: 1600px; margin: 0 auto; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="deck" id="deck">
+
+  <!-- ======= SLIDE 01 · HERO ======= -->
+  <section class="slide active" id="s1" data-chapter="Abertura">
+    <header class="slide-header">
+      <div>EPIC Digital / Revenue Architecture</div>
+      <div class="right">17 Abr 2026</div>
+    </header>
+    <main class="slide-main">
+      <h1 class="hero-title">
+        <span class="a">Powered</span>
+        <span class="b">by AI.</span>
+        <span class="a"><em>Governed</em></span>
+        <span class="b"><em>by Human.</em></span>
+      </h1>
+      <p class="kicker">Projetamos motores de receita para empresas que querem escalar com IA sem virar commodity.</p>
+    </main>
+    <footer class="slide-footer">
+      <div>§ 00 · Capa</div>
+      <div class="center">Fabio Munhoz · Jeferson Venancio</div>
+      <div class="right">01 / 10</div>
+    </footer>
+  </section>
+
+  <!-- ======= SLIDE 02 · A PERGUNTA ======= -->
+  <section class="slide dark" id="s2">
+    <header class="slide-header">
+      <div><span class="chapter">§ 01 · Provocacao</span></div>
+      <div class="right">A pergunta que importa</div>
+    </header>
+    <main class="slide-main">
+      <p class="q1">Se amanha seu concorrente tiver acesso as mesmas ferramentas de IA que voce —</p>
+      <p class="q2">Qual e o seu <em>diferencial real?</em></p>
+    </main>
+    <footer class="slide-footer">
+      <div>§ 01</div>
+      <div class="center">—</div>
+      <div class="right">02 / 10</div>
+    </footer>
+  </section>
+
+  <!-- ======= SLIDE 03 · DIAGNOSTICO ======= -->
+  <section class="slide" id="s3">
+    <header class="slide-header">
+      <div><span class="chapter">§ 02 · Diagnostico</span></div>
+      <div class="right">O estado do mercado</div>
+    </header>
+    <main class="slide-main">
+      <h2>A IA virou commodity.<br><em>E isso ninguem quer admitir.</em></h2>
+      <div class="items">
+        <div class="item">
+          <div class="n">Evidencia 01</div>
+          <p>Todas as landing pages estao ficando iguais.</p>
+        </div>
+        <div class="item">
+          <div class="n">Evidencia 02</div>
+          <p>Todos os anuncios convergiram para o mesmo criativo.</p>
+        </div>
+        <div class="item">
+          <div class="n">Evidencia 03</div>
+          <p>Todas as estrategias soam identicas — porque vem do mesmo modelo.</p>
+        </div>
+      </div>
+      <blockquote class="quote">
+        Se voce e seu concorrente usam o mesmo modelo para decidir, voces chegam na mesma conclusao. Girard em escala algoritmica.
+        <small>— Cita: Teoria mimetica de Rene Girard (1972) aplicada a IA (2026)</small>
+      </blockquote>
+    </main>
+    <footer class="slide-footer">
+      <div>§ 02</div>
+      <div class="center">Diagnostico · Commoditizacao</div>
+      <div class="right">03 / 10</div>
+    </footer>
+  </section>
+
+  <!-- ======= SLIDE 04 · DOGMA + DESEJO ======= -->
+  <section class="slide" id="s4">
+    <header class="slide-header">
+      <div><span class="chapter">§ 03 · Dialetica</span></div>
+      <div class="right">Dogma x Desejo reprimido</div>
+    </header>
+    <main class="slide-main">
+      <div class="split">
+        <div class="col col-left">
+          <div class="col-head">// O Dogma aceito</div>
+          <p class="col-quote">Inteligencia e um recurso que voce <span style="color:var(--red);">compra</span> de fora.</p>
+          <ul class="col-list items">
+            <li>Opacidade — caixa-preta.</li>
+            <li>Dados alimentam o modelo de outra empresa.</li>
+            <li>Lock-in por dependencia.</li>
+            <li>Alucinacao sem responsavel.</li>
+            <li>Homogeneizacao estrategica inevitavel.</li>
+          </ul>
+        </div>
+        <div class="col col-right">
+          <div class="col-head">→ O Desejo reprimido</div>
+          <p class="col-quote">Eu quero voltar a <span style="color:var(--ink); font-style: normal; font-weight: 700;">entender</span> profundamente as coisas.</p>
+          <ul class="col-list desire">
+            <li>Nao respostas — compreensao.</li>
+            <li>Nao output — capacidade instalada.</li>
+            <li>Nao cobertura politica — conviccao.</li>
+            <li>Nao "a IA sugeriu" — "eu decidi, e sei por que".</li>
+            <li>Confianca recuperada no proprio julgamento.</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <footer class="slide-footer">
+      <div>§ 03</div>
+      <div class="center">O que esta em jogo</div>
+      <div class="right">04 / 10</div>
+    </footer>
+  </section>
+
+  <!-- ======= SLIDE 05 · O SALTO ======= -->
+  <section class="slide" id="s5">
+    <header class="slide-header">
+      <div><span class="chapter">§ 04 · O salto</span></div>
+      <div class="right">De → Para</div>
+    </header>
+    <main class="slide-main">
+      <h2 class="salto-title">De executora de marketing para <em>arquitetura de receita hibrida.</em></h2>
+      <div class="table">
+        <div class="row">
+          <div class="de">Agencia que executa</div>
+          <div class="arrow">→</div>
+          <div class="para">Empresa que <strong>pensa melhor</strong> sobre receita</div>
+        </div>
+        <div class="row">
+          <div class="de">Hora-homem</div>
+          <div class="arrow">→</div>
+          <div class="para"><strong>SMU</strong> + revenue share</div>
+        </div>
+        <div class="row">
+          <div class="de">IA que da respostas</div>
+          <div class="arrow">→</div>
+          <div class="para">IA que <strong>faz perguntas</strong></div>
+        </div>
+        <div class="row">
+          <div class="de">Entregaveis como produto</div>
+          <div class="arrow">→</div>
+          <div class="para"><strong>Resultados</strong> como produto</div>
+        </div>
+        <div class="row">
+          <div class="de">Lock-in por dependencia</div>
+          <div class="arrow">→</div>
+          <div class="para">Lock-in por <strong>excelencia</strong></div>
+        </div>
+      </div>
+    </main>
+    <footer class="slide-footer">
+      <div>§ 04</div>
+      <div class="center">Salto de categoria · Category Leap framework</div>
+      <div class="right">05 / 10</div>
+    </footer>
+  </section>
+
+  <!-- ======= SLIDE 06 · 3 CAMADAS ======= -->
+  <section class="slide" id="s6">
+    <header class="slide-header">
+      <div><span class="chapter">§ 05 · Arquitetura</span></div>
+      <div class="right">Uma casa · tres pilares</div>
+    </header>
+    <div class="title-box">
+      <h2>Uma casa. <em>Tres camadas</em> que se sustentam.</h2>
+    </div>
+    <div class="grid3">
+      <div class="card">
+        <div>
+          <div class="n">01 · A casa</div>
+          <h3>EPIC</h3>
+          <div class="role">Agencia reposicionada</div>
+          <p>9 anos. 10 paises. 100+ implementacoes HubSpot. NTIVA, iFood, Eduzz, Sinch, ClearSale, Techfino.</p>
+        </div>
+        <div class="tag">epic.digital</div>
+      </div>
+      <div class="card heart">
+        <div>
+          <div class="n">02 · Engine interna</div>
+          <h3>ROF</h3>
+          <div class="role">Revenue Orchestration</div>
+          <p>4 pilares · 5 agentes de IA · 5 camadas. 17 arquivos .md por cliente. 37 etapas → 19. 30 dias → 7.</p>
+        </div>
+        <div class="tag">Nao vendemos · infraestrutura propria</div>
+      </div>
+      <div class="card">
+        <div>
+          <div class="n">03 · Produto premium</div>
+          <h3>Revenue Intelligence</h3>
+          <div class="role">Arquitetura Decisoria</div>
+          <p>Programa 12 semanas para decisoes tipo 1 irreversiveis. Onde crescer. Quem comprar. $150-250k.</p>
+        </div>
+        <div class="tag">revenueintelligence.app</div>
+      </div>
+    </div>
+    <footer class="slide-footer">
+      <div>§ 05</div>
+      <div class="center">As 3 camadas</div>
+      <div class="right">06 / 10</div>
+    </footer>
+  </section>
+
+  <!-- ======= SLIDE 07 · FRAMEWORKS ======= -->
+  <section class="slide" id="s7">
+    <header class="slide-header">
+      <div><span class="chapter">§ 06 · Frameworks proprietarios</span></div>
+      <div class="right">Dois metodos com nome</div>
+    </header>
+    <main class="slide-main">
+      <div class="pair">
+        <div class="fw">
+          <div class="n">Framework 01</div>
+          <h3>Category Leap</h3>
+          <p class="sub">Reposicionamento em quatro passos.</p>
+          <ol>
+            <li>Dogma — a reclamacao aceita pelo mercado.</li>
+            <li>Desejo Reprimido — a promessa nao cumprida.</li>
+            <li>Category Leap — mudanca de ontologia.</li>
+            <li>Prestige KPI — nova regua de valor.</li>
+          </ol>
+          <div class="tag">→ quave.categoryleap.com · medconnect.categoryleap.com</div>
+        </div>
+        <div class="fw">
+          <div class="n">Framework 02</div>
+          <h3>Arquitetura Decisoria</h3>
+          <p class="sub">Programa 12 semanas · decisoes tipo 1.</p>
+          <ol>
+            <li>Raio-X — mapa de metabolismo decisorio · 2 sem.</li>
+            <li>Redesenho — protocolo de decisao irreversivel · 4 sem.</li>
+            <li>Arena — pratica com decisoes reais · 6 sem.</li>
+            <li>Soberania Operacional — calibracao trimestral · continuo.</li>
+          </ol>
+          <div class="tag">→ KPI de Prestigio: Taxa de Compreensao Operacional</div>
+        </div>
+      </div>
+    </main>
+    <footer class="slide-footer">
+      <div>§ 06</div>
+      <div class="center">Category Leap · Arquitetura Decisoria</div>
+      <div class="right">07 / 10</div>
+    </footer>
+  </section>
+
+  <!-- ======= SLIDE 08 · PIPELINE INVIOLAVEL ======= -->
+  <section class="slide dark" id="s8">
+    <header class="slide-header">
+      <div><span class="chapter">§ 07 · Governanca</span></div>
+      <div class="right">Como a IA entra</div>
+    </header>
+    <main class="slide-main">
+      <h2>Pipeline <em>inviolavel</em> · humano no volante.</h2>
+
+      <div class="pipeline">
+        <div class="step">
+          <div class="st-n">Fase 01</div>
+          <div class="st-t">AI Draft</div>
+        </div>
+        <div class="step">
+          <div class="st-n">Fase 02</div>
+          <div class="st-t">Human Review</div>
+        </div>
+        <div class="step">
+          <div class="st-n">Fase 03</div>
+          <div class="st-t">Approved</div>
+        </div>
+        <div class="step">
+          <div class="st-n">Fase 04</div>
+          <div class="st-t">Live</div>
+        </div>
+        <div class="step">
+          <div class="st-n">Fase 05</div>
+          <div class="st-t">Audited</div>
+        </div>
+      </div>
+
+      <div class="rule-alert">
+        <strong>Regra inviolavel</strong>
+        Nenhum arquivo vira "Live" sem aprovacao humana. O sistema bloqueia automaticamente qualquer tentativa de pular etapas.
+      </div>
+
+      <div class="types">
+        <div>
+          <b>Tipo 02 · Reversiveis</b>
+          Copy de anuncio · variacao de landing · ajuste de segmentacao. IA executa volume. Va rapido. Custo do erro: baixo.
+        </div>
+        <div>
+          <b>Tipo 01 · Irreversiveis</b>
+          Entrar em mercado · M&A · descontinuar produto · reposicionar categoria. Humano decide. Sempre. Custo do erro: alto.
+        </div>
+      </div>
+    </main>
+    <footer class="slide-footer">
+      <div>§ 07</div>
+      <div class="center">Pipeline AI Draft → Audited</div>
+      <div class="right">08 / 10</div>
+    </footer>
+  </section>
+
+  <!-- ======= SLIDE 09 · PROVA ======= -->
+  <section class="slide" id="s9">
+    <header class="slide-header">
+      <div><span class="chapter">§ 08 · Prova</span></div>
+      <div class="right">Evidencia · cases flagship</div>
+    </header>
+    <div class="grid">
+      <div class="cell flag">
+        <div>
+          <div class="l">// Flagship · Ntiva · MSP IT · USA</div>
+          <div class="num mega">+539%</div>
+        </div>
+        <div>
+          <div class="client">Ntiva</div>
+          <div class="ind">ROI acumulado · 2022 — 2025</div>
+          <p class="d">$6.2M em receita adicional · +161% revenue growth · +27% YoY. E isso foi <strong>sem escalar IA ainda.</strong> Com IA estruturada, o potencial dobra.</p>
+        </div>
+      </div>
+
+      <div class="cell">
+        <div>
+          <div class="l">// iFood Ads · foodtech · BR</div>
+          <div class="num normal">+294%</div>
+        </div>
+        <div>
+          <div class="client">iFood</div>
+          <div class="ind">Capacidade de campanhas</div>
+          <p class="d">250 → 850 campanhas/mes · 90% faturamento automatizado · -60% tempo.</p>
+        </div>
+      </div>
+
+      <div class="cell">
+        <div>
+          <div class="l">// Quave ONE · SaaS · BR</div>
+          <div class="num normal" style="font-size: clamp(2rem, 5vw, 5rem); line-height: 0.95;">Salto de<br>Categoria</div>
+        </div>
+        <div>
+          <div class="client">Quave</div>
+          <div class="ind">Reposicionamento 4 meses</div>
+          <p class="d">Landing em quave.categoryleap.com. Framework Category Leap aplicado.</p>
+        </div>
+      </div>
+    </div>
+    <footer class="slide-footer">
+      <div>§ 08</div>
+      <div class="center">Cases reais · numeros oficiais</div>
+      <div class="right">09 / 10</div>
+    </footer>
+  </section>
+
+  <!-- ======= SLIDE 10 · CHAMADO ======= -->
+  <section class="slide" id="s10">
+    <header class="slide-header">
+      <div><span class="chapter">§ 09 · O chamado</span></div>
+      <div class="right">Proximo passo</div>
+    </header>
+    <main class="slide-main">
+      <h2>Voce tem uma <em>decisao</em> pela frente que voce <em>nao pode</em> voltar atras?</h2>
+      <p class="sub">Voce nao precisa de mais informacao. Voce precisa de um <strong>ambiente para pensar melhor.</strong></p>
+      <div class="steps">
+        <div class="step">
+          <div class="n">Passo 01 · Conectar</div>
+          <div class="t">LinkedIn + manifesto.</div>
+          <div class="d">Me adiciona. Le a tese em governedbyhuman.com.</div>
+        </div>
+        <div class="step">
+          <div class="n">Passo 02 · Mergulhar</div>
+          <div class="t">Diagnostico 45 min.</div>
+          <div class="d">Gratuito. 3 pontos cegos da sua operacao de receita mapeados. Sem compromisso.</div>
+        </div>
+        <div class="step">
+          <div class="n">Passo 03 · Construir</div>
+          <div class="t">Raio-X · 2 semanas.</div>
+          <div class="d">R$25-40k / $25-40k. Creditado no proximo programa.</div>
+        </div>
+      </div>
+    </main>
+    <footer class="slide-footer">
+      <div>§ 09</div>
+      <div class="center">revenueintelligence.app · governedbyhuman.com</div>
+      <div class="right">10 / 10</div>
+    </footer>
+  </section>
+
+</div>
+
+<!-- === CONTROLS === -->
+<div class="controls">
+  <button id="prev" aria-label="Anterior">←</button>
+  <span class="counter"><span id="current">01</span> / 10</span>
+  <div class="bar"><div class="bar-fill" id="barFill" style="width: 10%;"></div></div>
+  <button id="next" aria-label="Proximo">→</button>
+</div>
+
+<script>
+(function(){
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let current = 0;
+
+  const btnPrev = document.getElementById('prev');
+  const btnNext = document.getElementById('next');
+  const counter = document.getElementById('current');
+  const barFill = document.getElementById('barFill');
+  const progressFill = document.getElementById('progressFill');
+
+  function go(i) {
+    if (i < 0 || i >= total) return;
+    slides[current].classList.remove('active');
+    if (i < current) slides[current].classList.add('prev');
+    else slides[current].classList.remove('prev');
+    current = i;
+    slides[current].classList.add('active');
+    slides[current].classList.remove('prev');
+    counter.textContent = String(current + 1).padStart(2, '0');
+    const pct = ((current + 1) / total) * 100;
+    barFill.style.width = pct + '%';
+    progressFill.style.width = pct + '%';
+    // Update URL hash
+    history.replaceState(null, '', '#slide-' + (current + 1));
+  }
+
+  function next() { go(Math.min(current + 1, total - 1)); }
+  function prev() { go(Math.max(current - 1, 0)); }
+
+  btnPrev.addEventListener('click', prev);
+  btnNext.addEventListener('click', next);
+
+  // Keyboard
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); next(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+    else if (e.key === 'Home') { go(0); }
+    else if (e.key === 'End') { go(total - 1); }
+    else if (/^[0-9]$/.test(e.key)) {
+      const n = parseInt(e.key, 10);
+      if (n === 0) go(9); // 0 → slide 10
+      else go(n - 1);
+    }
+  });
+
+  // Touch swipe
+  let touchStartX = null;
+  document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', (e) => {
+    if (touchStartX === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) { dx < 0 ? next() : prev(); }
+    touchStartX = null;
+  }, { passive: true });
+
+  // Deep link
+  if (location.hash && location.hash.startsWith('#slide-')) {
+    const n = parseInt(location.hash.replace('#slide-', ''), 10);
+    if (!isNaN(n) && n >= 1 && n <= total) go(n - 1);
+  }
+
+  // Click on left/right side of screen to navigate
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.controls') || e.target.closest('a') || e.target.closest('button')) return;
+    const w = window.innerWidth;
+    if (e.clientX > w * 0.7) next();
+    else if (e.clientX < w * 0.3) prev();
+  });
+})();
+</script>
+
+</body>
+</html>
