@@ -24,7 +24,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=JetBrains+Mono:wght@300;400;500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=JetBrains+Mono:wght@300;400;500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -36,7 +36,7 @@
   --red: #FF0050;
   --gutter: clamp(16px, 4vw, 80px);
   --max: 1440px;
-  --display: 'Fraunces', Georgia, serif;
+  --display: 'Bodoni Moda', Georgia, serif;
   --body: 'Source Serif 4', Georgia, serif;
   --mono: 'JetBrains Mono', ui-monospace, monospace;
 }
@@ -97,7 +97,7 @@ a:hover { color: var(--red); }
 
 /* === HERO === */
 .hero {
-  padding: clamp(80px, 12vw, 200px) var(--gutter) clamp(60px, 10vw, 160px);
+  padding: clamp(56px, 7vw, 120px) var(--gutter) clamp(60px, 8vw, 140px);
   position: relative;
   border-bottom: 1px solid var(--ink);
 }
@@ -105,7 +105,7 @@ a:hover { color: var(--red); }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
-  margin-bottom: clamp(40px, 6vw, 80px);
+  margin-bottom: clamp(28px, 4vw, 56px);
   font-family: var(--mono);
   font-size: 0.7rem;
   letter-spacing: 0.08em;
@@ -116,21 +116,21 @@ a:hover { color: var(--red); }
 .hero h1 {
   font-family: var(--display);
   font-weight: 900;
-  font-size: clamp(4rem, 18vw, 22rem);
-  line-height: 0.85;
-  letter-spacing: -0.045em;
-  font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 1;
+  font-size: clamp(3.5rem, 10vw, 11rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  font-variation-settings: "opsz" 96;
   text-transform: none;
   color: var(--ink);
 }
 .hero h1 em {
   font-style: italic;
-  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  font-variation-settings: "opsz" 96;
   color: var(--red);
-  font-weight: 300;
+  font-weight: 500;
 }
 .hero h1 .line { display: block; }
-.hero h1 .indent { padding-left: clamp(40px, 10vw, 240px); }
+.hero h1 .indent { padding-left: clamp(24px, 5vw, 120px); }
 
 .hero-kicker {
   max-width: 560px;
@@ -139,7 +139,7 @@ a:hover { color: var(--red); }
   font-size: clamp(1.1rem, 1.6vw, 1.45rem);
   line-height: 1.5;
   color: var(--muted);
-  padding-left: clamp(40px, 10vw, 240px);
+  padding-left: clamp(24px, 5vw, 120px);
   font-style: italic;
 }
 .hero-kicker::before {

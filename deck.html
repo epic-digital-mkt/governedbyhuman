@@ -9,7 +9,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=JetBrains+Mono:wght@300;400;500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=JetBrains+Mono:wght@300;400;500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -18,7 +18,7 @@
   --muted: rgba(10,10,10,0.62);
   --rule: rgba(10,10,10,0.14);
   --red: #FF0050;
-  --display: 'Fraunces', Georgia, serif;
+  --display: 'Bodoni Moda', Georgia, serif;
   --body: 'Source Serif 4', Georgia, serif;
   --mono: 'JetBrains Mono', ui-monospace, monospace;
 }
@@ -149,20 +149,20 @@ h1.display, h2.display, h3.display {
 /* === SLIDE 1 · HERO === */
 #s1 { background: var(--paper); }
 #s1 .hero-title {
-  font-size: clamp(3.5rem, 12vw, 14rem);
+  font-size: clamp(3.2rem, 9vw, 10rem);
   font-family: var(--display);
   font-weight: 900;
-  line-height: 0.9;
-  letter-spacing: -0.04em;
-  font-variation-settings: "opsz" 144, "WONK" 1;
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+  font-variation-settings: "opsz" 96;
 }
 #s1 .hero-title .a { display: block; }
-#s1 .hero-title .b { display: block; padding-left: clamp(40px, 10vw, 200px); }
+#s1 .hero-title .b { display: block; padding-left: clamp(24px, 5vw, 120px); }
 #s1 .hero-title em {
   color: var(--red);
   font-style: italic;
-  font-weight: 300;
-  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  font-weight: 500;
+  font-variation-settings: "opsz" 96;
 }
 #s1 .kicker {
   margin-top: clamp(32px, 5vh, 72px);
@@ -171,7 +171,7 @@ h1.display, h2.display, h3.display {
   font-size: clamp(1.1rem, 1.6vw, 1.5rem);
   color: var(--muted);
   max-width: 48ch;
-  padding-left: clamp(40px, 10vw, 200px);
+  padding-left: clamp(24px, 5vw, 120px);
 }
 
 /* === SLIDE 2 · A PERGUNTA === */
