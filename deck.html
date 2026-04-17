@@ -3,1296 +3,1829 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>EPIC Deck · Powered by AI. Governed by Human.</title>
-<meta name="description" content="EPIC Digital · Deck · Abr 2026">
-<meta name="theme-color" content="#0A0A0A">
+<title>The Thesis · A Technical Score — EPIC Digital</title>
+<meta name="description" content="Onze atos. Uma posicao contra a homogeneizacao algoritmica. A tese da EPIC Digital, em forma de roteiro.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#F5F2EA">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Thesis · A Technical Score">
+<meta property="og:description" content="Onze atos. Uma posicao contra a homogeneizacao algoritmica. EPIC Digital, Abr 2026.">
+<meta property="og:url" content="https://governedbyhuman.com/deck.html">
+<meta property="og:site_name" content="EPIC Digital">
+<meta property="og:locale" content="pt_BR">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=JetBrains+Mono:wght@300;400;500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --paper: #FAFAF7;
-  --ink: #0A0A0A;
-  --muted: rgba(10,10,10,0.62);
-  --rule: rgba(10,10,10,0.14);
-  --red: #FF0050;
-  --display: 'Bodoni Moda', Georgia, serif;
-  --body: 'Source Serif 4', Georgia, serif;
-  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --paper: #F5F2EA;
+  --paper-2: #EEE8D8;
+  --ink: #0F0F0F;
+  --ink-soft: #2B2B2B;
+  --muted: #8A847A;
+  --hairline: #E8E2D4;
+  --accent: #FF0050;
+  --accent-dim: #FFD0DF;
+  --accent-deep: #B8003A;
+  --col: calc((100% - 11 * 24px) / 12);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { height: 100%; overflow: hidden; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
 body {
-  font-family: var(--body);
+  font-family: 'Barlow', system-ui, sans-serif;
   background: var(--paper);
-  color: var(--ink);
-  font-feature-settings: "ss01","kern","liga";
-  user-select: none;
-  -webkit-user-select: none;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-::selection { background: var(--red); color: var(--paper); }
+/* Grain texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='280'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.06 0 0 0 0 0.06 0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.55'/></svg>");
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 1;
+}
 
-/* Grain overlay */
+/* Radial vignette */
 body::after {
   content: "";
-  position: fixed; inset: 0;
-  pointer-events: none;
-  z-index: 200;
-  opacity: 0.05;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-}
-
-/* === SLIDE FRAMEWORK === */
-.deck {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-.slide {
-  position: absolute;
-  inset: 0;
-  padding: clamp(24px, 4vw, 72px) clamp(24px, 5vw, 96px);
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  transform: translateX(40px);
-  transition: opacity 0.6s cubic-bezier(0.19,1,0.22,1), transform 0.6s cubic-bezier(0.19,1,0.22,1);
-  pointer-events: none;
-}
-.slide.active {
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: auto;
-}
-.slide.prev {
-  opacity: 0;
-  transform: translateX(-40px);
-}
-
-/* Dark variants */
-.slide.dark { background: var(--ink); color: var(--paper); }
-.slide.dark ::selection { background: var(--red); color: var(--ink); }
-
-/* === UNIVERSAL SLIDE PARTS === */
-.slide-header {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: baseline;
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding-bottom: 16px;
-  border-bottom: 1px solid currentColor;
-  margin-bottom: clamp(40px, 6vh, 80px);
-  opacity: 0.6;
-}
-.slide.dark .slide-header { border-bottom: 1px solid rgba(250,250,247,0.22); }
-.slide-header .right { text-align: right; }
-.slide-header .chapter { color: var(--red); font-weight: 500; opacity: 1; }
-
-.slide-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.slide-footer {
-  margin-top: auto;
-  padding-top: 16px;
-  border-top: 1px solid currentColor;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0.5;
-}
-.slide.dark .slide-footer { border-top: 1px solid rgba(250,250,247,0.22); }
-.slide-footer .center { text-align: center; }
-.slide-footer .right { text-align: right; }
-
-/* === TYPOGRAPHY TOKENS === */
-h1.display, h2.display, h3.display {
-  font-family: var(--display);
-  font-weight: 900;
-  line-height: 0.88;
-  letter-spacing: -0.04em;
-  font-variation-settings: "opsz" 144, "WONK" 1;
-}
-.em-soft {
-  font-style: italic;
-  font-weight: 300;
-  color: var(--red);
-  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
-}
-.body-serif {
-  font-family: var(--body);
-  line-height: 1.55;
-}
-.mono-label {
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--red);
-}
-
-/* === SLIDE 1 · HERO === */
-#s1 { background: var(--paper); }
-#s1 .hero-title {
-  font-size: clamp(3.2rem, 9vw, 10rem);
-  font-family: var(--display);
-  font-weight: 900;
-  line-height: 0.94;
-  letter-spacing: -0.03em;
-  font-variation-settings: "opsz" 96;
-}
-#s1 .hero-title .a { display: block; }
-#s1 .hero-title .b { display: block; padding-left: clamp(24px, 5vw, 120px); }
-#s1 .hero-title em {
-  color: var(--red);
-  font-style: italic;
-  font-weight: 500;
-  font-variation-settings: "opsz" 96;
-}
-#s1 .kicker {
-  margin-top: clamp(32px, 5vh, 72px);
-  font-family: var(--body);
-  font-style: italic;
-  font-size: clamp(1.1rem, 1.6vw, 1.5rem);
-  color: var(--muted);
-  max-width: 48ch;
-  padding-left: clamp(24px, 5vw, 120px);
-}
-
-/* === SLIDE 2 · A PERGUNTA === */
-#s2 { background: var(--ink); color: var(--paper); }
-#s2 .q1 {
-  font-family: var(--display);
-  font-weight: 500;
-  font-style: italic;
-  font-size: clamp(1.8rem, 3.2vw, 3.2rem);
-  line-height: 1.15;
-  letter-spacing: -0.015em;
-  max-width: 24ch;
-  font-variation-settings: "opsz" 144, "SOFT" 60, "WONK" 1;
-  opacity: 0.7;
-}
-#s2 .q2 {
-  margin-top: clamp(40px, 6vh, 80px);
-  font-family: var(--display);
-  font-weight: 900;
-  font-size: clamp(3rem, 9vw, 9rem);
-  line-height: 0.92;
-  letter-spacing: -0.035em;
-  font-variation-settings: "opsz" 144, "WONK" 1;
-  max-width: 16ch;
-}
-#s2 .q2 em {
-  color: var(--red);
-  font-style: italic;
-  font-weight: 300;
-  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
-}
-
-/* === SLIDE 3 · DIAGNOSTICO === */
-#s3 { background: var(--paper); }
-#s3 h2 {
-  font-family: var(--display);
-  font-weight: 900;
-  font-size: clamp(2.8rem, 7vw, 7rem);
-  line-height: 0.92;
-  letter-spacing: -0.035em;
-  font-variation-settings: "opsz" 144, "WONK" 1;
-  max-width: 18ch;
-  margin-bottom: clamp(32px, 5vh, 64px);
-}
-#s3 h2 em {
-  color: var(--red);
-  font-style: italic;
-  font-weight: 300;
-  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
-}
-#s3 .items {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(24px, 3vw, 48px);
-  margin-top: 24px;
-}
-#s3 .item {
-  border-top: 2px solid var(--red);
-  padding-top: 16px;
-}
-#s3 .item .n {
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 12px;
-}
-#s3 .item p {
-  font-family: var(--display);
-  font-weight: 500;
-  font-size: clamp(1.3rem, 1.8vw, 1.7rem);
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  font-variation-settings: "opsz" 144;
-}
-#s3 .quote {
-  margin-top: clamp(48px, 6vh, 80px);
-  padding-top: 24px;
-  border-top: 1px solid var(--ink);
-  font-family: var(--display);
-  font-weight: 500;
-  font-style: italic;
-  font-size: clamp(1.3rem, 2.2vw, 2.2rem);
-  line-height: 1.25;
-  letter-spacing: -0.015em;
-  color: var(--ink);
-  max-width: 36ch;
-  font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
-}
-#s3 .quote::before { content: "§ "; color: var(--red); font-style: normal; font-weight: 700; font-variation-settings: "opsz" 144; }
-#s3 .quote small {
-  display: block;
-  margin-top: 16px;
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-style: normal;
-  color: var(--muted);
-}
-
-/* === SLIDE 4 · DOGMA + DESEJO === */
-#s4 { background: var(--paper); color: var(--ink); }
-#s4 .split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(32px, 5vw, 80px);
-  height: 100%;
-}
-#s4 .col {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-#s4 .col-head {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-  padding-top: 12px;
-  border-top: 2px solid;
-}
-#s4 .col-left .col-head { color: var(--ink); border-color: var(--ink); }
-#s4 .col-right .col-head { color: var(--red); border-color: var(--red); }
-#s4 .col-quote {
-  font-family: var(--display);
-  font-weight: 500;
-  font-style: italic;
-  font-size: clamp(1.6rem, 3vw, 3rem);
-  line-height: 1.12;
-  letter-spacing: -0.02em;
-  font-variation-settings: "opsz" 144, "SOFT" 60, "WONK" 1;
-  margin-bottom: clamp(24px, 3vh, 40px);
-}
-#s4 .col-list { list-style: none; }
-#s4 .col-list li {
-  padding: 10px 0;
-  border-top: 1px solid var(--rule);
-  font-family: var(--body);
-  font-size: clamp(0.9rem, 1vw, 1rem);
-  line-height: 1.5;
-}
-#s4 .col-list li:last-child { border-bottom: 1px solid var(--rule); }
-#s4 .col-list.items li::before { content: "//"; color: rgba(255,0,80,0.6); font-family: var(--mono); font-size: 0.72rem; margin-right: 8px; }
-#s4 .col-list.desire li::before { content: "→"; color: var(--red); font-family: var(--mono); margin-right: 8px; }
-#s4 .col-right .col-quote { color: var(--red); }
-
-/* === SLIDE 5 · O SALTO === */
-#s5 { background: var(--paper); color: var(--ink); }
-#s5 .salto-title {
-  font-family: var(--display);
-  font-weight: 900;
-  font-size: clamp(2.4rem, 5vw, 5rem);
-  line-height: 0.94;
-  letter-spacing: -0.03em;
-  font-variation-settings: "opsz" 144, "WONK" 1;
-  margin-bottom: clamp(32px, 5vh, 64px);
-  max-width: 22ch;
-}
-#s5 .salto-title em {
-  color: var(--red);
-  font-style: italic;
-  font-weight: 300;
-  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
-}
-#s5 .table {
-  border-top: 2px solid var(--ink);
-}
-#s5 .row {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: clamp(24px, 3vw, 64px);
-  padding: clamp(14px, 1.8vh, 22px) 0;
-  border-bottom: 1px solid var(--rule);
-  align-items: center;
-}
-#s5 .row .de {
-  font-family: var(--body);
-  color: var(--muted);
-  font-style: italic;
-  font-size: clamp(0.95rem, 1.3vw, 1.3rem);
-  text-decoration: line-through;
-  text-decoration-color: rgba(10,10,10,0.3);
-}
-#s5 .row .para {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: clamp(1.1rem, 1.5vw, 1.5rem);
-  letter-spacing: -0.015em;
-  color: var(--ink);
-  font-variation-settings: "opsz" 144;
-}
-#s5 .row .para strong { color: var(--red); font-weight: 900; }
-#s5 .row .arrow {
-  font-family: var(--mono);
-  color: var(--red);
-  font-size: 0.9rem;
-}
-
-/* === SLIDE 6 · 3 CAMADAS === */
-#s6 { background: var(--paper); color: var(--ink); padding: 0; }
-#s6 .slide-header, #s6 .slide-footer { padding-left: clamp(24px, 5vw, 96px); padding-right: clamp(24px, 5vw, 96px); }
-#s6 .slide-header { padding-top: clamp(24px, 4vw, 72px); margin-bottom: 0; padding-bottom: 16px; }
-#s6 .slide-footer { padding-bottom: clamp(24px, 4vw, 72px); }
-#s6 .title-box {
-  padding: clamp(32px, 5vh, 64px) clamp(24px, 5vw, 96px);
-  border-bottom: 1px solid var(--ink);
-}
-#s6 .title-box h2 {
-  font-family: var(--display);
-  font-weight: 900;
-  font-size: clamp(2.4rem, 6vw, 6rem);
-  line-height: 0.92;
-  letter-spacing: -0.035em;
-  font-variation-settings: "opsz" 144, "WONK" 1;
-  max-width: 22ch;
-}
-#s6 .title-box h2 em {
-  color: var(--red);
-  font-style: italic;
-  font-weight: 300;
-  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
-}
-#s6 .grid3 {
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  min-height: 0;
-}
-#s6 .card {
-  padding: clamp(24px, 3vw, 48px);
-  border-right: 1px solid var(--ink);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-#s6 .card:last-child { border-right: none; }
-#s6 .card.heart { background: var(--red); color: var(--paper); }
-#s6 .card .n {
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  opacity: 0.7;
-}
-#s6 .card h3 {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-  line-height: 0.95;
-  letter-spacing: -0.022em;
-  margin-bottom: 8px;
-  font-variation-settings: "opsz" 144, "WONK" 1;
-}
-#s6 .card .role {
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 16px;
-}
-#s6 .card.heart .role { color: var(--paper); opacity: 0.85; }
-#s6 .card p {
-  font-family: var(--body);
-  font-size: clamp(0.9rem, 1vw, 1rem);
-  line-height: 1.5;
-}
-#s6 .card .tag {
-  font-family: var(--mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-top: 16px;
-  padding-top: 12px;
-  border-top: 1px solid currentColor;
-  opacity: 0.6;
-}
-
-/* === SLIDE 7 · FRAMEWORKS === */
-#s7 { background: var(--paper); color: var(--ink); }
-#s7 .pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(32px, 4vw, 80px);
-  height: 100%;
-}
-#s7 .fw {
-  display: flex;
-  flex-direction: column;
-  padding-top: 16px;
-  border-top: 2px solid var(--ink);
-}
-#s7 .fw .n {
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 12px;
-}
-#s7 .fw h3 {
-  font-family: var(--display);
-  font-weight: 900;
-  font-size: clamp(2.2rem, 4vw, 4rem);
-  line-height: 0.94;
-  letter-spacing: -0.03em;
-  margin-bottom: 4px;
-  font-variation-settings: "opsz" 144, "WONK" 1;
-}
-#s7 .fw .sub {
-  font-family: var(--body);
-  font-style: italic;
-  color: var(--muted);
-  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
-  margin-bottom: 24px;
-}
-#s7 .fw ol { list-style: none; counter-reset: step; }
-#s7 .fw ol li {
-  counter-increment: step;
-  padding: 10px 0;
-  border-top: 1px solid var(--rule);
-  font-family: var(--body);
-  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
-  line-height: 1.45;
-}
-#s7 .fw ol li:last-child { border-bottom: 1px solid var(--rule); }
-#s7 .fw ol li::before {
-  content: counter(step, decimal-leading-zero) " ";
-  font-family: var(--mono);
-  color: var(--red);
-  font-size: 0.8em;
-  margin-right: 12px;
-}
-#s7 .fw .tag {
-  margin-top: 24px;
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-/* === SLIDE 8 · PIPELINE === */
-#s8 { background: var(--ink); color: var(--paper); }
-#s8 h2 {
-  font-family: var(--display);
-  font-weight: 900;
-  font-size: clamp(2.4rem, 5vw, 5rem);
-  line-height: 0.92;
-  letter-spacing: -0.035em;
-  font-variation-settings: "opsz" 144, "WONK" 1;
-  margin-bottom: clamp(32px, 5vh, 64px);
-  max-width: 18ch;
-}
-#s8 h2 em {
-  color: var(--red);
-  font-style: italic;
-  font-weight: 300;
-  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
-}
-#s8 .pipeline {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr) auto;
-  gap: 0;
-  align-items: stretch;
-  margin-bottom: clamp(32px, 5vh, 56px);
-  border-top: 1px solid rgba(250,250,247,0.25);
-  border-bottom: 1px solid rgba(250,250,247,0.25);
-}
-#s8 .step {
-  padding: clamp(18px, 2.5vh, 32px) clamp(10px, 1.5vw, 24px);
-  border-right: 1px solid rgba(250,250,247,0.2);
-  text-align: left;
-}
-#s8 .step:last-child { border-right: none; }
-#s8 .step .st-n {
-  font-family: var(--mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 8px;
-}
-#s8 .step .st-t {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: clamp(1.2rem, 1.6vw, 1.6rem);
-  letter-spacing: -0.015em;
-  line-height: 1;
-  font-variation-settings: "opsz" 144, "WONK" 1;
-}
-#s8 .rule-alert {
-  padding: clamp(20px, 3vh, 32px);
-  border: 2px solid var(--red);
-  border-left-width: 8px;
-  background: rgba(255,0,80,0.08);
-  font-family: var(--display);
-  font-weight: 500;
-  font-size: clamp(1.1rem, 1.6vw, 1.5rem);
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-  font-variation-settings: "opsz" 144;
-}
-#s8 .rule-alert strong {
-  color: var(--red);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 0.85em;
-  display: block;
-  margin-bottom: 8px;
-}
-#s8 .types {
-  margin-top: clamp(24px, 3vh, 32px);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(16px, 2vw, 32px);
-  font-family: var(--body);
-  font-size: clamp(0.9rem, 1vw, 1.05rem);
-  line-height: 1.45;
-}
-#s8 .types div { padding-top: 12px; border-top: 1px solid rgba(250,250,247,0.22); }
-#s8 .types b { color: var(--red); font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 6px; }
-
-/* === SLIDE 9 · PROVA === */
-#s9 { background: var(--paper); color: var(--ink); padding: 0; }
-#s9 .slide-header, #s9 .slide-footer { padding-left: clamp(24px, 5vw, 96px); padding-right: clamp(24px, 5vw, 96px); }
-#s9 .slide-header { padding-top: clamp(24px, 4vw, 72px); margin-bottom: 0; padding-bottom: 16px; }
-#s9 .slide-footer { padding-bottom: clamp(24px, 4vw, 72px); }
-#s9 .grid {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  min-height: 0;
-}
-#s9 .cell {
-  padding: clamp(24px, 3vw, 48px);
-  border-right: 1px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-#s9 .cell.flag {
-  grid-row: span 2;
-  background: var(--ink);
-  color: var(--paper);
-  border-right: 1px solid var(--ink);
-  border-bottom: none;
-}
-#s9 .cell:nth-child(3) { border-bottom: none; }
-#s9 .cell .l {
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  opacity: 0.65;
-}
-#s9 .cell.flag .l { color: var(--red); opacity: 1; }
-#s9 .cell .num {
-  font-family: var(--display);
-  font-weight: 900;
-  color: var(--red);
-  line-height: 0.85;
-  letter-spacing: -0.05em;
-  font-variation-settings: "opsz" 144, "WONK" 1;
-}
-#s9 .cell .num.mega { font-size: clamp(4.5rem, 12vw, 14rem); }
-#s9 .cell .num.normal { font-size: clamp(3rem, 7vw, 7rem); }
-#s9 .cell .client {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: clamp(1.3rem, 1.8vw, 1.8rem);
-  letter-spacing: -0.015em;
-  margin-top: 12px;
-  font-variation-settings: "opsz" 144;
-}
-#s9 .cell .ind {
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 12px;
-}
-#s9 .cell.flag .ind { color: rgba(250,250,247,0.6); }
-#s9 .cell .d {
-  font-family: var(--body);
-  font-style: italic;
-  font-size: clamp(0.85rem, 0.95vw, 1rem);
-  line-height: 1.5;
-}
-#s9 .cell.flag .d strong { color: var(--red); font-style: normal; }
-
-/* === SLIDE 10 · CHAMADO === */
-#s10 { background: var(--paper); color: var(--ink); }
-#s10 h2 {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: clamp(2.4rem, 5.5vw, 5.5rem);
-  line-height: 0.96;
-  letter-spacing: -0.032em;
-  max-width: 20ch;
-  font-variation-settings: "opsz" 144, "WONK" 1;
-  margin-bottom: clamp(32px, 4vh, 56px);
-}
-#s10 h2 em {
-  color: var(--red);
-  font-style: italic;
-  font-weight: 300;
-  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
-}
-#s10 .sub {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: clamp(1.2rem, 1.8vw, 1.8rem);
-  line-height: 1.3;
-  max-width: 34ch;
-  color: var(--muted);
-  margin-bottom: clamp(40px, 6vh, 80px);
-  font-variation-settings: "opsz" 144, "SOFT" 70, "WONK" 1;
-}
-#s10 .sub strong { color: var(--red); font-style: normal; font-weight: 500; }
-#s10 .steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(20px, 3vw, 48px);
-}
-#s10 .step {
-  border-top: 2px solid var(--red);
-  padding-top: 16px;
-}
-#s10 .step .n {
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 10px;
-}
-#s10 .step .t {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: clamp(1.2rem, 1.5vw, 1.5rem);
-  line-height: 1.15;
-  margin-bottom: 6px;
-  letter-spacing: -0.015em;
-  font-variation-settings: "opsz" 144;
-}
-#s10 .step .d {
-  font-family: var(--body);
-  font-size: clamp(0.82rem, 0.9vw, 0.95rem);
-  line-height: 1.5;
-  color: var(--muted);
-}
-
-/* === CONTROLS === */
-.controls {
   position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  z-index: 300;
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: var(--paper);
-  border: 1px solid var(--ink);
-  padding: 8px 12px;
-  mix-blend-mode: difference;
-  filter: invert(1);
-}
-.controls button {
-  background: transparent;
-  border: 1px solid var(--ink);
-  color: var(--ink);
-  padding: 4px 10px;
-  cursor: pointer;
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  transition: background 0.15s;
-}
-.controls button:hover { background: var(--ink); color: var(--paper); }
-.controls .counter { min-width: 56px; text-align: center; }
-.controls .bar {
-  width: 120px;
-  height: 2px;
-  background: rgba(10,10,10,0.2);
-  position: relative;
-}
-.controls .bar-fill {
-  position: absolute;
-  top: 0; left: 0; height: 100%;
-  background: var(--red);
-  transition: width 0.4s cubic-bezier(0.19,1,0.22,1);
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(15,15,15,0.06) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* === PROGRESS BAR === */
-.progress {
+::selection { background: var(--accent); color: var(--paper); }
+
+a { color: inherit; text-decoration: none; }
+
+/* ==================== TOP BAR (fixed meta) ==================== */
+#topbar {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  right: 0;
+  height: 48px;
+  z-index: 25;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: rgba(245, 242, 234, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--hairline);
+}
+#topbar .brand { color: var(--ink); }
+#topbar .brand strong { color: var(--accent); font-weight: 700; }
+#topbar .home { display: flex; gap: 16px; }
+#topbar .home a:hover { color: var(--accent); }
+
+/* ==================== SCRUBBER ==================== */
+#scrubber {
+  position: fixed;
+  top: 48px;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  padding: 80px 24px 48px 48px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+#scrubber .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+#scrubber .rail {
+  position: relative;
+  flex: 1;
+  width: 1px;
+  background: var(--ink);
+  margin-left: 12px;
+}
+
+#scrubber .marker {
+  position: absolute;
+  left: -3.5px;
+  width: 8px;
+  height: 8px;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  transition: background 300ms, border-color 300ms;
+}
+
+#scrubber .marker.is-passed {
+  background: var(--ink);
+}
+
+#scrubber .marker.is-current {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+#scrubber .marker-label {
+  position: absolute;
+  left: 18px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  white-space: nowrap;
+  text-transform: uppercase;
+  transition: color 300ms;
+}
+
+#scrubber .marker.is-current .marker-label {
+  color: var(--accent);
+}
+
+#scrubber .playhead {
+  position: absolute;
+  left: -8px;
+  top: 0;
+  width: 18px;
+  height: 4px;
+  background: var(--accent);
+  box-shadow: 0 0 0 6px rgba(255, 0, 80, 0.18), 0 1px 2px rgba(0,0,0,0.2);
+  transition: top 200ms cubic-bezier(0.16, 1, 0.3, 1), width 500ms ease, height 500ms ease;
+  z-index: 2;
+}
+
+#scrubber .playhead.is-bracket {
+  width: 24px;
+  box-shadow: 0 0 0 8px rgba(255, 0, 80, 0.25), 0 1px 2px rgba(0,0,0,0.2);
+}
+
+#scrubber .timecode {
+  font-family: 'JetBrains Mono', monospace;
+  margin-top: 24px;
+  margin-left: 28px;
+  max-width: 140px;
+}
+
+#scrubber .scene-num {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+#scrubber .scene-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: 'wght' 600;
+  font-size: 14px;
+  color: var(--ink);
+  margin-top: 2px;
+  line-height: 1.2;
+}
+
+#scrubber .scene-time {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 4px;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 1023px) {
+  #scrubber {
+    top: 48px;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    width: 100%;
+    height: 52px;
+    padding: 8px 20px;
+    flex-direction: row;
+    align-items: center;
+    background: rgba(245, 242, 234, 0.96);
+    border-bottom: 1px solid var(--hairline);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 15;
+  }
+  #scrubber .label { display: none; }
+  #scrubber .rail {
+    width: auto;
+    flex: 1;
+    height: 1px;
+    background: var(--hairline);
+    margin: 0 16px;
+  }
+  #scrubber .marker {
+    top: -3.5px;
+    left: auto;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+  }
+  #scrubber .marker-label { display: none; }
+  #scrubber .playhead {
+    top: -2px;
+    left: 0;
+    width: 4px;
+    height: 5px;
+    transition: left 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #scrubber .timecode {
+    margin: 0;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    max-width: none;
+  }
+  #scrubber .scene-num { font-size: 9px; }
+  #scrubber .scene-title { font-size: 12px; }
+  #scrubber .scene-time { font-size: 9px; margin-top: 0; }
+}
+
+/* ==================== LAYOUT ==================== */
+main#score {
+  position: relative;
+  z-index: 5;
+  padding-top: 48px;
+  padding-left: 200px;
+  padding-right: 48px;
+}
+
+@media (max-width: 1023px) {
+  main#score {
+    padding-top: 100px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+section[data-act] {
+  min-height: 100vh;
+  padding: 80px 0 120px;
+  display: grid;
+  grid-template-columns: repeat(12, var(--col));
+  column-gap: 24px;
+  row-gap: 32px;
+  border-top: 1px solid var(--hairline);
+  position: relative;
+}
+
+section[data-act="00"] { border-top: none; padding-top: 40px; }
+
+@media (max-width: 1023px) {
+  section[data-act] {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 48px 0 64px;
+    min-height: auto;
+  }
+}
+
+/* ==================== ACT HEAD (sticky left) ==================== */
+.act-head {
+  grid-column: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-self: start;
+  position: sticky;
+  top: 128px;
+}
+
+@media (max-width: 1023px) {
+  .act-head { grid-column: 1 / -1; position: static; }
+}
+
+.act-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+
+.act-index {
+  font-family: 'Bricolage Grotesque';
+  font-variation-settings: 'wght' 800;
+  font-size: clamp(88px, 14vw, 200px);
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  color: var(--ink);
+}
+
+/* ==================== ACT BODY ==================== */
+.act-body {
+  grid-column: 3 / 11;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media (max-width: 1023px) {
+  .act-body { grid-column: 1 / -1; gap: 24px; }
+}
+
+.stage-name {
+  font-family: 'Bricolage Grotesque';
+  font-variation-settings: 'wght' 700;
+  font-size: clamp(48px, 8vw, 112px);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+
+.stage-name em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-variation-settings: normal;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.stage-def {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.55;
+  max-width: 720px;
+  color: var(--ink-soft);
+}
+
+.stage-def strong { color: var(--ink); font-weight: 600; }
+.stage-def em { font-style: italic; color: var(--accent); }
+
+.stage-counted {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--muted);
+  padding: 16px 0;
+  border-top: 1px solid var(--hairline);
+  max-width: 720px;
+}
+
+.stage-counted .counted-label {
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-right: 8px;
+}
+
+/* ==================== ASIDE META ==================== */
+.act-meta {
+  grid-column: 11 / 13;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-left: 16px;
+  border-left: 1px solid var(--hairline);
+  font-family: 'JetBrains Mono', monospace;
+  align-self: start;
+  position: sticky;
+  top: 128px;
+}
+
+@media (max-width: 1023px) {
+  .act-meta {
+    grid-column: 1 / -1;
+    border-left: none;
+    border-top: 1px solid var(--hairline);
+    padding: 16px 0 0;
+    position: static;
+  }
+}
+
+.meta-k {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.meta-v {
+  font-size: 13px;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.meta-v em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-size: 1.1em; }
+
+/* ==================== OVERTURE (ACT 00) ==================== */
+.overture {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(12, var(--col));
+  column-gap: 24px;
+  align-content: center;
+  min-height: calc(100vh - 200px);
+}
+
+@media (max-width: 1023px) {
+  .overture { grid-template-columns: repeat(4, 1fr); }
+}
+
+.overture-eyebrow {
+  grid-column: 1 / -1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 32px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.overture-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 40px;
   height: 2px;
+  background: var(--accent);
+}
+
+.overture-title {
+  grid-column: 1 / 11;
+  font-family: 'Bricolage Grotesque';
+  font-variation-settings: 'wght' 800;
+  font-size: clamp(72px, 12vw, 192px);
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+  color: var(--ink);
+}
+
+.overture-title em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-variation-settings: normal;
+  color: var(--accent);
+}
+
+.overture-sub {
+  grid-column: 1 / 10;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  font-size: clamp(18px, 2.2vw, 26px);
+  line-height: 1.45;
+  color: var(--ink-soft);
+  margin-top: 56px;
+  max-width: 820px;
+}
+
+.overture-sub strong { color: var(--ink); font-weight: 500; }
+
+.overture-meta {
+  grid-column: 1 / -1;
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding-top: 32px;
+  border-top: 1px solid var(--ink);
+}
+
+@media (max-width: 1023px) {
+  .overture-meta { grid-template-columns: repeat(2, 1fr); }
+}
+
+.overture-meta-cell {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.overture-meta-cell .k {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.overture-meta-cell .v {
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.overture-scroll {
+  grid-column: 1 / -1;
+  margin-top: 48px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.overture-scroll::after {
+  content: "↓";
+  font-size: 14px;
+  animation: bounceDown 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(6px); opacity: 0.4; }
+}
+
+/* ==================== BRACKET VIZ (Act 03 / 07) ==================== */
+.bracket-act .act-body { grid-column: 1 / -1; }
+.bracket-act .act-head { position: static; grid-column: 1 / -1; flex-direction: row; align-items: baseline; gap: 32px; }
+.bracket-act .act-index { font-size: clamp(56px, 9vw, 120px); }
+
+.bracket-statement {
+  margin-top: 40px;
+  font-family: 'Bricolage Grotesque';
+  font-variation-settings: 'wght' 800;
+  font-size: clamp(56px, 9vw, 128px);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  color: var(--ink);
+  max-width: 1100px;
+}
+
+.bracket-statement em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-variation-settings: normal;
+  color: var(--accent);
+  font-weight: 400;
+  display: block;
+  margin-top: 8px;
+  letter-spacing: -0.01em;
+}
+
+.bracket-viz {
+  margin-top: 72px;
+  padding: 48px 0 40px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.bracket-viz-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+.bracket-viz-svg {
+  width: 100%;
+  max-width: 1000px;
+  height: 140px;
+  display: block;
+}
+
+.bracket-viz-svg .br-line,
+.bracket-viz-svg .br-cap-l,
+.bracket-viz-svg .br-cap-r {
+  stroke: var(--accent);
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: square;
+}
+
+.bracket-viz.is-drawn .br-line,
+.bracket-viz.is-drawn .br-cap-l,
+.bracket-viz.is-drawn .br-cap-r {
+  stroke-dashoffset: 0 !important;
+}
+
+.bracket-viz-svg .br-stage {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  fill: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.bracket-viz-svg .br-stage.is-in {
+  fill: var(--ink);
+  font-weight: 700;
+}
+
+.bracket-viz-svg .br-tick {
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
+.bracket-viz-svg .br-tick.is-in {
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.bracket-viz-note {
+  font-family: 'Barlow', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin-top: 32px;
+  max-width: 820px;
+}
+
+.bracket-viz-note em { color: var(--accent); font-style: italic; }
+
+/* ==================== LENSES SPLIT (Act 03 / 06) ==================== */
+.lenses-act .act-body { grid-column: 1 / -1; }
+.lenses-act .act-head { grid-column: 1 / -1; position: static; flex-direction: row; align-items: baseline; gap: 32px; }
+.lenses-act .act-index { font-size: clamp(56px, 9vw, 120px); }
+
+.lenses-intro {
+  font-family: 'Barlow', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 820px;
+  margin-top: 16px;
+  margin-bottom: 72px;
+}
+
+.lenses-intro strong { color: var(--ink); font-weight: 600; }
+.lenses-intro em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-size: 1.05em; }
+
+.lenses-prescribe {
+  font-family: 'Barlow', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 820px;
+  margin-top: 48px;
+  padding: 24px 28px;
+  border-left: 3px solid var(--accent);
+  background: rgba(255, 0, 80, 0.04);
+}
+
+.lenses-prescribe strong { font-weight: 700; color: var(--accent); }
+
+.lenses-split {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 48px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 48px 0;
+}
+
+@media (max-width: 1023px) {
+  .lenses-split { grid-template-columns: 1fr; gap: 48px; padding: 32px 0; }
+  .lenses-split .lens-divider { display: none; }
+}
+
+.lens-divider { background: var(--hairline); }
+
+.lens-col .lens-n {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.lens-col .lens-label {
+  font-family: 'Bricolage Grotesque';
+  font-variation-settings: 'wght' 700;
+  font-size: 28px;
+  color: var(--ink);
+  margin-top: 8px;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.lens-col .lens-value {
+  font-family: 'Bricolage Grotesque';
+  font-variation-settings: 'wght' 800;
+  font-size: clamp(72px, 10vw, 144px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.lens-col .lens-value.ink { color: var(--ink); }
+.lens-col .lens-value em { font-family: 'Instrument Serif', serif; font-style: italic; font-variation-settings: normal; }
+
+.lens-col .lens-unit {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.lens-col .lens-used {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink);
+  padding: 8px 0;
+  border-top: 1px solid var(--hairline);
+  margin-bottom: 20px;
+}
+
+.lens-col .lens-desc {
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 480px;
+}
+
+.lens-col .lens-items {
+  list-style: none;
+  margin-top: 8px;
+}
+.lens-col .lens-items li {
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px;
+  padding: 10px 0;
+  border-top: 1px solid var(--hairline);
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.lens-col .lens-items li:last-child { border-bottom: 1px solid var(--hairline); }
+.lens-col .lens-items li::before {
+  content: "→";
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  margin-right: 8px;
+}
+
+/* ==================== SWISS TABLE ==================== */
+table.swiss {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  margin-top: 32px;
+}
+
+table.swiss thead th {
+  text-align: left;
+  padding: 14px 20px 14px 0;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted) !important;
+  background: transparent !important;
+  border-bottom: 1px solid var(--hairline) !important;
+  font-weight: 500;
+}
+
+table.swiss td {
+  padding: 16px 20px 16px 0;
+  border-bottom: 1px solid var(--hairline);
+  color: var(--ink-soft);
+  vertical-align: top;
+  line-height: 1.5;
   background: transparent;
-  z-index: 400;
-  mix-blend-mode: difference;
-}
-.progress-fill {
-  height: 100%;
-  background: var(--red);
-  transition: width 0.4s cubic-bezier(0.19,1,0.22,1);
 }
 
-/* === RESPONSIVE === */
-@media (max-width: 820px) {
-  #s1 .hero-title .b, #s1 .kicker { padding-left: 0; }
-  #s3 .items { grid-template-columns: 1fr; gap: 16px; }
-  #s4 .split { grid-template-columns: 1fr; gap: 24px; }
-  #s5 .row { grid-template-columns: 1fr; gap: 6px; }
-  #s5 .row .arrow { display: none; }
-  #s5 .row .de { order: 1; }
-  #s5 .row .para { order: 2; }
-  #s6 .grid3 { grid-template-columns: 1fr; }
-  #s6 .card { border-right: none; border-bottom: 1px solid var(--ink); }
-  #s6 .card:last-child { border-bottom: none; }
-  #s7 .pair { grid-template-columns: 1fr; gap: 24px; }
-  #s8 .pipeline { grid-template-columns: repeat(2, 1fr); }
-  #s8 .step { border-right: 1px solid rgba(250,250,247,0.2); border-bottom: 1px solid rgba(250,250,247,0.2); }
-  #s8 .types { grid-template-columns: 1fr; }
-  #s9 .grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-  #s9 .cell { border-right: none !important; }
-  #s9 .cell.flag { grid-row: span 1; }
-  #s10 .steps { grid-template-columns: 1fr; gap: 20px; }
-  .slide-header, .slide-footer { font-size: 0.6rem; }
+table.swiss tr:hover td { background: rgba(15,15,15,0.02); }
+table.swiss tbody tr:last-child td { border-bottom: none; }
+table.swiss td.num { text-align: right; color: var(--accent); font-weight: 600; }
+table.swiss td.num.big { font-size: 22px; font-family: 'Bricolage Grotesque'; font-variation-settings: 'wght' 700; letter-spacing: -0.015em; }
+table.swiss td:first-child { color: var(--ink); font-weight: 500; }
+table.swiss td em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-size: 1.05em; }
+table.swiss td del { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--accent); }
+
+/* ==================== FUNNEL GRID (Act 08 / layers) ==================== */
+.funnel-overview {
+  grid-column: 1 / -1;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--ink);
 }
 
-@media (min-height: 800px) and (min-width: 1400px) {
-  .slide { max-width: 1600px; margin: 0 auto; }
+.funnel-grid-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
 }
+
+.funnel-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+
+@media (max-width: 1023px) {
+  .funnel-grid { grid-template-columns: repeat(2, 1fr); }
+  .funnel-grid .fgi:nth-child(-n+2) { border-bottom: 1px solid var(--hairline); }
+}
+
+.fgi {
+  padding: 32px 24px;
+  border-right: 1px solid var(--hairline);
+  position: relative;
+}
+
+.fgi:last-child { border-right: none; }
+
+.fgi .fgi-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.fgi .fgi-count {
+  font-family: 'Bricolage Grotesque';
+  font-variation-settings: 'wght' 700;
+  font-size: 56px;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.025em;
+}
+
+.fgi .fgi-count em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-variation-settings: normal;
+  color: var(--accent);
+}
+
+.fgi .fgi-count.accent { color: var(--accent); }
+
+.fgi .fgi-desc {
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+/* ==================== PROOF SPOTLIGHT (Act 08) ==================== */
+.proof-spotlight {
+  margin-top: 56px;
+  padding: 56px 48px;
+  background: var(--ink);
+  color: var(--paper);
+  border: 1px solid var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+.proof-spotlight::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='280'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.7'/></svg>");
+  opacity: 0.06;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+.proof-spotlight > * { position: relative; z-index: 1; }
+.proof-spotlight .ps-eye {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+.proof-spotlight .ps-big {
+  font-family: 'Bricolage Grotesque';
+  font-variation-settings: 'wght' 800;
+  font-size: clamp(120px, 22vw, 280px);
+  line-height: 0.85;
+  letter-spacing: -0.055em;
+  color: var(--accent);
+}
+.proof-spotlight .ps-attr {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245,242,234,0.7);
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(245,242,234,0.18);
+}
+.proof-spotlight .ps-attr em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 15px;
+  color: var(--paper);
+}
+.proof-spotlight .ps-tagline {
+  margin-top: 24px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 19px;
+  line-height: 1.5;
+  max-width: 640px;
+  color: rgba(245,242,234,0.88);
+}
+.proof-spotlight .ps-tagline strong { color: var(--accent); }
+.proof-spotlight .ps-quote {
+  margin-top: 28px;
+  padding-left: 20px;
+  border-left: 3px solid var(--accent);
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.55;
+  max-width: 640px;
+  color: rgba(245,242,234,0.85);
+}
+.proof-spotlight .ps-quote small {
+  display: block;
+  margin-top: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245,242,234,0.55);
+}
+
+/* ==================== CHAMADO (Act 10) ==================== */
+.chamado-act .act-body { grid-column: 1 / -1; }
+.chamado-act .act-head { grid-column: 1 / -1; position: static; flex-direction: row; align-items: baseline; gap: 32px; }
+.chamado-act .act-index { font-size: clamp(56px, 9vw, 120px); }
+
+.chamado-hero {
+  margin-top: 32px;
+  font-family: 'Bricolage Grotesque';
+  font-variation-settings: 'wght' 700;
+  font-size: clamp(56px, 9vw, 128px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  max-width: 18ch;
+  color: var(--ink);
+}
+
+.chamado-hero em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-variation-settings: normal;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.chamado-sub {
+  margin-top: 32px;
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: clamp(18px, 2.2vw, 26px);
+  line-height: 1.4;
+  max-width: 34ch;
+  color: var(--muted);
+}
+.chamado-sub strong { color: var(--accent); font-style: normal; font-family: 'Bricolage Grotesque'; font-variation-settings: 'wght' 600; font-size: 0.95em; }
+
+.cta-ladder {
+  margin-top: 72px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--ink);
+}
+
+@media (max-width: 1023px) {
+  .cta-ladder { grid-template-columns: 1fr; gap: 24px; }
+}
+
+.cta-step {
+  padding-top: 16px;
+  border-top: 2px solid var(--accent);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cta-step .cta-n {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cta-step .cta-big {
+  font-family: 'Bricolage Grotesque';
+  font-variation-settings: 'wght' 800;
+  font-size: clamp(48px, 7vw, 72px);
+  line-height: 0.85;
+  color: var(--accent);
+  letter-spacing: -0.04em;
+}
+
+.cta-step .cta-title {
+  font-family: 'Bricolage Grotesque';
+  font-variation-settings: 'wght' 700;
+  font-size: 20px;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.cta-step .cta-desc {
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.cta-step .cta-desc a {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent-dim);
+  transition: border-color 200ms;
+}
+.cta-step .cta-desc a:hover { border-bottom-color: var(--accent); }
+
+/* ==================== COLOPHON (Act 11) ==================== */
+.colophon-act {
+  border-top: 1px solid var(--ink) !important;
+  min-height: 50vh !important;
+  padding: 80px 0 !important;
+}
+
+.colophon-act .act-body { grid-column: 1 / -1; }
+
+.colophon-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+@media (max-width: 1023px) {
+  .colophon-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.colophon-cell .k {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.colophon-cell .v {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.colophon-cell a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-dim);
+  transition: border-color 200ms;
+}
+
+.colophon-cell a:hover { border-bottom-color: var(--accent); }
+
+.colophon-sig {
+  margin-top: 96px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: var(--muted);
+  text-transform: uppercase;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border-top: 1px solid var(--hairline);
+  padding-top: 24px;
+  flex-wrap: wrap;
+}
+
+.colophon-sig em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  color: var(--accent);
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 15px;
+}
+
+/* ==================== MOTION ==================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1), transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+section[data-act].is-live .reveal { opacity: 1; transform: none; }
+section[data-act].is-live .reveal:nth-child(2) { transition-delay: 120ms; }
+section[data-act].is-live .reveal:nth-child(3) { transition-delay: 240ms; }
+section[data-act].is-live .reveal:nth-child(4) { transition-delay: 360ms; }
+section[data-act].is-live .reveal:nth-child(5) { transition-delay: 480ms; }
+
+section[data-act="00"] .reveal { opacity: 1; transform: none; transition: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* ==================== KEYBOARD INDICATOR ==================== */
+.kb-hint {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--paper);
+  padding: 8px 12px;
+  border: 1px solid var(--hairline);
+  z-index: 30;
+  pointer-events: none;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.kb-hint kbd {
+  font-family: inherit;
+  padding: 1px 5px;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  font-size: 9px;
+}
+@media (max-width: 767px) { .kb-hint { display: none; } }
 </style>
 </head>
 
 <body>
 
-<div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+<!-- === TOP BAR === -->
+<header id="topbar">
+  <div class="brand"><strong>EPIC</strong> · Revenue Architecture · Manifesto</div>
+  <nav class="home">
+    <a href="/">← Manifesto</a>
+    <a href="https://revenueintelligence.app">revenueintelligence.app</a>
+  </nav>
+</header>
 
-<div class="deck" id="deck">
+<!-- === SCRUBBER === -->
+<aside id="scrubber" aria-hidden="true">
+  <div class="label">Timeline</div>
+  <div class="rail" id="rail">
+    <div class="playhead" id="playhead"></div>
+  </div>
+  <div class="timecode">
+    <div class="scene-num" id="sc-num">SCENE 00/10</div>
+    <div class="scene-title" id="sc-title">Overture</div>
+    <div class="scene-time" id="sc-time">+00:00</div>
+  </div>
+</aside>
 
-  <!-- ======= SLIDE 01 · HERO ======= -->
-  <section class="slide active" id="s1" data-chapter="Abertura">
-    <header class="slide-header">
-      <div>EPIC Digital / Revenue Architecture</div>
-      <div class="right">17 Abr 2026</div>
-    </header>
-    <main class="slide-main">
-      <h1 class="hero-title">
-        <span class="a">Powered</span>
-        <span class="b">by AI.</span>
-        <span class="a"><em>Governed</em></span>
-        <span class="b"><em>by Human.</em></span>
-      </h1>
-      <p class="kicker">Projetamos motores de receita para empresas que querem escalar com IA sem virar commodity.</p>
-    </main>
-    <footer class="slide-footer">
-      <div>§ 00 · Capa</div>
-      <div class="center">Fabio Munhoz · Jeferson Venancio</div>
-      <div class="right">01 / 10</div>
-    </footer>
-  </section>
+<main id="score">
 
-  <!-- ======= SLIDE 02 · A PERGUNTA ======= -->
-  <section class="slide dark" id="s2">
-    <header class="slide-header">
-      <div><span class="chapter">§ 01 · Provocacao</span></div>
-      <div class="right">A pergunta que importa</div>
-    </header>
-    <main class="slide-main">
-      <p class="q1">Se amanha seu concorrente tiver acesso as mesmas ferramentas de IA que voce —</p>
-      <p class="q2">Qual e o seu <em>diferencial real?</em></p>
-    </main>
-    <footer class="slide-footer">
-      <div>§ 01</div>
-      <div class="center">—</div>
-      <div class="right">02 / 10</div>
-    </footer>
-  </section>
-
-  <!-- ======= SLIDE 03 · DIAGNOSTICO ======= -->
-  <section class="slide" id="s3">
-    <header class="slide-header">
-      <div><span class="chapter">§ 02 · Diagnostico</span></div>
-      <div class="right">O estado do mercado</div>
-    </header>
-    <main class="slide-main">
-      <h2>A IA virou commodity.<br><em>E isso ninguem quer admitir.</em></h2>
-      <div class="items">
-        <div class="item">
-          <div class="n">Evidencia 01</div>
-          <p>Todas as landing pages estao ficando iguais.</p>
-        </div>
-        <div class="item">
-          <div class="n">Evidencia 02</div>
-          <p>Todos os anuncios convergiram para o mesmo criativo.</p>
-        </div>
-        <div class="item">
-          <div class="n">Evidencia 03</div>
-          <p>Todas as estrategias soam identicas — porque vem do mesmo modelo.</p>
-        </div>
+  <!-- ============ ACT 00 · OVERTURE ============ -->
+  <section data-act="00" data-title="Overture">
+    <div class="overture">
+      <div class="overture-eyebrow reveal">
+        <span>EPIC Digital · Revenue Architecture</span>
+        <span>Rev · 17 Apr 2026</span>
+        <span>A position against homogeneizacao algoritmica</span>
       </div>
-      <blockquote class="quote">
-        Se voce e seu concorrente usam o mesmo modelo para decidir, voces chegam na mesma conclusao. Girard em escala algoritmica.
-        <small>— Cita: Teoria mimetica de Rene Girard (1972) aplicada a IA (2026)</small>
-      </blockquote>
-    </main>
-    <footer class="slide-footer">
-      <div>§ 02</div>
-      <div class="center">Diagnostico · Commoditizacao</div>
-      <div class="right">03 / 10</div>
-    </footer>
+      <h1 class="overture-title reveal">The Thesis.<br><em>A technical score.</em></h1>
+      <p class="overture-sub reveal">Dez atos. Uma posicao. De onde vem o crescimento quando a IA virou <strong>commodity</strong>, e como orquestrar receita quando o diferencial nao esta mais no algoritmo — esta no <em>julgamento</em>.</p>
+      <div class="overture-meta reveal">
+        <div class="overture-meta-cell"><div class="k">Source</div><div class="v">singulalidade.md · 8 camadas</div></div>
+        <div class="overture-meta-cell"><div class="k">Scope</div><div class="v">EPIC / ROF / Revenue Intelligence</div></div>
+        <div class="overture-meta-cell"><div class="k">Duration</div><div class="v">~7 minutes</div></div>
+        <div class="overture-meta-cell"><div class="k">Direction</div><div class="v">Scroll ↓</div></div>
+      </div>
+      <div class="overture-scroll reveal"><span>Begin score</span></div>
+    </div>
   </section>
 
-  <!-- ======= SLIDE 04 · DOGMA + DESEJO ======= -->
-  <section class="slide" id="s4">
-    <header class="slide-header">
-      <div><span class="chapter">§ 03 · Dialetica</span></div>
-      <div class="right">Dogma x Desejo reprimido</div>
-    </header>
-    <main class="slide-main">
-      <div class="split">
-        <div class="col col-left">
-          <div class="col-head">// O Dogma aceito</div>
-          <p class="col-quote">Inteligencia e um recurso que voce <span style="color:var(--red);">compra</span> de fora.</p>
-          <ul class="col-list items">
-            <li>Opacidade — caixa-preta.</li>
-            <li>Dados alimentam o modelo de outra empresa.</li>
-            <li>Lock-in por dependencia.</li>
-            <li>Alucinacao sem responsavel.</li>
-            <li>Homogeneizacao estrategica inevitavel.</li>
+  <!-- ============ ACT 01 · A PERGUNTA ============ -->
+  <section data-act="01" data-title="A Pergunta">
+    <div class="act-head">
+      <div class="act-num reveal">ACT 01 / 10</div>
+      <div class="act-index reveal">01</div>
+    </div>
+    <div class="act-body">
+      <h2 class="stage-name reveal">A <em>pergunta</em></h2>
+      <p class="stage-def reveal">Se amanha seu concorrente tiver acesso as mesmas ferramentas de IA que voce — <strong>qual e o seu diferencial real?</strong></p>
+      <p class="stage-def reveal" style="font-style: italic; color: var(--muted);">Se voce nao sabe responder em dez segundos, voce nao tem posicionamento. Tem acesso.</p>
+      <div class="stage-counted reveal"><span class="counted-label">Regra</span>A pergunta precede qualquer tese. Nenhum argumento sobre IA, GTM, arquitetura de receita ou agencia faz sentido ate que esta aqui esteja respondida.</div>
+    </div>
+    <div class="act-meta reveal">
+      <div class="meta-k">Abre</div>
+      <div class="meta-v">O caso</div>
+      <div class="meta-k">Contra</div>
+      <div class="meta-v">Homogeneizacao</div>
+      <div class="meta-k">Inspiracao</div>
+      <div class="meta-v"><em>Rene Girard</em></div>
+    </div>
+  </section>
+
+  <!-- ============ ACT 02 · O DIAGNOSTICO ============ -->
+  <section data-act="02" data-title="Commoditizacao">
+    <div class="act-head">
+      <div class="act-num reveal">ACT 02 / 10</div>
+      <div class="act-index reveal">02</div>
+    </div>
+    <div class="act-body">
+      <h2 class="stage-name reveal">Commoditizacao</h2>
+      <p class="stage-def reveal">A IA virou insumo comum. Todo mundo tem Claude, GPT, Gemini. Resultado: <strong>as landings ficaram iguais, os anuncios convergiram, as estrategias soam identicas</strong> — porque vem do mesmo modelo.</p>
+      <div class="stage-counted reveal"><span class="counted-label">Evidencia 01</span>Todas as landing pages ficaram iguais. O mesmo hero. O mesmo CTA. O mesmo tom de voz.</div>
+      <div class="stage-counted reveal" style="border-top:none;padding-top:0;"><span class="counted-label">Evidencia 02</span>Todos os anuncios convergiram. Mesmo Google Ads. Mesma rotacao de criativos. Mesmos A/B vazios.</div>
+      <div class="stage-counted reveal" style="border-top:none;padding-top:0;"><span class="counted-label">Evidencia 03</span>Todas as estrategias soam identicas. Se voce e seu concorrente usam o mesmo modelo para decidir, voces chegam na mesma conclusao. <em>Girard em escala algoritmica.</em></div>
+    </div>
+    <div class="act-meta reveal">
+      <div class="meta-k">Pattern</div>
+      <div class="meta-v">Theoria Mimetica</div>
+      <div class="meta-k">Farmer</div>
+      <div class="meta-v"><em>Hyper-efficiency + hourly billing = extinction</em></div>
+      <div class="meta-k">Year</div>
+      <div class="meta-v">2026</div>
+    </div>
+  </section>
+
+  <!-- ============ ACT 03 · DOGMA × DESEJO (Lenses Split) ============ -->
+  <section data-act="03" data-title="Dogma × Desejo" class="lenses-act">
+    <div class="act-head">
+      <div class="act-num reveal">ACT 03 / 10 · DIVERGENCE</div>
+      <div class="act-index reveal">03</div>
+    </div>
+    <div class="act-body">
+      <p class="lenses-intro reveal">Dois sistemas que respondem ao mesmo nome de "inteligencia" — e <strong>discordam</strong>. O que o mercado aceita como <em>regra</em>. E o que todo mundo deseja mas ninguem verbaliza. Abra duas abas. Leia ambas.</p>
+
+      <div class="lenses-split reveal">
+        <div class="lens-col">
+          <div class="lens-n">Lens · 01</div>
+          <div class="lens-label">O Dogma aceito</div>
+          <div class="lens-value ink">— <em>commodity</em></div>
+          <div class="lens-unit">Consensus de mercado</div>
+          <div class="lens-used">Usado por · Todo fornecedor de IA</div>
+          <p class="lens-desc">"Inteligencia e um recurso que voce compra de fora." Todo vendedor de consultoria, de IA generativa, de framework de ferramenta, opera sob essa premissa.</p>
+          <ul class="lens-items">
+            <li>Opacidade — caixa-preta sem rastreabilidade</li>
+            <li>Dados do cliente alimentam o modelo de outro</li>
+            <li>Lock-in estrutural por dependencia</li>
+            <li>Alucinacoes sem responsavel</li>
+            <li>Homogeneizacao inevitavel</li>
           </ul>
         </div>
-        <div class="col col-right">
-          <div class="col-head">→ O Desejo reprimido</div>
-          <p class="col-quote">Eu quero voltar a <span style="color:var(--ink); font-style: normal; font-weight: 700;">entender</span> profundamente as coisas.</p>
-          <ul class="col-list desire">
-            <li>Nao respostas — compreensao.</li>
-            <li>Nao output — capacidade instalada.</li>
-            <li>Nao cobertura politica — conviccao.</li>
-            <li>Nao "a IA sugeriu" — "eu decidi, e sei por que".</li>
-            <li>Confianca recuperada no proprio julgamento.</li>
+        <div class="lens-divider"></div>
+        <div class="lens-col">
+          <div class="lens-n">Lens · 02</div>
+          <div class="lens-label">O Desejo reprimido</div>
+          <div class="lens-value">— <em>compreensao</em></div>
+          <div class="lens-unit">Confissao sub-consciente</div>
+          <div class="lens-used">Usado por · Quem ja comprou um PDF da McKinsey</div>
+          <p class="lens-desc">"Eu quero voltar a entender profundamente as coisas." Nao ter respostas rapidas. Ter compreensao real. Nao cobertura politica. Conviccao.</p>
+          <ul class="lens-items">
+            <li>Julgamento em vez de output</li>
+            <li>Capacidade instalada em vez de acesso</li>
+            <li>Conviccao em vez de cobertura</li>
+            <li>"Eu decidi" em vez de "a IA sugeriu"</li>
+            <li>Confianca recuperada no proprio raciocinio</li>
           </ul>
         </div>
       </div>
-    </main>
-    <footer class="slide-footer">
-      <div>§ 03</div>
-      <div class="center">O que esta em jogo</div>
-      <div class="right">04 / 10</div>
-    </footer>
-  </section>
 
-  <!-- ======= SLIDE 05 · O SALTO ======= -->
-  <section class="slide" id="s5">
-    <header class="slide-header">
-      <div><span class="chapter">§ 04 · O salto</span></div>
-      <div class="right">De → Para</div>
-    </header>
-    <main class="slide-main">
-      <h2 class="salto-title">De executora de marketing para <em>arquitetura de receita hibrida.</em></h2>
-      <div class="table">
-        <div class="row">
-          <div class="de">Agencia que executa</div>
-          <div class="arrow">→</div>
-          <div class="para">Empresa que <strong>pensa melhor</strong> sobre receita</div>
-        </div>
-        <div class="row">
-          <div class="de">Hora-homem</div>
-          <div class="arrow">→</div>
-          <div class="para"><strong>SMU</strong> + revenue share</div>
-        </div>
-        <div class="row">
-          <div class="de">IA que da respostas</div>
-          <div class="arrow">→</div>
-          <div class="para">IA que <strong>faz perguntas</strong></div>
-        </div>
-        <div class="row">
-          <div class="de">Entregaveis como produto</div>
-          <div class="arrow">→</div>
-          <div class="para"><strong>Resultados</strong> como produto</div>
-        </div>
-        <div class="row">
-          <div class="de">Lock-in por dependencia</div>
-          <div class="arrow">→</div>
-          <div class="para">Lock-in por <strong>excelencia</strong></div>
-        </div>
-      </div>
-    </main>
-    <footer class="slide-footer">
-      <div>§ 04</div>
-      <div class="center">Salto de categoria · Category Leap framework</div>
-      <div class="right">05 / 10</div>
-    </footer>
-  </section>
-
-  <!-- ======= SLIDE 06 · 3 CAMADAS ======= -->
-  <section class="slide" id="s6">
-    <header class="slide-header">
-      <div><span class="chapter">§ 05 · Arquitetura</span></div>
-      <div class="right">Uma casa · tres pilares</div>
-    </header>
-    <div class="title-box">
-      <h2>Uma casa. <em>Tres camadas</em> que se sustentam.</h2>
+      <p class="lenses-prescribe reveal">Use o <strong>Dogma</strong> para entender o que o mercado vende. Use o <strong>Desejo reprimido</strong> para entender o que o cliente paga. Elas nunca coincidem — <em>essa e a oportunidade.</em></p>
     </div>
-    <div class="grid3">
-      <div class="card">
-        <div>
-          <div class="n">01 · A casa</div>
-          <h3>EPIC</h3>
-          <div class="role">Agencia reposicionada</div>
-          <p>9 anos. 10 paises. 100+ implementacoes HubSpot. NTIVA, iFood, Eduzz, Sinch, ClearSale, Techfino.</p>
-        </div>
-        <div class="tag">epic.digital</div>
-      </div>
-      <div class="card heart">
-        <div>
-          <div class="n">02 · Engine interna</div>
-          <h3>ROF</h3>
-          <div class="role">Revenue Orchestration</div>
-          <p>4 pilares · 5 agentes de IA · 5 camadas. 17 arquivos .md por cliente. 37 etapas → 19. 30 dias → 7.</p>
-        </div>
-        <div class="tag">Nao vendemos · infraestrutura propria</div>
-      </div>
-      <div class="card">
-        <div>
-          <div class="n">03 · Produto premium</div>
-          <h3>Revenue Intelligence</h3>
-          <div class="role">Arquitetura Decisoria</div>
-          <p>Programa 12 semanas para decisoes tipo 1 irreversiveis. Onde crescer. Quem comprar. $150-250k.</p>
-        </div>
-        <div class="tag">revenueintelligence.app</div>
-      </div>
+  </section>
+
+  <!-- ============ ACT 04 · O SALTO DE CATEGORIA ============ -->
+  <section data-act="04" data-title="O Salto">
+    <div class="act-head">
+      <div class="act-num reveal">ACT 04 / 10</div>
+      <div class="act-index reveal">04</div>
     </div>
-    <footer class="slide-footer">
-      <div>§ 05</div>
-      <div class="center">As 3 camadas</div>
-      <div class="right">06 / 10</div>
-    </footer>
+    <div class="act-body">
+      <h2 class="stage-name reveal">O <em>salto</em></h2>
+      <p class="stage-def reveal">De executora de marketing — para <strong>arquitetura de receita hibrida.</strong> Uma mudanca de ontologia, nao de tagline. Esta tabela e o contrato da nova categoria.</p>
+
+      <table class="swiss reveal">
+        <thead>
+          <tr>
+            <th>Eixo</th>
+            <th>De — categoria antiga</th>
+            <th>Para — nova categoria</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Natureza</td>
+            <td><del>Agencia que executa</del></td>
+            <td>Empresa que <em>pensa melhor</em> sobre receita</td>
+          </tr>
+          <tr>
+            <td>Unidade de cobranca</td>
+            <td><del>Hora-homem</del></td>
+            <td>SMU + revenue share</td>
+          </tr>
+          <tr>
+            <td>Funcao da IA</td>
+            <td><del>IA que da respostas</del></td>
+            <td>IA que <em>faz perguntas</em></td>
+          </tr>
+          <tr>
+            <td>Produto</td>
+            <td><del>Entregaveis</del></td>
+            <td>Resultados</td>
+          </tr>
+          <tr>
+            <td>Relacao</td>
+            <td><del>Lock-in por dependencia</del></td>
+            <td>Lock-in por <em>excelencia</em></td>
+          </tr>
+          <tr>
+            <td>Output</td>
+            <td><del>"O que o texto diz?"</del></td>
+            <td>"O que acontece se fizermos?"</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="act-meta reveal">
+      <div class="meta-k">Framework</div>
+      <div class="meta-v">Category Leap</div>
+      <div class="meta-k">Passos</div>
+      <div class="meta-v">Dogma · Desejo · Leap · KPI</div>
+      <div class="meta-k">Applied</div>
+      <div class="meta-v"><em>Quave</em> · <em>MedConnect</em></div>
+    </div>
   </section>
 
-  <!-- ======= SLIDE 07 · FRAMEWORKS ======= -->
-  <section class="slide" id="s7">
-    <header class="slide-header">
-      <div><span class="chapter">§ 06 · Frameworks proprietarios</span></div>
-      <div class="right">Dois metodos com nome</div>
-    </header>
-    <main class="slide-main">
-      <div class="pair">
-        <div class="fw">
-          <div class="n">Framework 01</div>
-          <h3>Category Leap</h3>
-          <p class="sub">Reposicionamento em quatro passos.</p>
-          <ol>
-            <li>Dogma — a reclamacao aceita pelo mercado.</li>
-            <li>Desejo Reprimido — a promessa nao cumprida.</li>
-            <li>Category Leap — mudanca de ontologia.</li>
-            <li>Prestige KPI — nova regua de valor.</li>
-          </ol>
-          <div class="tag">→ quave.categoryleap.com · medconnect.categoryleap.com</div>
-        </div>
-        <div class="fw">
-          <div class="n">Framework 02</div>
-          <h3>Arquitetura Decisoria</h3>
-          <p class="sub">Programa 12 semanas · decisoes tipo 1.</p>
-          <ol>
-            <li>Raio-X — mapa de metabolismo decisorio · 2 sem.</li>
-            <li>Redesenho — protocolo de decisao irreversivel · 4 sem.</li>
-            <li>Arena — pratica com decisoes reais · 6 sem.</li>
-            <li>Soberania Operacional — calibracao trimestral · continuo.</li>
-          </ol>
-          <div class="tag">→ KPI de Prestigio: Taxa de Compreensao Operacional</div>
-        </div>
-      </div>
-    </main>
-    <footer class="slide-footer">
-      <div>§ 06</div>
-      <div class="center">Category Leap · Arquitetura Decisoria</div>
-      <div class="right">07 / 10</div>
-    </footer>
-  </section>
+  <!-- ============ ACT 05 · ARQUITETURA (3 CAMADAS) ============ -->
+  <section data-act="05" data-title="Arquitetura">
+    <div class="act-head">
+      <div class="act-num reveal">ACT 05 / 10</div>
+      <div class="act-index reveal">05</div>
+    </div>
+    <div class="act-body">
+      <h2 class="stage-name reveal">Uma casa — <em>tres camadas</em></h2>
+      <p class="stage-def reveal">Nao somos uma empresa. Somos uma casa com <strong>tres pilares</strong> que se sustentam. Cada camada resolve um tipo diferente de problema. Nenhuma vive sozinha.</p>
 
-  <!-- ======= SLIDE 08 · PIPELINE INVIOLAVEL ======= -->
-  <section class="slide dark" id="s8">
-    <header class="slide-header">
-      <div><span class="chapter">§ 07 · Governanca</span></div>
-      <div class="right">Como a IA entra</div>
-    </header>
-    <main class="slide-main">
-      <h2>Pipeline <em>inviolavel</em> · humano no volante.</h2>
-
-      <div class="pipeline">
-        <div class="step">
-          <div class="st-n">Fase 01</div>
-          <div class="st-t">AI Draft</div>
-        </div>
-        <div class="step">
-          <div class="st-n">Fase 02</div>
-          <div class="st-t">Human Review</div>
-        </div>
-        <div class="step">
-          <div class="st-n">Fase 03</div>
-          <div class="st-t">Approved</div>
-        </div>
-        <div class="step">
-          <div class="st-n">Fase 04</div>
-          <div class="st-t">Live</div>
-        </div>
-        <div class="step">
-          <div class="st-n">Fase 05</div>
-          <div class="st-t">Audited</div>
-        </div>
-      </div>
-
-      <div class="rule-alert">
-        <strong>Regra inviolavel</strong>
-        Nenhum arquivo vira "Live" sem aprovacao humana. O sistema bloqueia automaticamente qualquer tentativa de pular etapas.
-      </div>
-
-      <div class="types">
-        <div>
-          <b>Tipo 02 · Reversiveis</b>
-          Copy de anuncio · variacao de landing · ajuste de segmentacao. IA executa volume. Va rapido. Custo do erro: baixo.
-        </div>
-        <div>
-          <b>Tipo 01 · Irreversiveis</b>
-          Entrar em mercado · M&A · descontinuar produto · reposicionar categoria. Humano decide. Sempre. Custo do erro: alto.
-        </div>
-      </div>
-    </main>
-    <footer class="slide-footer">
-      <div>§ 07</div>
-      <div class="center">Pipeline AI Draft → Audited</div>
-      <div class="right">08 / 10</div>
-    </footer>
-  </section>
-
-  <!-- ======= SLIDE 09 · PROVA ======= -->
-  <section class="slide" id="s9">
-    <header class="slide-header">
-      <div><span class="chapter">§ 08 · Prova</span></div>
-      <div class="right">Evidencia · cases flagship</div>
-    </header>
-    <div class="grid">
-      <div class="cell flag">
-        <div>
-          <div class="l">// Flagship · Ntiva · MSP IT · USA</div>
-          <div class="num mega">+539%</div>
-        </div>
-        <div>
-          <div class="client">Ntiva</div>
-          <div class="ind">ROI acumulado · 2022 — 2025</div>
-          <p class="d">$6.2M em receita adicional · +161% revenue growth · +27% YoY. E isso foi <strong>sem escalar IA ainda.</strong> Com IA estruturada, o potencial dobra.</p>
-        </div>
-      </div>
-
-      <div class="cell">
-        <div>
-          <div class="l">// iFood Ads · foodtech · BR</div>
-          <div class="num normal">+294%</div>
-        </div>
-        <div>
-          <div class="client">iFood</div>
-          <div class="ind">Capacidade de campanhas</div>
-          <p class="d">250 → 850 campanhas/mes · 90% faturamento automatizado · -60% tempo.</p>
-        </div>
-      </div>
-
-      <div class="cell">
-        <div>
-          <div class="l">// Quave ONE · SaaS · BR</div>
-          <div class="num normal" style="font-size: clamp(2rem, 5vw, 5rem); line-height: 0.95;">Salto de<br>Categoria</div>
-        </div>
-        <div>
-          <div class="client">Quave</div>
-          <div class="ind">Reposicionamento 4 meses</div>
-          <p class="d">Landing em quave.categoryleap.com. Framework Category Leap aplicado.</p>
+      <div class="funnel-overview">
+        <div class="funnel-grid-label">Distribuicao funcional</div>
+        <div class="funnel-grid">
+          <div class="fgi">
+            <div class="fgi-label">Camada 01 · A casa</div>
+            <div class="fgi-count">EPIC</div>
+            <div class="fgi-desc">9 anos. 10 paises. 100+ implementacoes HubSpot. Agencia reposicionada.</div>
+          </div>
+          <div class="fgi">
+            <div class="fgi-label">Camada 02 · Engine interna</div>
+            <div class="fgi-count accent">ROF</div>
+            <div class="fgi-desc">4 pilares · 5 agentes IA · 5 camadas tecnicas. Reduz 37→19 etapas, 30→7 dias.</div>
+          </div>
+          <div class="fgi">
+            <div class="fgi-label">Camada 03 · Produto</div>
+            <div class="fgi-count">Revenue <em>Intelligence</em></div>
+            <div class="fgi-desc">Arquitetura Decisoria. Decisoes tipo 1 irreversiveis. 12 semanas, $150-250k.</div>
+          </div>
+          <div class="fgi">
+            <div class="fgi-label">Regra universal</div>
+            <div class="fgi-count"><em>Human</em></div>
+            <div class="fgi-desc">Governance on top. Nenhum output passa sem revisao humana. Nunca.</div>
+          </div>
         </div>
       </div>
     </div>
-    <footer class="slide-footer">
-      <div>§ 08</div>
-      <div class="center">Cases reais · numeros oficiais</div>
-      <div class="right">09 / 10</div>
-    </footer>
+    <div class="act-meta reveal">
+      <div class="meta-k">Public</div>
+      <div class="meta-v">EPIC · RI</div>
+      <div class="meta-k">Internal</div>
+      <div class="meta-v">ROF</div>
+      <div class="meta-k">Tagline</div>
+      <div class="meta-v"><em>Governed by Human</em></div>
+    </div>
   </section>
 
-  <!-- ======= SLIDE 10 · CHAMADO ======= -->
-  <section class="slide" id="s10">
-    <header class="slide-header">
-      <div><span class="chapter">§ 09 · O chamado</span></div>
-      <div class="right">Proximo passo</div>
-    </header>
-    <main class="slide-main">
-      <h2>Voce tem uma <em>decisao</em> pela frente que voce <em>nao pode</em> voltar atras?</h2>
-      <p class="sub">Voce nao precisa de mais informacao. Voce precisa de um <strong>ambiente para pensar melhor.</strong></p>
-      <div class="steps">
-        <div class="step">
-          <div class="n">Passo 01 · Conectar</div>
-          <div class="t">LinkedIn + manifesto.</div>
-          <div class="d">Me adiciona. Le a tese em governedbyhuman.com.</div>
+  <!-- ============ ACT 06 · FRAMEWORKS (Lenses Split) ============ -->
+  <section data-act="06" data-title="Frameworks" class="lenses-act">
+    <div class="act-head">
+      <div class="act-num reveal">ACT 06 / 10 · METHODS</div>
+      <div class="act-index reveal">06</div>
+    </div>
+    <div class="act-body">
+      <p class="lenses-intro reveal">Dois metodos proprietarios com nome, documentados, com cases publicados. <strong>Nao sao buzzwords.</strong> Ambos sao a expressao operacional da <em>amplificacao de inteligencia humana</em>.</p>
+
+      <div class="lenses-split reveal">
+        <div class="lens-col">
+          <div class="lens-n">Framework · 01</div>
+          <div class="lens-label">Category Leap</div>
+          <div class="lens-value ink">4 <em>passos</em></div>
+          <div class="lens-unit">Reposicionamento de categoria</div>
+          <div class="lens-used">Applied · Quave · MedConnect · ClearSale</div>
+          <ul class="lens-items">
+            <li>Dogma — a reclamacao aceita pelo mercado</li>
+            <li>Desejo Reprimido — a promessa nao cumprida</li>
+            <li>Category Leap — mudanca de ontologia</li>
+            <li>Prestige KPI — nova regua de valor</li>
+          </ul>
         </div>
-        <div class="step">
-          <div class="n">Passo 02 · Mergulhar</div>
-          <div class="t">Diagnostico 45 min.</div>
-          <div class="d">Gratuito. 3 pontos cegos da sua operacao de receita mapeados. Sem compromisso.</div>
-        </div>
-        <div class="step">
-          <div class="n">Passo 03 · Construir</div>
-          <div class="t">Raio-X · 2 semanas.</div>
-          <div class="d">R$25-40k / $25-40k. Creditado no proximo programa.</div>
+        <div class="lens-divider"></div>
+        <div class="lens-col">
+          <div class="lens-n">Framework · 02</div>
+          <div class="lens-label">Arquitetura Decisoria</div>
+          <div class="lens-value">12 <em>semanas</em></div>
+          <div class="lens-unit">Programa para decisoes tipo 1</div>
+          <div class="lens-used">Ticket · $150-250k + performance layer</div>
+          <ul class="lens-items">
+            <li>Raio-X — mapa de metabolismo decisorio · 2 sem</li>
+            <li>Redesenho — protocolo irreversivel · 4 sem</li>
+            <li>Arena — pratica com decisoes reais · 6 sem</li>
+            <li>Soberania Operacional — calibracao continua</li>
+          </ul>
         </div>
       </div>
-    </main>
-    <footer class="slide-footer">
-      <div>§ 09</div>
-      <div class="center">revenueintelligence.app · governedbyhuman.com</div>
-      <div class="right">10 / 10</div>
-    </footer>
+
+      <p class="lenses-prescribe reveal">Use <strong>Category Leap</strong> para reposicionar uma marca ou negocio. Use <strong>Arquitetura Decisoria</strong> para reprojetar o sistema decisorio de uma empresa. <em>Ambos saem do ruido algoritmico</em>, ambos exigem julgamento humano ininterrupto.</p>
+    </div>
   </section>
 
-</div>
+  <!-- ============ ACT 07 · GOVERNANCA (Bracket Viz) ============ -->
+  <section data-act="07" data-title="Governanca" class="bracket-act">
+    <div class="act-head">
+      <div class="act-num reveal">ACT 07 / 10 · PIPELINE</div>
+      <div class="act-index reveal">07</div>
+    </div>
+    <div class="act-body">
+      <h2 class="bracket-statement reveal">IA executa volume.<em>Humano governa estrategia.</em></h2>
 
-<!-- === CONTROLS === -->
-<div class="controls">
-  <button id="prev" aria-label="Anterior">←</button>
-  <span class="counter"><span id="current">01</span> / 10</span>
-  <div class="bar"><div class="bar-fill" id="barFill" style="width: 10%;"></div></div>
-  <button id="next" aria-label="Proximo">→</button>
-</div>
+      <div class="bracket-viz reveal" id="bracket-viz">
+        <div class="bracket-viz-label">Pipeline inviolavel · governanca sobre qualquer output</div>
+        <svg class="bracket-viz-svg" viewBox="0 0 1000 140" preserveAspectRatio="xMinYMid meet" aria-hidden="true">
+          <line class="br-line" x1="60" y1="70" x2="940" y2="70" stroke-dasharray="880" stroke-dashoffset="880" style="transition: stroke-dashoffset 900ms cubic-bezier(0.16, 1, 0.3, 1) 0ms;"/>
+          <polyline class="br-cap-l" points="60,50 60,70 60,90" stroke-dasharray="40" stroke-dashoffset="40" style="transition: stroke-dashoffset 500ms cubic-bezier(0.16, 1, 0.3, 1) 900ms;"/>
+          <polyline class="br-cap-r" points="940,50 940,70 940,90" stroke-dasharray="40" stroke-dashoffset="40" style="transition: stroke-dashoffset 500ms cubic-bezier(0.16, 1, 0.3, 1) 900ms;"/>
+
+          <g class="br-tick is-in"><line x1="160" y1="64" x2="160" y2="76"/></g>
+          <text class="br-stage is-in" x="160" y="112" text-anchor="middle">AI Draft</text>
+
+          <g class="br-tick is-in"><line x1="320" y1="64" x2="320" y2="76"/></g>
+          <text class="br-stage is-in" x="320" y="112" text-anchor="middle">Human Review</text>
+
+          <g class="br-tick is-in"><line x1="500" y1="64" x2="500" y2="76"/></g>
+          <text class="br-stage is-in" x="500" y="112" text-anchor="middle">Approved</text>
+
+          <g class="br-tick is-in"><line x1="680" y1="64" x2="680" y2="76"/></g>
+          <text class="br-stage is-in" x="680" y="112" text-anchor="middle">Live</text>
+
+          <g class="br-tick is-in"><line x1="840" y1="64" x2="840" y2="76"/></g>
+          <text class="br-stage is-in" x="840" y="112" text-anchor="middle">Audited</text>
+        </svg>
+        <p class="bracket-viz-note"><strong>Regra inviolavel:</strong> nenhum artefato vira "Live" sem "Approved". O sistema <em>bloqueia</em> qualquer tentativa de pular etapas. Nenhuma pagina, nenhum anuncio, nenhuma estrategia vai ao cliente sem humano no volante.</p>
+      </div>
+
+      <div class="lenses-split reveal" style="margin-top: 40px;">
+        <div class="lens-col">
+          <div class="lens-n">Decisoes · tipo 02</div>
+          <div class="lens-label">Reversiveis</div>
+          <div class="lens-unit">Custo do erro · baixo</div>
+          <ul class="lens-items">
+            <li>Copy de anuncio — teste e itere</li>
+            <li>Variacao de landing — A/B</li>
+            <li>Ajuste de segmentacao</li>
+            <li>Creative rotation</li>
+          </ul>
+        </div>
+        <div class="lens-divider"></div>
+        <div class="lens-col">
+          <div class="lens-n">Decisoes · tipo 01</div>
+          <div class="lens-label">Irreversiveis</div>
+          <div class="lens-unit">Custo do erro · alto</div>
+          <ul class="lens-items">
+            <li>Entrar em novo mercado</li>
+            <li>M&amp;A / aquisicao</li>
+            <li>Descontinuar produto</li>
+            <li>Reposicionar categoria</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ACT 08 · PROVA (Numbers) ============ -->
+  <section data-act="08" data-title="Prova">
+    <div class="act-head">
+      <div class="act-num reveal">ACT 08 / 10</div>
+      <div class="act-index reveal">08</div>
+    </div>
+    <div class="act-body">
+      <h2 class="stage-name reveal">A <em>prova</em></h2>
+      <p class="stage-def reveal">Cinco cases reais — com numeros oficiais publicados em <strong>epic.digital/case-studies</strong>. O flagship e NTIVA: <em>539% de ROI acumulado desde 2022, sem escalar IA ainda.</em></p>
+
+      <div class="proof-spotlight reveal">
+        <div class="ps-eye">// Flagship · Ntiva · MSP IT · USA</div>
+        <div class="ps-big">+539%</div>
+        <div class="ps-attr">ROI acumulado · 2022 — 2025<br><em>$6.2M em receita adicional · +161% revenue growth · +27% YoY</em></div>
+        <p class="ps-tagline">E isso foi <strong>sem escalar IA ainda</strong> — so com estrategia humana sob Toyota Partnership mode. Com IA estruturada via ROF, o potencial dobra.</p>
+        <p class="ps-quote">"EPIC isn't just there to collect a paycheck. If we win, they win — and that mindset is felt every day. I trust them and their opinions."<small>Shannon Delmarle · Marketing Director, Ntiva</small></p>
+      </div>
+
+      <table class="swiss reveal" style="margin-top: 48px;">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Case</th>
+            <th>Industria</th>
+            <th>Numero-ancora</th>
+            <th class="num">Detalhe</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01</td>
+            <td>Ntiva</td>
+            <td>MSP IT · USA</td>
+            <td>+539% ROI</td>
+            <td class="num big">$6.2M</td>
+          </tr>
+          <tr>
+            <td>02</td>
+            <td>iFood Ads</td>
+            <td>Retail Media · BR</td>
+            <td>+294% capacidade</td>
+            <td class="num big">850/mo</td>
+          </tr>
+          <tr>
+            <td>03</td>
+            <td>Quave ONE</td>
+            <td>SaaS · BR</td>
+            <td>Salto publicado</td>
+            <td class="num"><em>4 meses</em></td>
+          </tr>
+          <tr>
+            <td>04</td>
+            <td>MedConnect</td>
+            <td>Healthcare · BR</td>
+            <td>R$25k + 10%</td>
+            <td class="num"><em>hibrido</em></td>
+          </tr>
+          <tr>
+            <td>05</td>
+            <td>DOT</td>
+            <td>Tech · Design</td>
+            <td>15 paginas em dias</td>
+            <td class="num"><em>premium</em></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="act-meta reveal">
+      <div class="meta-k">Fonte</div>
+      <div class="meta-v">epic.digital/case-studies</div>
+      <div class="meta-k">Total revenue</div>
+      <div class="meta-v">$6.2M+ (flagship)</div>
+      <div class="meta-k">Period</div>
+      <div class="meta-v">2022 — 2026</div>
+    </div>
+  </section>
+
+  <!-- ============ ACT 09 · O CHAMADO ============ -->
+  <section data-act="09" data-title="O Chamado" class="chamado-act">
+    <div class="act-head">
+      <div class="act-num reveal">ACT 09 / 10 · CALL</div>
+      <div class="act-index reveal">09</div>
+    </div>
+    <div class="act-body">
+      <h2 class="chamado-hero reveal">Voce tem uma <em>decisao</em> pela frente que voce <em>nao pode</em> voltar atras?</h2>
+      <p class="chamado-sub reveal">Voce nao precisa de mais informacao. Voce precisa de um <strong>ambiente para pensar melhor.</strong></p>
+
+      <div class="cta-ladder">
+        <div class="cta-step reveal">
+          <div class="cta-n">Passo · 01</div>
+          <div class="cta-big">01</div>
+          <div class="cta-title">Conectar</div>
+          <div class="cta-desc">LinkedIn + manifesto. Me adiciona. Le a tese em <a href="https://governedbyhuman.com">governedbyhuman.com</a>.</div>
+        </div>
+        <div class="cta-step reveal">
+          <div class="cta-n">Passo · 02</div>
+          <div class="cta-big">02</div>
+          <div class="cta-title">Mergulhar</div>
+          <div class="cta-desc">Diagnostico 45 min — gratuito. Saimos com 3 pontos cegos da sua operacao de receita mapeados. Sem compromisso.</div>
+        </div>
+        <div class="cta-step reveal">
+          <div class="cta-n">Passo · 03</div>
+          <div class="cta-big">03</div>
+          <div class="cta-title">Construir</div>
+          <div class="cta-desc">Raio-X · 2 semanas · R$25-40k / $25-40k. Mapa de Metabolismo Decisorio + Custo da Nao-Metabolizacao em USD. Creditado no proximo programa.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ACT 10 · COLOPHON ============ -->
+  <section data-act="10" data-title="Colophon" class="colophon-act">
+    <div class="act-head">
+      <div class="act-num reveal">ACT 10 / 10 · ENCERRAMENTO</div>
+    </div>
+    <div class="act-body">
+      <div class="colophon-grid reveal">
+        <div class="colophon-cell">
+          <div class="k">Home manifesto</div>
+          <div class="v"><a href="https://governedbyhuman.com">governedbyhuman.com</a></div>
+        </div>
+        <div class="colophon-cell">
+          <div class="k">Produto</div>
+          <div class="v"><a href="https://revenueintelligence.app">revenueintelligence.app</a></div>
+        </div>
+        <div class="colophon-cell">
+          <div class="k">Framework</div>
+          <div class="v"><a href="https://categoryleap.com">categoryleap.com</a></div>
+        </div>
+        <div class="colophon-cell">
+          <div class="k">Casa</div>
+          <div class="v"><a href="https://epic.digital">epic.digital</a></div>
+        </div>
+      </div>
+
+      <div class="colophon-sig reveal">
+        <span>Score escrito por</span>
+        <em>Fabio Munhoz × Jeferson Venancio</em>
+        <span>·</span>
+        <span>Manifesto v1.0 · 17 Abr 2026 · Sao Paulo / Joinville</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- === KEYBOARD HINT === -->
+<div class="kb-hint"><kbd>↓</kbd><kbd>↑</kbd> <span>scroll · <kbd>J</kbd><kbd>K</kbd> next/prev act</span></div>
 
 <script>
 (function(){
-  const slides = Array.from(document.querySelectorAll('.slide'));
-  const total = slides.length;
-  let current = 0;
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section[data-act]'));
+  var total = sections.length;
 
-  const btnPrev = document.getElementById('prev');
-  const btnNext = document.getElementById('next');
-  const counter = document.getElementById('current');
-  const barFill = document.getElementById('barFill');
-  const progressFill = document.getElementById('progressFill');
+  var rail = document.getElementById('rail');
+  var playhead = document.getElementById('playhead');
+  var scNum = document.getElementById('sc-num');
+  var scTitle = document.getElementById('sc-title');
+  var scTime = document.getElementById('sc-time');
 
-  function go(i) {
-    if (i < 0 || i >= total) return;
-    slides[current].classList.remove('active');
-    if (i < current) slides[current].classList.add('prev');
-    else slides[current].classList.remove('prev');
-    current = i;
-    slides[current].classList.add('active');
-    slides[current].classList.remove('prev');
-    counter.textContent = String(current + 1).padStart(2, '0');
-    const pct = ((current + 1) / total) * 100;
-    barFill.style.width = pct + '%';
-    progressFill.style.width = pct + '%';
-    // Update URL hash
-    history.replaceState(null, '', '#slide-' + (current + 1));
+  // Build markers on rail
+  var markers = [];
+  sections.forEach(function(sec, i) {
+    var pct = (total > 1) ? (i / (total - 1)) * 100 : 0;
+    var marker = document.createElement('div');
+    marker.className = 'marker';
+    var isMobile = window.innerWidth <= 1023;
+    if (isMobile) marker.style.left = pct + '%';
+    else marker.style.top = pct + '%';
+    var label = document.createElement('span');
+    label.className = 'marker-label';
+    label.textContent = (i < 10 ? '0' : '') + i + ' · ' + (sec.dataset.title || '');
+    marker.appendChild(label);
+    rail.appendChild(marker);
+    markers.push(marker);
+  });
+
+  var lastActive = -1;
+  var rafId = null;
+  var isMobile = window.innerWidth <= 1023;
+
+  function update() {
+    var scrollY = window.scrollY || window.pageYOffset;
+    var docHeight = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    var progress = Math.max(0, Math.min(1, scrollY / docHeight));
+
+    if (isMobile) {
+      playhead.style.left = (progress * 100) + '%';
+    } else {
+      playhead.style.top = (progress * 100) + '%';
+    }
+
+    var vpMid = scrollY + window.innerHeight * 0.35;
+    var activeIdx = 0;
+    for (var i = 0; i < sections.length; i++) {
+      var rect = sections[i].getBoundingClientRect();
+      var top = rect.top + scrollY;
+      if (top <= vpMid) activeIdx = i;
+    }
+
+    if (lastActive !== activeIdx) {
+      sections.forEach(function(s, i) {
+        s.classList.toggle('is-live', i <= activeIdx);
+      });
+      markers.forEach(function(m, i) {
+        m.classList.toggle('is-passed', i < activeIdx);
+        m.classList.toggle('is-current', i === activeIdx);
+      });
+
+      var active = sections[activeIdx];
+      scNum.textContent = 'SCENE ' + String(activeIdx).padStart(2, '0') + '/' + String(total - 1).padStart(2, '0');
+      scTitle.textContent = active.dataset.title || '';
+
+      playhead.classList.toggle('is-bracket', activeIdx === 7);
+
+      if (activeIdx === 7) {
+        var bv = document.getElementById('bracket-viz');
+        if (bv) bv.classList.add('is-drawn');
+      }
+
+      lastActive = activeIdx;
+    }
+
+    var elapsed = (progress * (total - 1) * 10);
+    var mm = Math.floor(elapsed / 60);
+    var ss = Math.floor(elapsed % 60);
+    scTime.textContent = '+' + String(mm).padStart(2, '0') + ':' + String(ss).padStart(2, '0');
+
+    rafId = null;
   }
 
-  function next() { go(Math.min(current + 1, total - 1)); }
-  function prev() { go(Math.max(current - 1, 0)); }
+  function onScroll() {
+    if (rafId == null) rafId = requestAnimationFrame(update);
+  }
 
-  btnPrev.addEventListener('click', prev);
-  btnNext.addEventListener('click', next);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', function() {
+    isMobile = window.innerWidth <= 1023;
+    // rebuild marker positions
+    markers.forEach(function(m, i) {
+      var pct = (total > 1) ? (i / (total - 1)) * 100 : 0;
+      if (isMobile) { m.style.top = ''; m.style.left = pct + '%'; }
+      else { m.style.left = ''; m.style.top = pct + '%'; }
+    });
+    lastActive = -1;
+    onScroll();
+  });
 
-  // Keyboard
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); next(); }
-    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
-    else if (e.key === 'Home') { go(0); }
-    else if (e.key === 'End') { go(total - 1); }
-    else if (/^[0-9]$/.test(e.key)) {
-      const n = parseInt(e.key, 10);
-      if (n === 0) go(9); // 0 → slide 10
-      else go(n - 1);
+  // Keyboard nav: J/K/↓/↑
+  document.addEventListener('keydown', function(e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var idx = lastActive;
+    if (e.key === 'j' || e.key === 'J' || e.key === 'ArrowRight') {
+      var nextIdx = Math.min(total - 1, idx + 1);
+      sections[nextIdx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      e.preventDefault();
+    } else if (e.key === 'k' || e.key === 'K' || e.key === 'ArrowLeft') {
+      var prevIdx = Math.max(0, idx - 1);
+      sections[prevIdx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      e.preventDefault();
+    } else if (/^[0-9]$/.test(e.key)) {
+      var n = parseInt(e.key, 10);
+      if (n <= total - 1) {
+        sections[n].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        e.preventDefault();
+      }
     }
   });
 
-  // Touch swipe
-  let touchStartX = null;
-  document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
-  document.addEventListener('touchend', (e) => {
-    if (touchStartX === null) return;
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    if (Math.abs(dx) > 50) { dx < 0 ? next() : prev(); }
-    touchStartX = null;
-  }, { passive: true });
+  // Initial
+  update();
 
-  // Deep link
-  if (location.hash && location.hash.startsWith('#slide-')) {
-    const n = parseInt(location.hash.replace('#slide-', ''), 10);
-    if (!isNaN(n) && n >= 1 && n <= total) go(n - 1);
+  // Handle deep link #act-N
+  if (location.hash && location.hash.indexOf('#act-') === 0) {
+    var n = parseInt(location.hash.replace('#act-', ''), 10);
+    if (!isNaN(n) && n >= 0 && n < total) {
+      setTimeout(function() {
+        sections[n].scrollIntoView({ behavior: 'instant', block: 'start' });
+      }, 100);
+    }
   }
-
-  // Click on left/right side of screen to navigate
-  document.addEventListener('click', (e) => {
-    if (e.target.closest('.controls') || e.target.closest('a') || e.target.closest('button')) return;
-    const w = window.innerWidth;
-    if (e.clientX > w * 0.7) next();
-    else if (e.clientX < w * 0.3) prev();
-  });
 })();
 </script>
 
