@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Powered by AI. Governed by Human. — EPIC Digital</title>
 
-<meta name="description" content="A tese da EPIC Digital: IA executa volume, humano governa estrategia. Um manifesto contra a homogeneizacao algoritmica.">
+<meta name="description" content="A tese da EPIC Digital: IA executa volume, humano governa estratégia. Um manifesto contra a homogeneização algorítmica.">
 <meta name="robots" content="index,follow">
-<meta name="theme-color" content="#FAFAF7">
+<meta name="theme-color" content="#F5F2EA">
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:title" content="Powered by AI. Governed by Human.">
-<meta property="og:description" content="Voce ja terceirizou demais. Pagou a agencia, pagou a consultoria, agora paga pela IA. E continua sem saber por que esta tomando as decisoes que toma.">
+<meta property="og:description" content="Você já terceirizou demais. Pagou a agência, pagou a consultoria, agora paga pela IA. E continua sem saber por que está tomando as decisões que toma.">
 <meta property="og:url" content="https://governedbyhuman.com">
 <meta property="og:site_name" content="EPIC Digital">
 <meta property="og:locale" content="pt_BR">
@@ -20,24 +20,27 @@
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Powered by AI. Governed by Human.">
-<meta name="twitter:description" content="A tese da EPIC Digital contra a homogeneizacao algoritmica. Um manifesto.">
+<meta name="twitter:description" content="A tese da EPIC Digital contra a homogeneização algorítmica. Um manifesto.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=JetBrains+Mono:wght@300;400;500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --paper: #FAFAF7;
-  --ink: #0A0A0A;
-  --ink-soft: #1A1A1A;
-  --muted: rgba(10,10,10,0.62);
-  --rule: rgba(10,10,10,0.14);
+  --paper: #F5F2EA;
+  --paper-2: #EEE8D8;
+  --ink: #0F0F0F;
+  --ink-soft: #2B2B2B;
+  --muted: #8A847A;
+  --rule: #E8E2D4;
   --red: #FF0050;
+  --red-dim: #FFD0DF;
   --gutter: clamp(16px, 4vw, 80px);
   --max: 1440px;
-  --display: 'Bodoni Moda', Georgia, serif;
-  --body: 'Source Serif 4', Georgia, serif;
+  --display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --body: 'Barlow', system-ui, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 
@@ -115,19 +118,19 @@ a:hover { color: var(--red); }
 .hero-meta .r { text-align: right; }
 .hero h1 {
   font-family: var(--display);
-  font-weight: 900;
+  font-weight: 800;
   font-size: clamp(3.5rem, 10vw, 11rem);
   line-height: 0.92;
-  letter-spacing: -0.03em;
-  font-variation-settings: "opsz" 96;
+  letter-spacing: -0.035em;
+  font-variation-settings: 'wght' 800;
   text-transform: none;
   color: var(--ink);
 }
 .hero h1 em {
+  font-family: var(--serif);
   font-style: italic;
-  font-variation-settings: "opsz" 96;
+  font-weight: 400;
   color: var(--red);
-  font-weight: 500;
 }
 .hero h1 .line { display: block; }
 .hero h1 .indent { padding-left: clamp(24px, 5vw, 120px); }
@@ -135,19 +138,20 @@ a:hover { color: var(--red); }
 .hero-kicker {
   max-width: 560px;
   margin-top: clamp(32px, 5vw, 72px);
-  font-family: var(--body);
-  font-size: clamp(1.1rem, 1.6vw, 1.45rem);
-  line-height: 1.5;
-  color: var(--muted);
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 1.7vw, 1.55rem);
+  line-height: 1.45;
+  color: var(--ink-soft);
   padding-left: clamp(24px, 5vw, 120px);
   font-style: italic;
+  font-weight: 400;
 }
 .hero-kicker::before {
   content: "§";
   color: var(--red);
   margin-right: 12px;
-  font-family: var(--display);
-  font-weight: 700;
+  font-family: var(--serif);
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -178,14 +182,14 @@ a:hover { color: var(--red); }
   font-size: clamp(3rem, 9vw, 9rem);
   line-height: 0.94;
   letter-spacing: -0.035em;
-  font-variation-settings: "opsz" 96;
+  font-variation-settings: 'wght' 700;
   max-width: 15ch;
 }
 .abertura h2 em {
+  font-family: var(--serif);
   font-style: italic;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--red);
-  font-variation-settings: "opsz" 96;
 }
 .abertura .body {
   margin-top: clamp(48px, 7vw, 100px);
@@ -203,12 +207,12 @@ a:hover { color: var(--red); }
 .dropcap::first-letter {
   float: left;
   font-family: var(--display);
-  font-weight: 900;
+  font-weight: 800;
   font-size: 5.2em;
   line-height: 0.85;
   padding: 0.02em 0.08em 0 0;
   color: var(--red);
-  font-variation-settings: "opsz" 96;
+  font-variation-settings: 'wght' 800;
 }
 
 /* === PULL QUOTE INTERSTITIALS === */
@@ -243,12 +247,12 @@ a:hover { color: var(--red); }
 .pullquote .marker::before { content: "§ "; font-family: var(--display); font-size: 1.2em; font-weight: 700; }
 .pullquote blockquote {
   font-family: var(--display);
-  font-weight: 700;
+  font-weight: 800;
   font-size: clamp(2.6rem, 8vw, 9rem);
   line-height: 0.98;
   letter-spacing: -0.03em;
   color: var(--ink);
-  font-variation-settings: "opsz" 96;
+  font-variation-settings: 'wght' 800;
   max-width: 22ch;
   position: relative;
 }
@@ -259,7 +263,7 @@ a:hover { color: var(--red); }
   color: var(--red);
   font-style: italic;
   font-weight: 500;
-  font-variation-settings: "opsz" 96;
+  font-family: var(--serif); font-weight: 400;
   display: inline-block;
   transform: scale(1.08);
   transform-origin: left center;
@@ -322,7 +326,7 @@ a:hover { color: var(--red); }
   line-height: 1.12;
   letter-spacing: -0.02em;
   font-style: italic;
-  font-variation-settings: "opsz" 96;
+  font-family: var(--serif); font-weight: 400;
   margin-bottom: 32px;
   color: var(--paper);
 }
@@ -382,11 +386,11 @@ a:hover { color: var(--red); }
 }
 .hipotese-split .half .big {
   font-family: var(--display);
-  font-weight: 900;
+  font-weight: 800;
   font-size: clamp(5rem, 16vw, 18rem);
   line-height: 0.9;
   letter-spacing: -0.04em;
-  font-variation-settings: "opsz" 96;
+  font-variation-settings: 'wght' 800;
   color: currentColor;
 }
 .hipotese-split .half.dark .big { color: var(--paper); }
@@ -434,7 +438,7 @@ a:hover { color: var(--red); }
   letter-spacing: -0.015em;
   line-height: 1.15;
   margin-bottom: 8px;
-  font-variation-settings: "opsz" 96;
+  font-variation-settings: 'wght' 700;
 }
 .hipotese-types .clause p {
   font-family: var(--body);
@@ -498,7 +502,7 @@ a:hover { color: var(--red); }
   overflow: hidden;
 }
 .camada:last-child { border-right: none; }
-.camada.coracao {
+.camada.coração {
   background: var(--red);
   color: var(--paper);
   min-height: 580px;
@@ -507,24 +511,24 @@ a:hover { color: var(--red); }
   z-index: 2;
   box-shadow: 0 20px 60px rgba(255,0,80,0.25);
 }
-.camada.coracao::before {
+.camada.coração::before {
   content: "02";
   position: absolute;
   right: -0.18em;
   bottom: -0.3em;
   font-family: var(--display);
-  font-weight: 900;
+  font-weight: 800;
   font-size: 26vw;
   line-height: 0.8;
   letter-spacing: -0.05em;
   color: rgba(250,250,247,0.1);
-  font-variation-settings: "opsz" 96;
+  font-variation-settings: 'wght' 800;
   pointer-events: none;
   z-index: 0;
   user-select: none;
 }
-.camada.coracao > * { position: relative; z-index: 1; }
-.camada:not(.coracao) { margin-top: 20px; }
+.camada.coração > * { position: relative; z-index: 1; }
+.camada:not(.coração) { margin-top: 20px; }
 .camada-n {
   font-family: var(--mono);
   font-size: 0.72rem;
@@ -535,12 +539,12 @@ a:hover { color: var(--red); }
 }
 .camada h3 {
   font-family: var(--display);
-  font-weight: 700;
+  font-weight: 800;
   font-size: clamp(2.2rem, 3.6vw, 3.6rem);
   line-height: 0.95;
   letter-spacing: -0.025em;
   margin-bottom: 12px;
-  font-variation-settings: "opsz" 96;
+  font-variation-settings: 'wght' 800;
 }
 .camada .role {
   font-family: var(--mono);
@@ -550,7 +554,7 @@ a:hover { color: var(--red); }
   margin-bottom: 16px;
   color: var(--red);
 }
-.camada.coracao .role { color: var(--paper); opacity: 0.8; }
+.camada.coração .role { color: var(--paper); opacity: 0.8; }
 .camada p {
   font-size: 0.98rem;
   line-height: 1.55;
@@ -599,12 +603,12 @@ a:hover { color: var(--red); }
 .flagship-moment .eyebrow::before { content: "§ "; font-family: var(--display); font-weight: 700; }
 .flagship-moment .big-number {
   font-family: var(--display);
-  font-weight: 900;
+  font-weight: 800;
   font-size: clamp(8rem, 26vw, 28rem);
   line-height: 0.82;
   letter-spacing: -0.055em;
   color: var(--red);
-  font-variation-settings: "opsz" 96;
+  font-variation-settings: 'wght' 800;
   margin-bottom: clamp(24px, 3vw, 48px);
   transform: scale(0.95);
   transition: transform 1.2s cubic-bezier(0.19,1,0.22,1), opacity 1.2s cubic-bezier(0.19,1,0.22,1);
@@ -638,7 +642,7 @@ a:hover { color: var(--red); }
   line-height: 1.35;
   max-width: 34ch;
   color: var(--paper);
-  font-variation-settings: "opsz" 96;
+  font-variation-settings: 'wght' 700;
   margin-top: clamp(16px, 2vw, 28px);
 }
 .flagship-moment .tagline strong {
@@ -674,12 +678,12 @@ a:hover { color: var(--red); }
 .proof.flagship .label { color: var(--red); opacity: 1; }
 .proof .number {
   font-family: var(--display);
-  font-weight: 900;
+  font-weight: 800;
   font-size: clamp(4rem, 11vw, 12rem);
   line-height: 0.85;
   letter-spacing: -0.05em;
   color: var(--red);
-  font-variation-settings: "opsz" 96;
+  font-variation-settings: 'wght' 800;
 }
 .proof.flagship .number { font-size: clamp(6rem, 18vw, 20rem); }
 .proof .client {
@@ -689,7 +693,7 @@ a:hover { color: var(--red); }
   line-height: 1.1;
   margin-top: 16px;
   letter-spacing: -0.015em;
-  font-variation-settings: "opsz" 96;
+  font-variation-settings: 'wght' 700;
 }
 .proof .industry {
   font-family: var(--mono);
@@ -738,18 +742,18 @@ a:hover { color: var(--red); }
 }
 .chamado .q {
   font-family: var(--display);
-  font-weight: 700;
+  font-weight: 800;
   font-size: clamp(3rem, 9vw, 10rem);
   line-height: 0.94;
   letter-spacing: -0.035em;
   max-width: 18ch;
-  font-variation-settings: "opsz" 96;
+  font-variation-settings: 'wght' 800;
 }
 .chamado .q em {
+  font-family: var(--serif);
   font-style: italic;
+  font-weight: 400;
   color: var(--red);
-  font-variation-settings: "opsz" 96;
-  font-weight: 500;
 }
 .chamado .q-sub {
   margin-top: clamp(32px, 4vw, 56px);
@@ -759,7 +763,7 @@ a:hover { color: var(--red); }
   line-height: 1.35;
   max-width: 32ch;
   color: var(--muted);
-  font-variation-settings: "opsz" 96;
+  font-variation-settings: 'wght' 700;
 }
 .chamado .q-sub strong {
   color: var(--red);
@@ -791,12 +795,12 @@ a:hover { color: var(--red); }
 }
 .chamado-cta .step-big-n {
   font-family: var(--display);
-  font-weight: 900;
+  font-weight: 800;
   font-size: clamp(4rem, 7vw, 7rem);
   line-height: 0.85;
   letter-spacing: -0.04em;
   color: var(--red);
-  font-variation-settings: "opsz" 96;
+  font-variation-settings: 'wght' 800;
   margin-bottom: clamp(16px, 2vw, 32px);
   display: block;
 }
@@ -823,7 +827,7 @@ a:hover { color: var(--red); }
   font-size: clamp(1.4rem, 2.4vw, 2.2rem);
   line-height: 1.15;
   letter-spacing: -0.01em;
-  font-variation-settings: "opsz" 96;
+  font-family: var(--serif); font-weight: 400;
   color: var(--ink);
   transform: rotate(-1.5deg);
   transform-origin: left center;
@@ -883,14 +887,14 @@ a:hover { color: var(--red); }
 }
 .colophon-logo {
   font-family: var(--display);
-  font-weight: 900;
+  font-weight: 800;
   font-size: clamp(3rem, 7vw, 6.5rem);
   letter-spacing: -0.04em;
   line-height: 0.9;
   text-transform: none;
-  font-variation-settings: "opsz" 96;
+  font-variation-settings: 'wght' 800;
 }
-.colophon-logo .accent { color: var(--red); font-style: italic; font-weight: 300; font-variation-settings: "opsz" 96; }
+.colophon-logo .accent { font-family: var(--serif); color: var(--red); font-style: italic; font-weight: 400; }
 .colophon-meta { text-align: right; color: rgba(250,250,247,0.7); line-height: 1.7; }
 .colophon-meta a:hover { color: var(--red); }
 .colophon-bottom {
@@ -910,7 +914,7 @@ a:hover { color: var(--red); }
 .reveal.d4 { transition-delay: 0.46s; }
 
 /* === RESPONSIVE === */
-@media (max-width: 900px) {
+@média (max-width: 900px) {
   .abertura .body { grid-template-columns: 1fr; }
   .abertura .body .col-right { padding-top: 0; }
   .dogma-grid { grid-template-columns: 1fr; }
@@ -920,8 +924,8 @@ a:hover { color: var(--red); }
   .hipotese-types { grid-template-columns: 1fr; }
   .camadas { grid-template-columns: 1fr; }
   .camada { border-right: none; border-bottom: 1px solid var(--ink); min-height: auto; margin-top: 0 !important; }
-  .camada.coracao { min-height: auto; margin-top: 0 !important; margin-bottom: 0 !important; box-shadow: none; }
-  .camada.coracao::before { font-size: 40vw; right: -0.1em; bottom: -0.25em; }
+  .camada.coração { min-height: auto; margin-top: 0 !important; margin-bottom: 0 !important; box-shadow: none; }
+  .camada.coração::before { font-size: 40vw; right: -0.1em; bottom: -0.25em; }
   .camada:last-child { border-bottom: none; }
   .proof-grid, .proof-grid.proof-grid-4 { grid-template-columns: 1fr; }
   .proof { border-right: none; border-bottom: 1px solid var(--ink); }
@@ -936,7 +940,7 @@ a:hover { color: var(--red); }
 }
 
 /* === PRINT === */
-@media print {
+@média print {
   body::before { display: none; }
   .masthead { border-bottom: 2px solid black; }
   .hero h1 { font-size: 5rem; }
@@ -968,7 +972,7 @@ a:hover { color: var(--red); }
   </h1>
 
   <p class="hero-kicker reveal d3">
-    Um manifesto contra a homogeneizacao algoritmica — e uma declaracao de principios para a agencia que ainda acredita em julgamento humano sobre decisoes que nao podem voltar atras.
+    Um manifesto contra a homogeneização algorítmica — e uma declaracao de principios para a agência que ainda acredita em julgamento humano sobre decisões que não podem voltar atrás.
   </p>
 </section>
 
@@ -976,30 +980,30 @@ a:hover { color: var(--red); }
 <section class="section abertura">
   <div class="section-head reveal">
     <div class="n">§ 01</div>
-    <div class="t">Abertura · A situacao</div>
+    <div class="t">Abertura · A situação</div>
   </div>
 
   <h2 class="reveal d1">
-    Voce ja terceirizou <em>demais.</em>
+    Você já terceirizou <em>demais.</em>
   </h2>
 
   <div class="body">
     <div class="col-left reveal d2">
-      <p class="dropcap">Pagou a agencia. Pagou a consultoria. Agora paga pela IA.</p>
-      <p>E continua <strong>sem saber por que</strong> esta tomando as decisoes que toma.</p>
-      <p>O relatorio da McKinsey foi arquivado. O dashboard do HubSpot nao conta a historia. O ChatGPT concorda com voce antes mesmo de entender a pergunta.</p>
+      <p class="dropcap">Pagou a agência. Pagou a consultoria. Agora paga pela IA.</p>
+      <p>E continua <strong>sem saber por que</strong> está tomando as decisões que toma.</p>
+      <p>O relatorio da McKinsey foi arquivado. O dashboard do HubSpot não conta a historia. O ChatGPT concorda com você antes mesmo de entender a pergunta.</p>
     </div>
     <div class="col-right reveal d3">
       <p>Todo o mercado de crescimento funciona com a mesma premissa escondida:</p>
-      <p><strong>"inteligencia e um recurso que voce compra de fora."</strong></p>
-      <p>E cada vez que voce compra, voce pensa menos.</p>
+      <p><strong>"inteligência e um recurso que você compra de fora."</strong></p>
+      <p>E cada vez que você compra, você pensa menos.</p>
     </div>
   </div>
 </section>
 
 <!-- === PULL QUOTE 01 === -->
 <section class="pullquote reveal">
-  <span class="marker">Quebra · Evidencia 01</span>
+  <span class="marker">Quebra · Evidência 01</span>
   <blockquote>Todas as landing pages <em style="color: var(--red); font-style: italic; font-weight: 500;">ficaram iguais.</em></blockquote>
 </section>
 
@@ -1007,30 +1011,30 @@ a:hover { color: var(--red); }
 <section class="section dogma">
   <div class="section-head reveal">
     <div class="n">§ 02</div>
-    <div class="t">Diagnostico · Dogma x Desejo reprimido</div>
+    <div class="t">Diagnóstico · Dogma x Desejo reprimido</div>
   </div>
 
   <div class="dogma-grid">
     <div class="col-left reveal d1">
       <div class="dogma-col-head">// O Dogma</div>
-      <p class="dogma-quote">"Inteligencia e um recurso que voce compra <span class="dash">—</span> de fora."</p>
+      <p class="dogma-quote">"Inteligência e um recurso que você compra <span class="dash">—</span> de fora."</p>
       <ul class="dogma-list dogma-items">
-        <li>Opacidade — nao da para saber como a IA chegou aquela resposta.</li>
-        <li>Extracao silenciosa — seus dados alimentam o modelo de outra empresa.</li>
-        <li>Lock-in estrutural — voce fica dependente do fornecedor.</li>
-        <li>Alucinacao sem dono — a IA erra, e ninguem se responsabiliza.</li>
-        <li>Homogeneizacao — se voce e seu concorrente usam o mesmo modelo para decidir, voces chegam na mesma conclusao. Girard em escala algoritmica.</li>
+        <li>Opacidade — não dá para saber como a IA chegou aquela resposta.</li>
+        <li>Extração silenciosa — seus dados alimentam o modelo de outra empresa.</li>
+        <li>Lock-in estrutural — você fica dependente do fornecedor.</li>
+        <li>Alucinação sem dono — a IA erra, e ninguem se responsabiliza.</li>
+        <li>Homogeneização — se você e seu concorrente usam o mesmo modelo para decidir, vocês chegam na mesma conclusao. Girard em escala algorítmica.</li>
       </ul>
     </div>
     <div class="col-right reveal d2">
       <div class="dogma-col-head">→ O Desejo Reprimido</div>
       <p class="dogma-quote"><em>"Eu quero voltar a entender profundamente — as coisas."</em></p>
       <ul class="dogma-list desire">
-        <li>Nao ter respostas rapidas — ter compreensao real.</li>
-        <li>Nao output — capacidade instalada.</li>
-        <li>Nao cobertura politica — conviccao.</li>
-        <li>Nao seguro contra responsabilidade — coragem de decidir.</li>
-        <li>Nao "a IA sugeriu" — "eu decidi, e sei exatamente por que".</li>
+        <li>Não ter respostas rápidas — ter compreensão real.</li>
+        <li>Não output — capacidade instalada.</li>
+        <li>Não cobertura política — convicção.</li>
+        <li>Não seguro contra responsabilidade — coragem de decidir.</li>
+        <li>Não "a IA sugeriu" — "eu decidi, e sei exatamente por que".</li>
       </ul>
     </div>
   </div>
@@ -1046,26 +1050,26 @@ a:hover { color: var(--red); }
   <!-- SPLIT IA × HUMANO -->
   <div class="hipotese-split reveal">
     <div class="half">
-      <div class="role">// Lado 01 · Maquina</div>
+      <div class="role">// Lado 01 · Máquina</div>
       <div class="big">IA</div>
       <div class="verb"><strong>executa</strong> volume</div>
     </div>
     <div class="half dark">
-      <div class="role">→ Lado 02 · Consciencia</div>
+      <div class="role">→ Lado 02 · Consciência</div>
       <div class="big">Humano</div>
-      <div class="verb"><strong>governa</strong> estrategia</div>
+      <div class="verb"><strong>governa</strong> estratégia</div>
     </div>
   </div>
 
   <!-- TIPO 2 vs TIPO 1 -->
   <div class="hipotese-types">
     <div class="clause reveal d1">
-      <div class="tag">// Decisoes tipo 02</div>
+      <div class="tag">// Decisões tipo 02</div>
       <h4>Reversiveis.</h4>
-      <p>Copy de anuncio. Variacao de landing. Ajuste de segmentacao. Use IA, va rapido, teste mais. Custo do erro: baixo.</p>
+      <p>Copy de anúncio. Variacao de landing. Ajuste de segmentação. Use IA, va rápido, teste mais. Custo do erro: baixo.</p>
     </div>
     <div class="clause tipo1 reveal d2">
-      <div class="tag">→ Decisoes tipo 01</div>
+      <div class="tag">→ Decisões tipo 01</div>
       <h4><strong>Irreversiveis.</strong></h4>
       <p>Entrar em mercado. Fazer M&A. Descontinuar produto. Reposicionar categoria. Humano no volante. Sempre. Custo do erro: alto.</p>
     </div>
@@ -1074,7 +1078,7 @@ a:hover { color: var(--red); }
 
 <!-- === PULL QUOTE 02 === -->
 <section class="pullquote dark with-rule reveal">
-  <span class="marker">Regra inviolavel · §</span>
+  <span class="marker">Regra inviolável · §</span>
   <blockquote>Humano no volante. <em>Sempre.</em></blockquote>
 </section>
 
@@ -1086,8 +1090,8 @@ a:hover { color: var(--red); }
   </div>
 
   <div style="margin-bottom: clamp(40px, 5vw, 64px);" class="reveal d1">
-    <p style="font-family: var(--display); font-weight: 500; font-size: clamp(1.8rem, 3.2vw, 3rem); line-height: 1.05; letter-spacing: -0.02em; max-width: 22ch; font-style: italic; font-variation-settings: 'opsz' 96;">
-      Nao somos uma empresa. <br>Somos uma casa com <span style="color: var(--red);">tres pilares</span> — que se sustentam.
+    <p style="font-family: var(--display); font-weight: 500; font-size: clamp(1.8rem, 3.2vw, 3rem); line-height: 1.05; letter-spacing: -0.02em; max-width: 22ch; font-style: italic; font-variation-settings: 'wght' 700;">
+      Não somos uma empresa. <br>Somos uma casa com <span style="color: var(--red);">três pilares</span> — que se sustentam.
     </p>
   </div>
 
@@ -1096,28 +1100,28 @@ a:hover { color: var(--red); }
       <div>
         <div class="camada-n">01 · A casa</div>
         <h3>EPIC</h3>
-        <div class="role">Agencia · reposicionada</div>
+        <div class="role">Agência · reposicionada</div>
         <p>9 anos de mercado. 10 paises. Mais de 100 implementacoes HubSpot. NTIVA, iFood, Eduzz, Sinch, ClearSale, Techfino.</p>
       </div>
       <div class="tag">epic.digital</div>
     </div>
 
-    <div class="camada coracao">
+    <div class="camada coração">
       <div>
         <div class="camada-n">02 · A engine interna</div>
         <h3>ROF</h3>
         <div class="role">Revenue Orchestration</div>
-        <p>4 pilares. 5 agentes de IA. 5 camadas tecnicas. 17 arquivos .md por cliente. Reduz 37 etapas para 19. Reduz 30 dias para 7. <strong>Nao vendemos.</strong> O cliente ve o resultado.</p>
+        <p>4 pilares. 5 agentes de IA. 5 camadas técnicas. 17 arquivos .md por cliente. Reduz 37 etapas para 19. Reduz 30 dias para 7. <strong>Não vendemos.</strong> O cliente ve o resultado.</p>
       </div>
-      <div class="tag">Infraestrutura proprietaria</div>
+      <div class="tag">Infraestrutura proprietária</div>
     </div>
 
     <div class="camada">
       <div>
         <div class="camada-n">03 · O produto</div>
         <h3>Revenue Intelligence</h3>
-        <div class="role">Arquitetura Decisoria</div>
-        <p>Programa de 12 semanas para <strong>decisoes tipo 1</strong>. Onde crescer. Quem comprar. O que descontinuar. Como reposicionar categoria. US$150-250k.</p>
+        <div class="role">Arquitetura Decisória</div>
+        <p>Programa de 12 semanas para <strong>decisões tipo 1</strong>. Onde crescer. Quem comprar. O que descontinuar. Como reposicionar categoria. US$150-250k.</p>
       </div>
       <div class="tag">revenueintelligence.app</div>
     </div>
@@ -1127,7 +1131,7 @@ a:hover { color: var(--red); }
 <!-- === PULL QUOTE 03 === -->
 <section class="pullquote reveal">
   <span class="marker">Tese central</span>
-  <blockquote>Se voce nao tem <span class="strike">estrategia,</span><br>voce tem <span class="strike">acesso.</span></blockquote>
+  <blockquote>Se você não tem <span class="strike">estratégia,</span><br>você tem <span class="strike">acesso.</span></blockquote>
 </section>
 
 <!-- === FLAGSHIP MOMENT (full-bleed 539%) === -->
@@ -1135,7 +1139,7 @@ a:hover { color: var(--red); }
   <div class="eyebrow">Prova · Flagship · Ntiva · MSP IT · EUA</div>
   <div class="big-number">+539%</div>
   <div class="attribution">ROI acumulado · 2022 — 2025</div>
-  <p class="tagline">$6.2M em receita adicional. +161% revenue growth. +27% YoY. E isso foi <strong>sem escalar IA ainda</strong> — so com estrategia humana sob Toyota Partnership mode.</p>
+  <p class="tagline">$6.2M em receita adicional. +161% revenue growth. +27% YoY. E isso foi <strong>sem escalar IA ainda</strong> — só com estratégia humana sob Toyota Partnership mode.</p>
   <p class="tagline" style="margin-top: clamp(24px, 3vw, 48px); font-size: clamp(0.95rem, 1.1vw, 1.15rem); font-style: italic; border-left: 2px solid var(--red); padding-left: 20px; color: rgba(250,250,247,0.82); font-family: var(--body);">"EPIC isn't just there to collect a paycheck. If we win, they win — and that mindset is felt every day. I trust them and their opinions."<br><span style="color: rgba(250,250,247,0.55); font-style: normal; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 8px; display: inline-block;">— Shannon Delmarle · Marketing Director, Ntiva</span></p>
 </section>
 
@@ -1143,7 +1147,7 @@ a:hover { color: var(--red); }
 <section class="section prova">
   <div class="section-head reveal">
     <div class="n">§ 05+</div>
-    <div class="t">Outros cases · evidencia em numero</div>
+    <div class="t">Outros cases · evidência em número</div>
   </div>
 
   <div class="proof-grid proof-grid-4">
@@ -1176,7 +1180,7 @@ a:hover { color: var(--red); }
       <div class="number" style="font-size: clamp(3rem, 7vw, 7rem);">15 dias</div>
       <div class="client">DOT</div>
       <div class="industry">15 paginas · biblioteca de componentes</div>
-      <p class="detail">Design premium. Pipeline IA sob governanca humana. Velocidade sem perder qualidade.</p>
+      <p class="detail">Design premium. Pipeline IA sob governança humana. Velocidade sem perder qualidade.</p>
     </div>
   </div>
 </section>
@@ -1192,11 +1196,11 @@ a:hover { color: var(--red); }
     </div>
 
     <h2 class="q reveal d1">
-      Voce tem uma <em>decisao</em> pela frente que voce <em>nao pode</em> voltar atras?
+      Você tem uma <em>decisão</em> pela frente que você <em>não pode</em> voltar atrás?
     </h2>
 
     <p class="q-sub reveal d2">
-      Voce nao precisa de mais informacao. Voce precisa de um <strong>ambiente para pensar melhor.</strong>
+      Você não precisa de mais informação. Você precisa de um <strong>ambiente para pensar melhor.</strong>
     </p>
   </div>
 
@@ -1212,14 +1216,14 @@ a:hover { color: var(--red); }
       <div class="step reveal d2">
         <span class="step-big-n">02</span>
         <div class="step-n">Passo · Mergulhar</div>
-        <div class="step-t">Diagnostico 45 min.</div>
-        <div class="step-d">Gratuito. Saimos com 3 pontos cegos da sua operacao de receita mapeados. Sem compromisso.</div>
+        <div class="step-t">Diagnóstico 45 min.</div>
+        <div class="step-d">Gratuito. Saimos com 3 pontos cegos da sua operação de receita mapeados. Sem compromisso.</div>
       </div>
       <div class="step reveal d3">
         <span class="step-big-n">03</span>
         <div class="step-n">Passo · Construir</div>
         <div class="step-t">Raio-X pago · 2 semanas.</div>
-        <div class="step-d">R$25-40k / US$25-40k. Mapa de Metabolismo Decisorio + Custo da Nao-Metabolizacao em USD. Creditado no proximo programa.</div>
+        <div class="step-d">R$25-40k / US$25-40k. Mapa de Metabolismo Decisório + Custo da Não-Metabolização em USD. Creditado no próximo programa.</div>
       </div>
     </div>
   </div>
@@ -1230,7 +1234,7 @@ a:hover { color: var(--red); }
       <div class="lbl">Assinam</div>
       <span class="sig">Fabio Munhoz × Jeferson Venancio</span>
     </div>
-    <div class="date">Manifesto v1.0<br>17 Abr 2026 · Sao Paulo</div>
+    <div class="date">Manifesto v1.0<br>17 Abr 2026 · São Paulo</div>
   </div>
 
 </section>
@@ -1256,12 +1260,12 @@ a:hover { color: var(--red); }
     <div>
       <strong>Documento</strong>
       Manifesto v1.0 · 17 Abr 2026<br>
-      Sao Paulo · Joinville · Orlando
+      São Paulo · Joinville · Orlando
     </div>
     <div>
       <strong>Proxima conversa</strong>
       <a href="mailto:hello@epic.digital">hello@epic.digital</a><br>
-      <a href="https://revenueintelligence.app">Diagnostico 45min · gratuito</a>
+      <a href="https://revenueintelligence.app">Diagnóstico 45min · gratuito</a>
     </div>
   </div>
 </footer>
