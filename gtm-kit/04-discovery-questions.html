@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <title>04 · Discovery Questions — GTM Kit Jupiter</title>
+    <meta name="description" content="16 perguntas organizadas em 4 blocos para discovery no evento. 70% escutar, 30% falar. Perguntas-arma de alta intensidade para A-tier.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --epic-red: #FF0050; --success: #4ECDC4; --warning: #CC8800; --danger: #FF6B6B; --info: #6C9FFF; }
+        [data-theme="dark"] { --bg-primary: #000; --text-primary: #fff; --text-secondary: rgba(255,255,255,0.7); --text-muted: rgba(255,255,255,0.4); --border-color: rgba(255,255,255,0.1); --glass: rgba(255,255,255,0.03); --glass-border: rgba(255,255,255,0.06); --row-hover: rgba(255,255,255,0.04); --warning: #FFE66D; }
+        [data-theme="light"] { --bg-primary: #fff; --text-primary: #000; --text-secondary: rgba(0,0,0,0.7); --text-muted: rgba(0,0,0,0.4); --border-color: rgba(0,0,0,0.1); --glass: rgba(0,0,0,0.03); --glass-border: rgba(0,0,0,0.06); --row-hover: rgba(0,0,0,0.03); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-primary); color: var(--text-primary); transition: background-color 0.3s ease, color 0.3s ease; min-height: 100vh; line-height: 1.6; }
+        .top-nav { position: fixed; top: 0; left: 0; right: 0; height: 60px; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-color); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; }
+        [data-theme="light"] .top-nav { background: rgba(255,255,255,0.95); }
+        .top-nav-logo { display: flex; align-items: center; gap: 12px; }
+        .top-nav-logo img { height: 18px; width: auto; }
+        .top-nav-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
+        .top-nav-links { display: flex; gap: 18px; align-items: center; }
+        .top-nav-link { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); cursor: pointer; text-decoration: none; transition: color 0.2s ease; }
+        .top-nav-link:hover { color: var(--epic-red); }
+        .top-nav-actions { display: flex; align-items: center; gap: 12px; }
+        .theme-toggle { cursor: pointer; font-size: 1.1rem; opacity: 0.5; background: none; border: none; padding: 4px; color: var(--text-primary); }
+        .theme-toggle:hover { opacity: 1; }
+        .back-link { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 4px 12px; border: 1px solid var(--glass-border); border-radius: 8px; transition: all 0.2s ease; }
+        .back-link:hover { color: var(--epic-red); border-color: var(--epic-red); }
+        .report { padding: 80px 40px 60px; max-width: 920px; margin: 0 auto; }
+        .hero { margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--glass-border); }
+        .hero-logos { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .hero-logo-text { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .hero-divider { width: 20px; height: 2px; background: var(--epic-red); }
+        .hero-badge { display: inline-block; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; background: rgba(78,205,196,0.15); color: var(--success); }
+        .hero-title { font-size: 2.2rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 10px; line-height: 1.15; }
+        .hero-title .hl { color: var(--epic-red); }
+        .hero-subtitle { font-size: 1rem; color: var(--text-secondary); margin-bottom: 18px; }
+        .hero-meta { display: flex; flex-wrap: wrap; gap: 18px; }
+        .hero-meta-item { font-size: 0.75rem; color: var(--text-muted); }
+        .hero-meta-item strong { color: var(--text-secondary); }
+        .section { margin-bottom: 44px; }
+        .section-label { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--epic-red); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+        .section-label::after { content: ''; flex: 1; height: 1px; background: var(--glass-border); }
+        .bloco-header { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.3px; margin-bottom: 6px; }
+        .bloco-sub { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px; }
+        .question { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 12px; padding: 20px 22px; margin-bottom: 14px; }
+        .q-header { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
+        .q-num { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; color: var(--epic-red); letter-spacing: 1px; background: rgba(255,0,80,0.1); padding: 3px 10px; border-radius: 4px; }
+        .q-tag { font-size: 0.68rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .q-quote { font-size: 1rem; line-height: 1.65; color: var(--text-primary); font-style: italic; border-left: 3px solid var(--epic-red); padding-left: 16px; margin-bottom: 14px; }
+        .q-meta { display: grid; gap: 8px; font-size: 0.82rem; color: var(--text-secondary); }
+        .q-meta .meta-line { display: flex; gap: 10px; align-items: flex-start; }
+        .q-meta .meta-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 2px 8px; border-radius: 4px; flex-shrink: 0; }
+        .meta-learn { background: rgba(108,159,255,0.15); color: var(--info); }
+        .meta-red { background: rgba(255,0,80,0.15); color: var(--epic-red); }
+        .meta-green { background: rgba(78,205,196,0.15); color: var(--success); }
+        .meta-open { background: rgba(204,136,0,0.15); color: var(--warning); }
+        .q-meta strong { color: var(--text-primary); font-weight: 700; }
+        .context-box { background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--warning); border-radius: 0 12px 12px 0; padding: 18px 22px; margin-top: 12px; }
+        .context-box.context-danger { border-left-color: var(--epic-red); }
+        .context-box.context-info { border-left-color: var(--info); }
+        .context-box.context-success { border-left-color: var(--success); }
+        .context-box strong { color: var(--text-primary); display: block; margin-bottom: 8px; font-size: 0.9rem; }
+        .context-box p { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 6px; }
+        .footer { text-align: center; padding: 40px; font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid var(--glass-border); margin-top: 20px; }
+        .footer a { color: var(--epic-red); text-decoration: none; }
+        @media (max-width: 768px) {
+            .report { padding: 75px 18px 40px; }
+            .top-nav { padding: 0 18px; }
+            .top-nav-links { display: none; }
+            .hero-title { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <div class="top-nav-logo">
+        <img src="https://www.epic.digital/hubfs/new/logo-epic-2026.svg" alt="EPIC" onerror="this.style.display='none'">
+        <span class="top-nav-title">04 · Discovery</span>
+    </div>
+    <div class="top-nav-links">
+        <a class="top-nav-link" href="#b1">GTM Motion</a>
+        <a class="top-nav-link" href="#b2">Data &amp; Stack</a>
+        <a class="top-nav-link" href="#b3">Decisoes Tipo 1</a>
+        <a class="top-nav-link" href="#b4">Ambicao</a>
+        <a class="top-nav-link" href="#arms">Arma</a>
+    </div>
+    <div class="top-nav-actions">
+        <a class="back-link" href="index.html">← Hub</a>
+        <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </div>
+</nav>
+
+<div class="report">
+
+    <div class="hero">
+        <div class="hero-logos">
+            <span class="hero-logo-text">GTM Kit · Jupiter</span>
+            <span class="hero-divider"></span>
+            <span class="hero-logo-text">Peca 04 / 10</span>
+        </div>
+        <span class="hero-badge">16 perguntas · 4 blocos</span>
+        <h1 class="hero-title">Discovery <span class="hl">Questions</span></h1>
+        <p class="hero-subtitle">16 perguntas organizadas em 4 blocos. Usar durante a conversa para qualificar, descobrir dor real, e guiar a narrativa. <strong>Escolher 3-5 por conversa, nao todas.</strong></p>
+        <div class="hero-meta">
+            <span class="hero-meta-item"><strong>Regra:</strong> 70% escutar, 30% falar</span>
+            <span class="hero-meta-item"><strong>Melhor pergunta:</strong> gera 3-5s de silencio</span>
+            <span class="hero-meta-item"><strong>Fonte:</strong> 04-DISCOVERY-QUESTIONS.md</span>
+        </div>
+    </div>
+
+    <div class="context-box context-info">
+        <strong>Principio</strong>
+        <p><strong>Nao fazer pesquisa de mercado.</strong> Cada pergunta deve REVELAR algo que o prospect mesmo nao tinha ouvido ainda falar dele mesmo. A melhor pergunta e aquela que gera 3-5 segundos de silencio antes da resposta.</p>
+    </div>
+
+    <div class="section" id="b1">
+        <div class="section-label">Bloco 1 · GTM Motion (como cresce hoje)</div>
+
+        <div class="question">
+            <div class="q-header"><span class="q-num">Q1</span><span class="q-tag">Abertura</span></div>
+            <div class="q-quote">Onde esta vindo o crescimento da empresa nos ultimos 12 meses? Por canal, se puder detalhar.</div>
+            <div class="q-meta">
+                <div class="meta-line"><span class="meta-tag meta-learn">Aprende</span><span>Dependencia de canal + maturidade de tracking + auto-conhecimento.</span></div>
+                <div class="meta-line"><span class="meta-tag meta-red">Red</span><span>&quot;Nao sei direito, depende&quot; → zero tracking, sinal de imaturidade digital.</span></div>
+                <div class="meta-line"><span class="meta-tag meta-green">Green</span><span>Resposta detalhada por canal, com CAC aproximado → cliente sofisticado.</span></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="q-header"><span class="q-num">Q2</span><span class="q-tag">Diagnostico</span></div>
+            <div class="q-quote">Se voce parasse de investir em marketing pago hoje por 6 meses, o que aconteceria com a receita?</div>
+            <div class="q-meta">
+                <div class="meta-line"><span class="meta-tag meta-learn">Aprende</span><span>Dependencia de paid vs brand organico. Se for 100% paid, ele e refem.</span></div>
+                <div class="meta-line"><span class="meta-tag meta-open">Abre</span><span>Category Leap (brand growth), NTIVA case (paid com estrategia, nao commodity).</span></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="q-header"><span class="q-num">Q3</span><span class="q-tag">Provocacao</span></div>
+            <div class="q-quote">Qual o seu CAC hoje? E o CAC payback? Voce confia nesses numeros?</div>
+            <div class="q-meta">
+                <div class="meta-line"><span class="meta-tag meta-learn">Aprende</span><span>Maturidade financeira + qualidade de dados.</span></div>
+                <div class="meta-line"><span class="meta-tag meta-open">Abre</span><span>Se ele diz &quot;nao confia&quot;: ROF (orquestracao de dados + governanca).</span></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="q-header"><span class="q-num">Q4</span><span class="q-tag">Ampliacao</span></div>
+            <div class="q-quote">Voces ja fizeram algum teste que mudou completamente a visao do que funciona pra empresa? Conta pra mim.</div>
+            <div class="q-meta">
+                <div class="meta-line"><span class="meta-tag meta-learn">Aprende</span><span>Cultura experimental + historico de descobertas. Se ele nao tem historia, ele nao testa.</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="b2">
+        <div class="section-label">Bloco 2 · Data &amp; Stack (infraestrutura)</div>
+
+        <div class="question">
+            <div class="q-header"><span class="q-num">Q5</span><span class="q-tag">Stack check</span></div>
+            <div class="q-quote">Qual seu CRM hoje, e de zero a dez quanto voce confia nos dados que estao la?</div>
+            <div class="q-meta">
+                <div class="meta-line"><span class="meta-tag meta-learn">Aprende</span><span>Estado real do stack + honestidade sobre data quality.</span></div>
+                <div class="meta-line"><span class="meta-tag meta-open">Abre</span><span>Se &lt; 7: iFood case e perfeito (centralizacao + 90% automacao).</span></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="q-header"><span class="q-num">Q6</span><span class="q-tag">Silos</span></div>
+            <div class="q-quote">Voces tem uma fonte unica da verdade para marketing + vendas + CS, ou cada area trabalha com dados diferentes?</div>
+            <div class="q-meta">
+                <div class="meta-line"><span class="meta-tag meta-learn">Aprende</span><span>Presenca de silos (dor classica).</span></div>
+                <div class="meta-line"><span class="meta-tag meta-open">Citar</span><span>Silos reduzem produtividade em ate 20% (fonte iFood case).</span></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="q-header"><span class="q-num">Q7</span><span class="q-tag">Tracking</span></div>
+            <div class="q-quote">Se voce perguntar agora para seu time de marketing qual anuncio gerou a ultima venda grande, em quanto tempo eles respondem?</div>
+            <div class="q-meta">
+                <div class="meta-line"><span class="meta-tag meta-learn">Aprende</span><span>Attribution + governanca de dados.</span></div>
+                <div class="meta-line"><span class="meta-tag meta-open">Abre</span><span>Se demorar &gt; 5 min: Command Center / ROF Governance pillar.</span></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="q-header"><span class="q-num">Q8</span><span class="q-tag">IA maturity</span></div>
+            <div class="q-quote">Voces ja usam IA em algum processo? Conta em que esta dando certo e em que nao esta.</div>
+            <div class="q-meta">
+                <div class="meta-line"><span class="meta-tag meta-learn">Aprende</span><span>Onde IA ja esta colando vs onde esta alucinando.</span></div>
+                <div class="meta-line"><span class="meta-tag meta-open">Gancho</span><span>Conectar com &quot;IA executa volume, humano governa estrategia.&quot;</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="b3">
+        <div class="section-label">Bloco 3 · Decisoes Tipo 1 (territorio Revenue Intelligence)</div>
+
+        <div class="question">
+            <div class="q-header"><span class="q-num">Q9</span><span class="q-tag">Horizonte</span></div>
+            <div class="q-quote">Qual a maior decisao de negocio que voce tem na sua mesa nos proximos 12 meses? Uma decisao em que errar custaria muito.</div>
+            <div class="q-meta">
+                <div class="meta-line"><span class="meta-tag meta-learn">Aprende</span><span>Presenca de decisao irreversivel (tipo 1).</span></div>
+                <div class="meta-line"><span class="meta-tag meta-open">Abre</span><span>Se ha decisao tipo 1 + top-tier: Revenue Intelligence.</span></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="q-header"><span class="q-num">Q10</span><span class="q-tag">Confianca decisoria</span></div>
+            <div class="q-quote">Voce esta confiante na direcao que voce ja tomou? Ou esta buscando validacao externa?</div>
+            <div class="q-meta">
+                <div class="meta-line"><span class="meta-tag meta-learn">Aprende</span><span>Cobertura politica vs convicao real. Se &quot;busca validacao&quot; → terceirizacao de responsabilidade.</span></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="q-header"><span class="q-num">Q11</span><span class="q-tag">Arrependimento</span></div>
+            <div class="q-quote">Qual a ultima decisao estrategica grande que voce tomou e hoje se arrepende? O que voce acha que faltou?</div>
+            <div class="q-meta">
+                <div class="meta-line"><span class="meta-tag meta-learn">Aprende</span><span>Auto-critica + padrao de erro.</span></div>
+                <div class="meta-line"><span class="meta-tag meta-green">Poder</span><span>Muito poderosa: cria vulnerabilidade compartilhada, constroi confianca.</span></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="q-header"><span class="q-num">Q12</span><span class="q-tag">Investimentos</span></div>
+            <div class="q-quote">Voce ja investiu em consultoria de gestao ou IA nos ultimos 24 meses? Se sim, ficou satisfeito com o ROI?</div>
+            <div class="q-meta">
+                <div class="meta-line"><span class="meta-tag meta-learn">Aprende</span><span>ICP direto para Revenue Intelligence. Target-perfect se: sim + nao satisfeito.</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="b4">
+        <div class="section-label">Bloco 4 · Ambicao e Fit</div>
+
+        <div class="question">
+            <div class="q-header"><span class="q-num">Q13</span><span class="q-tag">Ambicao real</span></div>
+            <div class="q-quote">Quanto voce quer que essa empresa esteja faturando em 3 anos? Nao me de um numero redondo — me de o numero que faz voce ficar desconfortavel de falar em voz alta.</div>
+            <div class="q-meta">
+                <div class="meta-line"><span class="meta-tag meta-learn">Aprende</span><span>Apetite real de risco. Se ele da numero pequeno, ele quer cruzar a rua, nao atravessar o mar.</span></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="q-header"><span class="q-num">Q14</span><span class="q-tag">Anti-concorrente</span></div>
+            <div class="q-quote">Voce olha pra algum concorrente e pensa &lsquo;por que eles conseguiram e eu nao?&rsquo; — quem? Por que voce acha que eles conseguiram?</div>
+            <div class="q-meta">
+                <div class="meta-line"><span class="meta-tag meta-learn">Aprende</span><span>Brand envy + modelo mental de competicao + bias mimetico.</span></div>
+                <div class="meta-line"><span class="meta-tag meta-open">Abre</span><span>Category Leap: se for copiar, esta brigando no mesmo oceano vermelho.</span></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="q-header"><span class="q-num">Q15</span><span class="q-tag">Diferencial</span></div>
+            <div class="q-quote">Se amanha o seu concorrente tiver acesso as mesmas ferramentas de IA que voce, ele consegue o mesmo resultado? Qual seu diferencial real?</div>
+            <div class="q-meta">
+                <div class="meta-line"><span class="meta-tag meta-learn">Aprende</span><span>Auto-conciencia sobre diferencial + se vende execucao ou pensamento.</span></div>
+                <div class="meta-line"><span class="meta-tag meta-open">Abre</span><span>Tagline &quot;Powered by AI, Governed by Human&quot; naturalmente.</span></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="q-header"><span class="q-num">Q16</span><span class="q-tag">Fit cultural</span></div>
+            <div class="q-quote">Voce prefere uma agencia que te entrega relatorios ou uma que te desafia em cada reuniao?</div>
+            <div class="q-meta">
+                <div class="meta-line"><span class="meta-tag meta-learn">Aprende</span><span>Fit de estilo de trabalho. Se ele quer relatorio, cuidado — nao servimos bem.</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="arms">
+        <div class="section-label">Perguntas-arma (alta intensidade · so para A-tier)</div>
+        <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 14px;">Essas sao &ldquo;deal-makers&rdquo;. Usar quando o prospect esta engajado e voce quer fechar um proximo passo agora.</p>
+
+        <div class="question">
+            <div class="q-header"><span class="q-num">QA1</span><span class="q-tag">Desmascaramento</span></div>
+            <div class="q-quote">Voce tem a honestidade de me dizer o que sua agencia atual nao entregou que voce esperava?</div>
+        </div>
+        <div class="question">
+            <div class="q-header"><span class="q-num">QA2</span><span class="q-tag">Horizonte curto</span></div>
+            <div class="q-quote">O que precisa acontecer nos proximos 90 dias pra voce considerar esse ano um sucesso? Voce esta caminhando nessa direcao?</div>
+        </div>
+        <div class="question">
+            <div class="q-header"><span class="q-num">QA3</span><span class="q-tag">Gatilho CTA</span></div>
+            <div class="q-quote">Eu posso propor um diagnostico de 45 minutos onde eu vou apontar os 3 pontos cegos da sua operacao de receita. Voce topa? E de graca.</div>
+            <div class="q-meta" style="margin-top: 10px;">
+                <div class="meta-line"><span class="meta-tag meta-open">Ligar</span><span>QA3 e o gatilho do <strong>CTA Ladder Nivel 3</strong> — ver peca 05.</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="golden">
+        <div class="section-label">Regra de ouro</div>
+        <div class="context-box context-success">
+            <strong>Calibrar em tempo real</strong>
+            <p><strong>Se voce faz a pergunta e a resposta e automatica</strong> — a pergunta era ruim. Troque.</p>
+            <p><strong>Se voce faz a pergunta e o prospect para, pensa, e responde devagar</strong> — a pergunta era boa. Escreva no celular apos a conversa.</p>
+            <p><strong>Se a pergunta causa desconforto visivel</strong> — voce achou o no do problema. Pare. Nao forte a resposta. Mude de assunto e volte depois — o inconsciente do prospect ja esta trabalhando.</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    EPIC Digital &mdash; GTM Kit Jupiter &mdash; Peca 04 · Discovery &mdash; Abr 2026<br>
+    <a href="index.html">← Hub do Kit</a> &middot;
+    <a href="03-icp-scoring.html">← ICP Scoring</a> &middot;
+    <a href="05-cta-ladder.html">CTA Ladder →</a>
+</div>
+
+<script>
+(function() {
+    const html = document.documentElement;
+    const toggleBtn = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('epic-theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+    toggleBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    window.toggleTheme = function() {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('epic-theme', next);
+        toggleBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+    };
+
+    document.querySelectorAll('.top-nav-link').forEach(link => {
+        link.addEventListener('click', e => {
+            const href = link.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+})();
+</script>
+</body>
+</html>

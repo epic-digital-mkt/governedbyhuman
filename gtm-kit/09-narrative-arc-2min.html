@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <title>09 · Narrativa 2min — GTM Kit Jupiter</title>
+    <meta name="description" content="Roteiro de narrativa oral completa. 4 atos. Decorar a estrutura, improvisar as palavras. ~2 minutos de fala.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --epic-red: #FF0050; --success: #4ECDC4; --warning: #CC8800; --danger: #FF6B6B; --info: #6C9FFF; }
+        [data-theme="dark"] { --bg-primary: #000; --text-primary: #fff; --text-secondary: rgba(255,255,255,0.7); --text-muted: rgba(255,255,255,0.4); --border-color: rgba(255,255,255,0.1); --glass: rgba(255,255,255,0.03); --glass-border: rgba(255,255,255,0.06); --row-hover: rgba(255,255,255,0.04); --warning: #FFE66D; }
+        [data-theme="light"] { --bg-primary: #fff; --text-primary: #000; --text-secondary: rgba(0,0,0,0.7); --text-muted: rgba(0,0,0,0.4); --border-color: rgba(0,0,0,0.1); --glass: rgba(0,0,0,0.03); --glass-border: rgba(0,0,0,0.06); --row-hover: rgba(0,0,0,0.03); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-primary); color: var(--text-primary); transition: background-color 0.3s ease, color 0.3s ease; min-height: 100vh; line-height: 1.6; }
+        .top-nav { position: fixed; top: 0; left: 0; right: 0; height: 60px; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-color); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; }
+        [data-theme="light"] .top-nav { background: rgba(255,255,255,0.95); }
+        .top-nav-logo { display: flex; align-items: center; gap: 12px; }
+        .top-nav-logo img { height: 18px; width: auto; }
+        .top-nav-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
+        .top-nav-links { display: flex; gap: 18px; align-items: center; }
+        .top-nav-link { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); cursor: pointer; text-decoration: none; transition: color 0.2s ease; }
+        .top-nav-link:hover { color: var(--epic-red); }
+        .top-nav-actions { display: flex; align-items: center; gap: 12px; }
+        .theme-toggle { cursor: pointer; font-size: 1.1rem; opacity: 0.5; background: none; border: none; padding: 4px; color: var(--text-primary); }
+        .theme-toggle:hover { opacity: 1; }
+        .back-link { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 4px 12px; border: 1px solid var(--glass-border); border-radius: 8px; transition: all 0.2s ease; }
+        .back-link:hover { color: var(--epic-red); border-color: var(--epic-red); }
+        .report { padding: 80px 40px 60px; max-width: 880px; margin: 0 auto; }
+        .hero { margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--glass-border); }
+        .hero-logos { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .hero-logo-text { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .hero-divider { width: 20px; height: 2px; background: var(--epic-red); }
+        .hero-badge { display: inline-block; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; background: rgba(78,205,196,0.15); color: var(--success); }
+        .hero-title { font-size: 2.2rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 10px; line-height: 1.15; }
+        .hero-title .hl { color: var(--epic-red); }
+        .hero-subtitle { font-size: 1rem; color: var(--text-secondary); margin-bottom: 18px; }
+        .hero-meta { display: flex; flex-wrap: wrap; gap: 18px; }
+        .hero-meta-item { font-size: 0.75rem; color: var(--text-muted); }
+        .hero-meta-item strong { color: var(--text-secondary); }
+        .section { margin-bottom: 44px; }
+        .section-label { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--epic-red); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+        .section-label::after { content: ''; flex: 1; height: 1px; background: var(--glass-border); }
+        .ato { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px; padding: 26px 28px; margin-bottom: 16px; position: relative; }
+        .ato-header { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--glass-border); }
+        .ato-num { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 900; color: var(--epic-red); line-height: 1; letter-spacing: -1.5px; flex-shrink: 0; min-width: 70px; }
+        .ato-title-group { flex: 1; }
+        .ato-title { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.3px; }
+        .ato-obj { font-size: 0.82rem; color: var(--text-muted); margin-top: 2px; font-style: italic; }
+        .ato-duration { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: var(--epic-red); background: rgba(255,0,80,0.1); padding: 4px 10px; border-radius: 4px; align-self: flex-start; }
+        .script { font-size: 1rem; line-height: 1.75; color: var(--text-primary); font-style: italic; border-left: 3px solid var(--epic-red); padding-left: 18px; margin-bottom: 14px; }
+        .script em { color: var(--epic-red); font-style: italic; font-weight: 500; }
+        .ato-meta { display: grid; gap: 10px; margin-top: 12px; }
+        .ato-meta-item { font-size: 0.84rem; color: var(--text-secondary); display: flex; gap: 12px; align-items: flex-start; }
+        .ato-meta-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 2px 8px; border-radius: 4px; flex-shrink: 0; min-width: 82px; text-align: center; }
+        .tag-pause { background: rgba(204,136,0,0.15); color: var(--warning); }
+        .tag-gesture { background: rgba(108,159,255,0.15); color: var(--info); }
+        .report-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 12px; }
+        .report-table th { padding: 10px 14px; text-align: left; font-weight: 700; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); background: var(--glass); border-bottom: 1px solid var(--glass-border); }
+        .report-table td { padding: 10px 14px; border-bottom: 1px solid var(--glass-border); color: var(--text-secondary); vertical-align: top; }
+        .report-table .name { font-weight: 700; color: var(--text-primary); }
+        .rule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
+        .rule-box { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 12px; padding: 18px 20px; }
+        .rule-box h4 { font-size: 0.75rem; font-weight: 800; color: var(--epic-red); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .rule-box ul { list-style: none; font-size: 0.86rem; color: var(--text-secondary); }
+        .rule-box li { margin-bottom: 8px; padding-left: 16px; position: relative; }
+        .rule-box li::before { content: '→'; position: absolute; left: 0; color: var(--epic-red); font-weight: 800; }
+        .rule-box.dont li::before { content: '❌'; color: var(--epic-red); }
+        .interruption-list { list-style: none; margin-top: 12px; }
+        .interruption-list li { padding: 14px 18px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 10px; margin-bottom: 10px; }
+        .interruption-list .int-q { font-size: 0.9rem; color: var(--text-primary); font-style: italic; margin-bottom: 6px; }
+        .interruption-list .int-a { font-size: 0.84rem; color: var(--text-secondary); border-left: 2px solid var(--epic-red); padding-left: 12px; }
+        .context-box { background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--warning); border-radius: 0 12px 12px 0; padding: 18px 22px; margin-top: 12px; }
+        .context-box.context-danger { border-left-color: var(--epic-red); }
+        .context-box.context-info { border-left-color: var(--info); }
+        .context-box.context-success { border-left-color: var(--success); }
+        .context-box strong { color: var(--text-primary); display: block; margin-bottom: 8px; font-size: 0.9rem; }
+        .context-box p { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 6px; }
+        .context-box ul { margin: 6px 0 0 20px; font-size: 0.88rem; color: var(--text-secondary); }
+        .context-box li { margin-bottom: 6px; }
+        .footer { text-align: center; padding: 40px; font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid var(--glass-border); margin-top: 20px; }
+        .footer a { color: var(--epic-red); text-decoration: none; }
+        @media (max-width: 768px) {
+            .report { padding: 75px 18px 40px; }
+            .top-nav { padding: 0 18px; }
+            .top-nav-links { display: none; }
+            .hero-title { font-size: 1.6rem; }
+            .rule-grid { grid-template-columns: 1fr; }
+            .ato-header { flex-direction: column; gap: 8px; }
+            .ato-num { font-size: 1.5rem; min-width: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <div class="top-nav-logo">
+        <img src="https://www.epic.digital/hubfs/new/logo-epic-2026.svg" alt="EPIC" onerror="this.style.display='none'">
+        <span class="top-nav-title">09 · Narrativa 2min</span>
+    </div>
+    <div class="top-nav-links">
+        <a class="top-nav-link" href="#ato1">Ancora</a>
+        <a class="top-nav-link" href="#ato2">Diagnostico</a>
+        <a class="top-nav-link" href="#ato3">Alternativa</a>
+        <a class="top-nav-link" href="#ato4">Prova</a>
+        <a class="top-nav-link" href="#rules">Regras</a>
+    </div>
+    <div class="top-nav-actions">
+        <a class="back-link" href="index.html">← Hub</a>
+        <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </div>
+</nav>
+
+<div class="report">
+
+    <div class="hero">
+        <div class="hero-logos">
+            <span class="hero-logo-text">GTM Kit · Jupiter</span>
+            <span class="hero-divider"></span>
+            <span class="hero-logo-text">Peca 09 / 10</span>
+        </div>
+        <span class="hero-badge">4 atos · ~2 min de fala</span>
+        <h1 class="hero-title">Arco Oral <span class="hl">2min</span></h1>
+        <p class="hero-subtitle">Roteiro de narrativa oral completa. <strong>Decore a estrutura, improvise as palavras.</strong> Total ~2 minutos de fala. Ideal para quando o prospect pergunta algo tipo: &ldquo;Me conta o que voces fazem.&rdquo;</p>
+        <div class="hero-meta">
+            <span class="hero-meta-item"><strong>Duracao total:</strong> 2:00 — 2:15 (se passar, pesado)</span>
+            <span class="hero-meta-item"><strong>Dialogo:</strong> 3-5 min depois</span>
+            <span class="hero-meta-item"><strong>Regra:</strong> 70% escutar, 30% falar</span>
+        </div>
+    </div>
+
+    <div class="context-box context-info">
+        <strong>Como usar</strong>
+        <p>Este e o arco para uma conversa de ~5-7 minutos total: 2 min de voce falando + 3-5 min de dialogo. <strong>Nao leia.</strong> Decore as transicoes. Se o prospect interromper, deixe — isso e bom, sinaliza engajamento.</p>
+    </div>
+
+    <div class="section" id="ato1">
+        <div class="ato">
+            <div class="ato-header">
+                <div class="ato-num">01</div>
+                <div class="ato-title-group">
+                    <div class="ato-title">A Ancora</div>
+                    <div class="ato-obj">Estabelecer tensao e autoridade em 3 frases</div>
+                </div>
+                <div class="ato-duration">~30s</div>
+            </div>
+            <div class="script">A gente e a EPIC — agencia de Revenue Architecture, 9 anos, 10 paises.<br><br>Mas a historia interessante nao e a nossa. E o que mudou no mercado nos ultimos 18 meses.<br><br><em>A IA democratizou execucao.</em> E isso matou o diferencial competitivo da maioria das empresas. Elas nao perceberam ainda — mas todas estao convergindo pra mesma estrategia, porque estao usando o mesmo modelo pra pensar.</div>
+            <div class="ato-meta">
+                <div class="ato-meta-item"><span class="ato-meta-tag tag-pause">Pausa 2s</span><span>Parar de falar. Encarar o prospect. Deixar a afirmacao sentar.</span></div>
+                <div class="ato-meta-item"><span class="ato-meta-tag tag-gesture">Gesto</span><span>Mao aberta, corpo ligeiramente inclinado para tras.</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="ato2">
+        <div class="ato">
+            <div class="ato-header">
+                <div class="ato-num">02</div>
+                <div class="ato-title-group">
+                    <div class="ato-title">O Diagnostico</div>
+                    <div class="ato-obj">Criar o &ldquo;sim, isso e verdade&rdquo; no inconsciente do prospect</div>
+                </div>
+                <div class="ato-duration">~30s</div>
+            </div>
+            <div class="script">Olha em volta. <em>Todas as landing pages estao iguais.</em> Todos os anuncios convergiram. Todas as estrategias soam identicas. Quer um teste? Pergunta pro ChatGPT uma estrategia de GTM pro seu setor. Pergunta pro Claude. Pergunta pro Gemini. Tres respostas similares. E provavelmente o que seu concorrente esta fazendo agora.<br><br>Rene Girard escreveu sobre isso em 1972 — <em>teoria mimetica.</em> Hoje, a gente ta vendo Girard aplicado em escala algoritmica. E ninguem avisou o mercado.</div>
+            <div class="ato-meta">
+                <div class="ato-meta-item"><span class="ato-meta-tag tag-pause">Pausa 1s</span><span>Deixar a imagem Girard respirar.</span></div>
+                <div class="ato-meta-item"><span class="ato-meta-tag tag-gesture">Gesto</span><span>Abrir as maos, tom de &quot;todo mundo ta vendo isso?&quot;</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="ato3">
+        <div class="ato">
+            <div class="ato-header">
+                <div class="ato-num">03</div>
+                <div class="ato-title-group">
+                    <div class="ato-title">A Alternativa</div>
+                    <div class="ato-obj">Apresentar o modelo EPIC em 3 camadas sem soar vendedor</div>
+                </div>
+                <div class="ato-duration">~45s</div>
+            </div>
+            <div class="script">A gente opera numa premissa diferente. <em>Tres camadas que se sustentam.</em><br><br>Camada um: EPIC. A casa. O que voce ve do lado de fora — agencia que entrega.<br><br>Camada dois: ROF, Revenue Orchestration Framework. Nossa engine interna. Quatro pilares, cinco agentes de IA, cinco camadas tecnicas. E o motivo por que a gente entrega em 7 dias o que agencia comum entrega em 30.<br><br>Camada tres: Revenue Intelligence. Nosso produto premium. So pra empresas que tem decisao tipo 1 pela frente. Decisao irreversivel, Jeff Bezos — escolher mercado, fazer M&amp;A, descontinuar produto, reposicionar categoria. Programa de 12 semanas.<br><br>Ah, e a regra que nunca quebramos: <em>&ldquo;Powered by AI, Governed by Human.&rdquo;</em> IA executa volume. Humano governa estrategia. Nenhum arquivo vai pra cliente sem revisao humana. <em>Nunca.</em></div>
+            <div class="ato-meta">
+                <div class="ato-meta-item"><span class="ato-meta-tag tag-pause">Pausa 1s</span><span>Apos &quot;nunca&quot; final. Deixar a palavra pesar.</span></div>
+                <div class="ato-meta-item"><span class="ato-meta-tag tag-gesture">Gesto</span><span>Contar as 3 camadas nos dedos, deliberadamente.</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="ato4">
+        <div class="ato">
+            <div class="ato-header">
+                <div class="ato-num">04</div>
+                <div class="ato-title-group">
+                    <div class="ato-title">A Prova + Chamado</div>
+                    <div class="ato-obj">Ancorar em numeros concretos e convidar para o proximo passo</div>
+                </div>
+                <div class="ato-duration">~30-40s</div>
+            </div>
+            <div class="script">Dois numeros pra voce levar pra casa.<br><br>NTIVA, MSP de IT nos Estados Unidos: <em>mais 539% de ROI em tres anos.</em> E o detalhe importante: isso foi SEM escalar IA ainda. So com estrategia humana sob Toyota Partnership mode. Com IA estruturada, a gente espera dobrar esse chao.<br><br>iFood Ads, no Brasil: <em>+294% de capacidade de campanhas.</em> Passaram de 250 para 850 campanhas por mes, 90% do faturamento automatizado, 60% menos tempo de processamento.<br><br>Entao a pergunta pra voce e:<br><br><em>Voce tem uma decisao grande pela frente que voce nao pode voltar atras? Se sim, a gente devia conversar.</em><br><br>Se voce quer so otimizar algo que ja funciona, tem gente melhor que a gente pra isso.</div>
+            <div class="ato-meta">
+                <div class="ato-meta-item"><span class="ato-meta-tag tag-pause">Pausa 3s</span><span>Final. Silencio intencional. Deixar o prospect responder.</span></div>
+                <div class="ato-meta-item"><span class="ato-meta-tag tag-gesture">Gesto</span><span>Leve sorriso. Contato visual direto.</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="rules">
+        <div class="section-label">Regras para nao quebrar o arco</div>
+
+        <div class="rule-grid">
+            <div class="rule-box">
+                <h4>Ritmo</h4>
+                <ul>
+                    <li><strong>Atos 1 e 4:</strong> rapidos e afirmativos. Ataque e chamado.</li>
+                    <li><strong>Atos 2 e 3:</strong> pausados. Ouvinte precisa DIGERIR.</li>
+                    <li>Cada ato comeca com gancho de ruptura.</li>
+                    <li>Cada ato termina com pausa. Silencio e parte da narrativa.</li>
+                </ul>
+            </div>
+            <div class="rule-box dont">
+                <h4>O que NAO dizer</h4>
+                <ul>
+                    <li>&quot;Somos os melhores.&quot;</li>
+                    <li>&quot;Temos os melhores clientes.&quot;</li>
+                    <li>&quot;Voce vai amar trabalhar com a gente.&quot;</li>
+                    <li>&quot;Me diga seus desafios.&quot; (jargao-zumbi)</li>
+                    <li>&quot;A EPIC e diferente porque...&quot;</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="context-box context-danger" style="margin-top: 14px;">
+            <strong>Principio</strong>
+            <p>Tudo isso e auto-elogio. A narrativa so funciona se for <strong>SOBRE O PROSPECT e o MUNDO dele</strong>, com a EPIC aparecendo como consequencia logica.</p>
+        </div>
+    </div>
+
+    <div class="section" id="interrupt">
+        <div class="section-label">Interrupcoes comuns — como reagir</div>
+        <ul class="interruption-list">
+            <li>
+                <div class="int-q">Prospect: &ldquo;Interessante.&rdquo;</div>
+                <div class="int-a"><strong>NAO continue o arco.</strong> Pergunte: <em>&ldquo;Por que isso ressoa? O que voce ta vendo no seu mercado?&rdquo;</em> Deixe ele falar.</div>
+            </li>
+            <li>
+                <div class="int-q">Prospect: &ldquo;E caro?&rdquo;</div>
+                <div class="int-a"><strong>NAO desvie com a frase dos $150-250k.</strong> Fale: <em>&ldquo;Depende do escopo. Antes disso, vale a gente entender qual a sua real dor.&rdquo;</em></div>
+            </li>
+            <li>
+                <div class="int-q">Prospect: &ldquo;Ja trabalho com agencia X.&rdquo;</div>
+                <div class="int-a"><strong>NAO compete.</strong> Fale: <em>&ldquo;Entendo. O que eles entregam e importante. A EPIC atua numa camada que provavelmente eles nao alcancam — decisoes tipo 1, reposicionamento, arquitetura de receita. Se sua dor e essa, faz sentido conversar. Se nao, fico na torcida pela agencia X.&rdquo;</em></div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="section" id="variants">
+        <div class="section-label">Variantes situacionais</div>
+        <table class="report-table">
+            <thead><tr><th>Tipo de prospect</th><th>Ajuste no arco</th></tr></thead>
+            <tbody>
+                <tr><td class="name">C-level EUA</td><td>Trocar exemplo final por: &quot;aqui nos EUA, o equivalente seria Sequoia que agora opera mais como Engineering Bureau que como VC puro — diagnostico antes de capital.&quot;</td></tr>
+                <tr><td class="name">Dono BR medio ($5M-$50M)</td><td>Manter o arco, mas no Ato 4 trocar iFood pro MedConnect — mais proximo de porte.</td></tr>
+                <tr><td class="name">Procurement / nao-decisor</td><td>Cortar o ato 4 e substituir: <em>&quot;Eu nao vou vender nada pra voce agora. Mas se fizer sentido, me conta quem sao os decisores e o que eles estao priorizando. Com isso a gente ve se faz sentido trazer a EPIC pra avaliacao.&quot;</em></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section" id="practice">
+        <div class="section-label">Teste em voz alta — antes do evento</div>
+        <div class="context-box context-success">
+            <strong>Pratica minima: 3 repeticoes antes do evento</strong>
+            <ul>
+                <li>Uma sozinho.</li>
+                <li>Uma com Jeferson.</li>
+                <li>Uma em voz alta andando.</li>
+            </ul>
+            <p style="margin-top: 8px;">Cronometre quando falar. Se o arco passar de 2:15, esta pesado demais. Se possivel, gravar em audio e ouvir — voce detecta onde seu proprio tom fica hesitante ou fraco. Depois: <strong>esquece o script. Deixa viver.</strong></p>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    EPIC Digital &mdash; GTM Kit Jupiter &mdash; Peca 09 · Narrativa 2min &mdash; Abr 2026<br>
+    <a href="index.html">← Hub do Kit</a> &middot;
+    <a href="10-manifesto-shareable.html">Manifesto Shareable →</a>
+</div>
+
+<script>
+(function() {
+    const html = document.documentElement;
+    const toggleBtn = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('epic-theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+    toggleBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    window.toggleTheme = function() {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('epic-theme', next);
+        toggleBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+    };
+
+    document.querySelectorAll('.top-nav-link').forEach(link => {
+        link.addEventListener('click', e => {
+            const href = link.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+})();
+</script>
+</body>
+</html>

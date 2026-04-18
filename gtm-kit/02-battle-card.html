@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <title>02 · Battle Card — GTM Kit Jupiter</title>
+    <meta name="description" content="Battle card 1-pager da EPIC Digital. Tagline, 3 camadas, frameworks, cases, pricing SMU + revenue share, ICP, CTA ladder. Anti-posicionamento GaaS explicito.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --epic-red: #FF0050; --success: #4ECDC4; --warning: #CC8800; --danger: #FF6B6B; --info: #6C9FFF; }
+        [data-theme="dark"] { --bg-primary: #000; --bg-secondary: #0a0a0a; --text-primary: #fff; --text-secondary: rgba(255,255,255,0.7); --text-muted: rgba(255,255,255,0.4); --border-color: rgba(255,255,255,0.1); --glass: rgba(255,255,255,0.03); --glass-border: rgba(255,255,255,0.06); --row-hover: rgba(255,255,255,0.04); --warning: #FFE66D; }
+        [data-theme="light"] { --bg-primary: #fff; --bg-secondary: #F5F5F5; --text-primary: #000; --text-secondary: rgba(0,0,0,0.7); --text-muted: rgba(0,0,0,0.4); --border-color: rgba(0,0,0,0.1); --glass: rgba(0,0,0,0.03); --glass-border: rgba(0,0,0,0.06); --row-hover: rgba(0,0,0,0.03); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-primary); color: var(--text-primary); transition: background-color 0.3s ease, color 0.3s ease; min-height: 100vh; line-height: 1.6; }
+        .top-nav { position: fixed; top: 0; left: 0; right: 0; height: 60px; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-color); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; }
+        [data-theme="light"] .top-nav { background: rgba(255,255,255,0.95); }
+        .top-nav-logo { display: flex; align-items: center; gap: 12px; }
+        .top-nav-logo img { height: 18px; width: auto; }
+        .top-nav-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
+        .top-nav-links { display: flex; gap: 18px; align-items: center; }
+        .top-nav-link { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); cursor: pointer; text-decoration: none; transition: color 0.2s ease; }
+        .top-nav-link:hover { color: var(--epic-red); }
+        .top-nav-actions { display: flex; align-items: center; gap: 12px; }
+        .theme-toggle { cursor: pointer; font-size: 1.1rem; opacity: 0.5; background: none; border: none; padding: 4px; color: var(--text-primary); }
+        .theme-toggle:hover { opacity: 1; }
+        .back-link { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 4px 12px; border: 1px solid var(--glass-border); border-radius: 8px; transition: all 0.2s ease; }
+        .back-link:hover { color: var(--epic-red); border-color: var(--epic-red); }
+        .report { padding: 80px 40px 60px; max-width: 960px; margin: 0 auto; }
+        .hero { margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--glass-border); text-align: center; }
+        .hero-logos { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 18px; }
+        .hero-logo-text { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .hero-divider { width: 20px; height: 2px; background: var(--epic-red); }
+        .tagline { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900; letter-spacing: -2px; line-height: 1.05; margin-bottom: 14px; }
+        .tagline .hl { color: var(--epic-red); }
+        .tagline-sub { font-size: 1rem; color: var(--text-secondary); max-width: 680px; margin: 0 auto; }
+        .hero-meta { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px; }
+        .hero-meta-item { font-size: 0.74rem; color: var(--text-muted); }
+        .hero-meta-item strong { color: var(--text-secondary); font-weight: 700; }
+        .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 48px; }
+        .metric { text-align: center; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 12px; padding: 20px 12px; transition: border-color 0.2s ease; }
+        .metric:hover { border-color: var(--epic-red); }
+        .metric .num { font-size: 2rem; font-weight: 900; color: var(--epic-red); line-height: 1; letter-spacing: -1px; }
+        .metric .label { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-top: 6px; }
+        .metric .sub { font-size: 0.66rem; color: var(--text-muted); margin-top: 4px; }
+        .section { margin-bottom: 44px; }
+        .section-label { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--epic-red); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+        .section-label::after { content: ''; flex: 1; height: 1px; background: var(--glass-border); }
+        .summary { font-size: 0.96rem; color: var(--text-secondary); line-height: 1.75; }
+        .summary p { margin-bottom: 10px; }
+        .summary strong { color: var(--text-primary); }
+        .report-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 12px; }
+        .report-table th { padding: 10px 14px; text-align: left; font-weight: 700; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); background: var(--glass); border-bottom: 1px solid var(--glass-border); }
+        .report-table td { padding: 10px 14px; border-bottom: 1px solid var(--glass-border); color: var(--text-secondary); vertical-align: top; }
+        .report-table tr:hover td { background: var(--row-hover); }
+        .report-table .name { font-weight: 700; color: var(--text-primary); }
+        .report-table .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--epic-red); font-weight: 700; }
+        .pill { display: inline-block; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; padding: 2px 8px; border-radius: 10px; letter-spacing: 0.5px; }
+        .pill-success { background: rgba(78,205,196,0.15); color: var(--success); }
+        .pill-red { background: rgba(255,0,80,0.15); color: var(--epic-red); }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin-top: 12px; }
+        .card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 12px; padding: 18px; transition: all 0.2s ease; }
+        .card:hover { border-color: var(--epic-red); }
+        .card-title { font-size: 0.9rem; font-weight: 800; margin-bottom: 6px; }
+        .card-title .tag-fw { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--epic-red); font-weight: 700; display: block; margin-bottom: 4px; letter-spacing: 1px; text-transform: uppercase; }
+        .card-body { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+        .card-body strong { color: var(--text-secondary); }
+        .step-list { margin-top: 12px; }
+        .step-item { display: flex; gap: 14px; padding: 12px 16px; margin-bottom: 8px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 10px; align-items: flex-start; transition: border-color 0.2s ease; }
+        .step-item:hover { border-color: var(--epic-red); }
+        .step-num { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--epic-red); font-size: 0.9rem; flex-shrink: 0; min-width: 22px; }
+        .step-content { flex: 1; }
+        .step-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 2px; }
+        .step-desc { font-size: 0.8rem; color: var(--text-muted); }
+        .context-box { background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--warning); border-radius: 0 12px 12px 0; padding: 18px 22px; margin-top: 12px; }
+        .context-box.context-danger { border-left-color: var(--epic-red); }
+        .context-box.context-info { border-left-color: var(--info); }
+        .context-box strong { color: var(--text-primary); display: block; margin-bottom: 8px; font-size: 0.9rem; }
+        .context-box p { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 8px; }
+        .context-box ul { margin: 8px 0 0 18px; font-size: 0.86rem; color: var(--text-secondary); }
+        .context-box li { margin-bottom: 6px; }
+        .context-box li strong { display: inline; margin: 0; }
+        .url-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 12px; }
+        .url-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 10px; padding: 12px 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--epic-red); text-decoration: none; transition: all 0.2s ease; display: block; }
+        .url-card:hover { border-color: var(--epic-red); background: rgba(255,0,80,0.05); }
+        .url-card small { display: block; font-family: 'Inter', sans-serif; font-size: 0.66rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 2px; }
+        .footer { text-align: center; padding: 40px; font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid var(--glass-border); margin-top: 20px; }
+        .footer a { color: var(--epic-red); text-decoration: none; }
+        @media (max-width: 768px) {
+            .report { padding: 75px 18px 40px; }
+            .top-nav { padding: 0 18px; }
+            .top-nav-links { display: none; }
+            .metrics { grid-template-columns: repeat(2, 1fr); }
+            .card-grid { grid-template-columns: 1fr; }
+            .url-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <div class="top-nav-logo">
+        <img src="https://www.epic.digital/hubfs/new/logo-epic-2026.svg" alt="EPIC" onerror="this.style.display='none'">
+        <span class="top-nav-title">02 · Battle Card</span>
+    </div>
+    <div class="top-nav-links">
+        <a class="top-nav-link" href="#what">O que fazemos</a>
+        <a class="top-nav-link" href="#layers">3 Camadas</a>
+        <a class="top-nav-link" href="#proof">Prova</a>
+        <a class="top-nav-link" href="#pricing">Pricing</a>
+        <a class="top-nav-link" href="#icp">ICP</a>
+        <a class="top-nav-link" href="#cta">CTA</a>
+    </div>
+    <div class="top-nav-actions">
+        <a class="back-link" href="index.html">← Hub</a>
+        <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </div>
+</nav>
+
+<div class="report">
+
+    <div class="hero">
+        <div class="hero-logos">
+            <span class="hero-logo-text">EPIC Digital</span>
+            <span class="hero-divider"></span>
+            <span class="hero-logo-text">Battle Card Abr/2026</span>
+        </div>
+        <h1 class="tagline">Powered by AI.<br><span class="hl">Governed by Human.</span></h1>
+        <p class="tagline-sub">A EPIC projeta, implementa e audita motores de receita para empresas que querem escalar com IA sem perder diferencial competitivo.</p>
+        <div class="hero-meta">
+            <span class="hero-meta-item"><strong>9 anos</strong> · HubSpot</span>
+            <span class="hero-meta-item"><strong>10 paises</strong> atendidos</span>
+            <span class="hero-meta-item"><strong>100+</strong> implementacoes</span>
+            <span class="hero-meta-item"><strong>Categoria:</strong> Revenue Architect</span>
+        </div>
+    </div>
+
+    <div class="metrics">
+        <div class="metric"><div class="num">+539%</div><div class="label">ROI NTIVA</div><div class="sub">2022-2025 · sem IA escalada</div></div>
+        <div class="metric"><div class="num">+294%</div><div class="label">Capacidade iFood</div><div class="sub">250 → 850 campanhas/mes</div></div>
+        <div class="metric"><div class="num">$6.2M</div><div class="label">Receita NTIVA</div><div class="sub">adicional acumulada</div></div>
+        <div class="metric"><div class="num">90%</div><div class="label">iFood auto</div><div class="sub">faturamento automatizado</div></div>
+    </div>
+
+    <div class="section" id="what">
+        <div class="section-label">O que fazemos</div>
+        <div class="summary">
+            <p>Projetamos, implementamos e auditamos <strong>motores de receita</strong> para empresas que querem escalar com IA sem perder diferencial competitivo. 9 anos, 10 paises, 100+ implementacoes HubSpot.</p>
+            <p><strong>O problema que atacamos:</strong> IA virou commodity. Todos tem GPT, Claude, Gemini. Paginas, anuncios e estrategias estao ficando iguais. Quem cobra por hora virou refem da propria eficiencia (Michael Farmer: <em>Hyper-efficiency + hourly billing = agency extinction</em>).</p>
+        </div>
+    </div>
+
+    <div class="section" id="not-what">
+        <div class="section-label">O que NAO somos (anti-posicionamento)</div>
+        <div class="card-grid">
+            <div class="card"><div class="card-title">Nao somos agencia de midia paga</div><div class="card-body">Midia e output. A gente opera na camada de <strong>arquitetura</strong> — decisoes de alocacao, nao execucao tatica.</div></div>
+            <div class="card"><div class="card-title">Nao somos consultoria tradicional</div><div class="card-body">Consultoria entrega PDF. A gente entrega <strong>sistema em producao</strong> com governanca auditavel.</div></div>
+            <div class="card"><div class="card-title">Nao somos automacao com IA generica</div><div class="card-body">Automacao sem governanca = alucinacao em escala. Nossa pipeline: <strong>AI Draft → Human Review → Approved → Live → Audited</strong>.</div></div>
+            <div class="card"><div class="card-title">Nao somos SaaS de marketing</div><div class="card-body">Nao vendemos software. Vendemos <strong>capacidade de decisao</strong> ancorada em infraestrutura propria (ROF).</div></div>
+        </div>
+
+        <div class="context-box context-danger">
+            <strong>🚫 Tambem NAO somos Growth-as-a-Service (GaaS) / Growth Partner</strong>
+            <p>GaaS vende <strong>braco</strong> — execucao com aposta (success fee sobre volume de vendas). A EPIC vende <strong>cerebro</strong> — arquitetura decisoria com governanca humana e skin-in-the-game sobre receita incremental auditada.</p>
+            <p>O modelo de remuneracao pode se parecer (fixo + performance), mas a categoria e outra: <strong>Revenue Architect</strong>, nao Growth Partner. Se o prospect te chamar de &quot;nova agencia de growth&quot;, voce corrige na hora.</p>
+        </div>
+    </div>
+
+    <div class="section" id="layers">
+        <div class="section-label">Como operamos — 3 camadas</div>
+        <table class="report-table">
+            <thead>
+                <tr><th>Camada</th><th>O que e</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="name">EPIC</td>
+                    <td>A casa. Agencia reposicionada. Clientes de Series A a multinacional.</td>
+                </tr>
+                <tr>
+                    <td class="name">ROF</td>
+                    <td>Engine interna. 4 pilares (Foundation / Operation / Activation / Governance) + 5 agentes IA + 5 camadas (Onboarding / GitHub / ClickUp / n8n / Anthropic). Reduz <strong>37 etapas → 19</strong>, <strong>30d → 7d</strong>. Nao vendemos — cliente ve o resultado.</td>
+                </tr>
+                <tr>
+                    <td class="name">Revenue Intelligence</td>
+                    <td>Produto premium. Decisoes tipo 1 (irreversiveis): onde crescer, M&amp;A, descontinuar produto, reposicionar categoria. <strong>12 semanas, $150-250k</strong>.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="context-box context-info">
+            <strong>Pipeline inviolavel</strong>
+            <p><strong>AI Draft → Human Review → Approved → Live → Audited.</strong> Nada passa sem aprovacao humana. O sistema bloqueia.</p>
+        </div>
+    </div>
+
+    <div class="section" id="frameworks">
+        <div class="section-label">Frameworks proprietarios</div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-title"><span class="tag-fw">Framework 01</span>Category Leap</div>
+                <div class="card-body">Reposicionamento em 4 passos: <strong>Dogma → Desejo Reprimido → Category Leap → Prestige KPI</strong>. Ja deployado em quave.categoryleap.com, medconnect.categoryleap.com.</div>
+            </div>
+            <div class="card">
+                <div class="card-title"><span class="tag-fw">Framework 02</span>Arquitetura Decisoria</div>
+                <div class="card-body">Programa 12 sem para decisoes irreversiveis. 3 ofertas: <strong>Tribunal de Portfolio + Bussola Estrategica + Due Diligence de Demanda</strong>.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="proof">
+        <div class="section-label">Prova — cases flagship</div>
+        <table class="report-table">
+            <thead>
+                <tr><th>Case</th><th>Numero-ancora</th><th>Contexto</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="name">NTIVA <span class="pill pill-red">Flagship</span><br><small style="color:var(--text-muted);font-weight:400">MSP IT · EUA</small></td>
+                    <td class="mono">+539% ROI</td>
+                    <td>Acumulado 2022-2025 · $6.2M revenue · +27% YoY. <em>Sem escalar IA ainda.</em></td>
+                </tr>
+                <tr>
+                    <td class="name">iFood Ads<br><small style="color:var(--text-muted);font-weight:400">foodtech · LATAM</small></td>
+                    <td class="mono">+294% capacidade</td>
+                    <td>250 → 850 campanhas/mes · 90% faturamento auto · -60% tempo</td>
+                </tr>
+                <tr>
+                    <td class="name">Quave ONE<br><small style="color:var(--text-muted);font-weight:400">SaaS · BR</small></td>
+                    <td class="mono">Category Leap</td>
+                    <td>Deployado em quave.categoryleap.com · reposicionamento em 4 meses</td>
+                </tr>
+                <tr>
+                    <td class="name">MedConnect<br><small style="color:var(--text-muted);font-weight:400">Healthcare · BR</small></td>
+                    <td class="mono">R$25k + 10%</td>
+                    <td>Modelo hibrido fixo + revenue share (prova do engagement model)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section" id="pricing">
+        <div class="section-label">Pricing (ordem de grandeza)</div>
+        <table class="report-table">
+            <thead>
+                <tr><th>Oferta</th><th>Preco</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="name">Raio-X / diagnostico (entry BR)</td><td class="mono">R$25-40k</td></tr>
+                <tr><td class="name">Projeto RevOps / HubSpot (estilo iFood)</td><td class="mono">Fee fixo + revenue share</td></tr>
+                <tr><td class="name">Programa Revenue Intelligence (12 sem)</td><td class="mono">$150-250k</td></tr>
+                <tr><td class="name">Governance continua</td><td class="mono">$15-25k/trimestre</td></tr>
+                <tr><td class="name">Performance layer</td><td class="mono">+10-20% atrelado a resultados</td></tr>
+            </tbody>
+        </table>
+
+        <div class="context-box">
+            <strong>Modelo: SMU + Revenue Share</strong>
+            <p>Nao trabalhamos mais por hora-homem. SMU (Scope Metric Units) + Revenue Share sobre impacto auditavel.</p>
+        </div>
+
+        <div class="context-box context-info" style="margin-top: 12px;">
+            <strong>Engagement model hibrido</strong>
+            <p><strong>Retainer de governanca</strong> (cerebro, nao hora) + <strong>performance fee sobre receita incremental auditada</strong> (nao receita bruta, nao vanity metric). Alinhamento de incentivo sem virar agencia de aposta.</p>
+        </div>
+    </div>
+
+    <div class="section" id="icp">
+        <div class="section-label">Quem servimos — ICP</div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-title">Porte / Mercado</div>
+                <div class="card-body">Medias/grandes em transformacao digital (BR + EUA). <strong>$50M-$500M</strong> target Revenue Intelligence EUA.</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Maturidade</div>
+                <div class="card-body">Ja faz &quot;feijao com arroz&quot; de marketing, quer escalar. Budget disponivel + <strong>apetite de risco</strong>.</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Trigger</div>
+                <div class="card-body">Insatisfeito com agencia/consultoria/IA atual. Frustrado com ROI que nao materializou.</div>
+            </div>
+        </div>
+
+        <div class="context-box context-danger" style="margin-top: 14px;">
+            <strong>Anti-ICP (nao servimos)</strong>
+            <p>Quem quer commodity pura (midia paga basica), quem nao tem apetite de risco, quem quer IA generica pra substituir estrategia, quem trata pricing como disputa de hora-homem.</p>
+        </div>
+    </div>
+
+    <div class="section" id="cta">
+        <div class="section-label">Proximo passo — CTA ladder</div>
+        <div class="step-list">
+            <div class="step-item"><span class="step-num">01</span><div class="step-content"><div class="step-title">Conexao</div><div class="step-desc">LinkedIn connect no ato (todo prospect)</div></div></div>
+            <div class="step-item"><span class="step-num">02</span><div class="step-content"><div class="step-title">Contexto</div><div class="step-desc">Manifesto em governedbyhuman.com</div></div></div>
+            <div class="step-item"><span class="step-num">03</span><div class="step-content"><div class="step-title">Diagnostico gratuito</div><div class="step-desc">Call 45 min · 3 pontos cegos mapeados (B/A-tier)</div></div></div>
+            <div class="step-item"><span class="step-num">04</span><div class="step-content"><div class="step-title">Raio-X pago</div><div class="step-desc">2 sem · R$25-40k · Mapa de Metabolismo Decisorio</div></div></div>
+            <div class="step-item"><span class="step-num">05</span><div class="step-content"><div class="step-title">Programa completo</div><div class="step-desc">12 sem Revenue Intelligence ou projeto iFood-style</div></div></div>
+        </div>
+    </div>
+
+    <div class="section" id="urls">
+        <div class="section-label">URLs + Contatos</div>
+        <div class="url-grid">
+            <a class="url-card" href="https://revenueintelligence.app"><small>Produto</small>revenueintelligence.app</a>
+            <a class="url-card" href="https://governedbyhuman.com"><small>Manifesto</small>governedbyhuman.com</a>
+            <a class="url-card" href="https://categoryleap.com"><small>Framework</small>categoryleap.com</a>
+            <a class="url-card" href="https://epic.digital"><small>Casa</small>epic.digital</a>
+        </div>
+        <div class="context-box" style="margin-top: 14px; border-left-color: var(--info);">
+            <strong>Contatos</strong>
+            <ul>
+                <li><strong>Fabio Munhoz</strong> — CEO · LinkedIn</li>
+                <li><strong>Jeferson Venancio</strong> — Head of Paid Media &amp; Revenue Architecture · LinkedIn</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    EPIC Digital &mdash; GTM Kit Jupiter &mdash; Peca 02 · Battle Card &mdash; Abr 2026<br>
+    <a href="index.html">← Hub do Kit</a> &middot;
+    <a href="https://governedbyhuman.com">Manifesto</a> &middot;
+    <a href="https://governedbyhuman.com/deck.html">Deck</a>
+</div>
+
+<script>
+(function() {
+    const html = document.documentElement;
+    const toggleBtn = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('epic-theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+    toggleBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    window.toggleTheme = function() {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('epic-theme', next);
+        toggleBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+    };
+
+    document.querySelectorAll('.top-nav-link').forEach(link => {
+        link.addEventListener('click', e => {
+            const href = link.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+})();
+</script>
+</body>
+</html>

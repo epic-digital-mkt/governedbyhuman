@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <title>10 · Manifesto Shareable — GTM Kit Jupiter</title>
+    <meta name="description" content="4 versoes compartilhaveis do manifesto: WhatsApp compacto, Twitter thread, templates DM, checklist de deploy. Copy-paste com botao.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --epic-red: #FF0050; --success: #4ECDC4; --warning: #CC8800; --danger: #FF6B6B; --info: #6C9FFF; }
+        [data-theme="dark"] { --bg-primary: #000; --text-primary: #fff; --text-secondary: rgba(255,255,255,0.7); --text-muted: rgba(255,255,255,0.4); --border-color: rgba(255,255,255,0.1); --glass: rgba(255,255,255,0.03); --glass-border: rgba(255,255,255,0.06); --row-hover: rgba(255,255,255,0.04); --warning: #FFE66D; }
+        [data-theme="light"] { --bg-primary: #fff; --text-primary: #000; --text-secondary: rgba(0,0,0,0.7); --text-muted: rgba(0,0,0,0.4); --border-color: rgba(0,0,0,0.1); --glass: rgba(0,0,0,0.03); --glass-border: rgba(0,0,0,0.06); --row-hover: rgba(0,0,0,0.03); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-primary); color: var(--text-primary); transition: background-color 0.3s ease, color 0.3s ease; min-height: 100vh; line-height: 1.6; }
+        .top-nav { position: fixed; top: 0; left: 0; right: 0; height: 60px; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-color); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; }
+        [data-theme="light"] .top-nav { background: rgba(255,255,255,0.95); }
+        .top-nav-logo { display: flex; align-items: center; gap: 12px; }
+        .top-nav-logo img { height: 18px; width: auto; }
+        .top-nav-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
+        .top-nav-links { display: flex; gap: 16px; align-items: center; }
+        .top-nav-link { font-size: 0.7rem; font-weight: 600; color: var(--text-muted); cursor: pointer; text-decoration: none; transition: color 0.2s ease; }
+        .top-nav-link:hover { color: var(--epic-red); }
+        .top-nav-actions { display: flex; align-items: center; gap: 12px; }
+        .theme-toggle { cursor: pointer; font-size: 1.1rem; opacity: 0.5; background: none; border: none; padding: 4px; color: var(--text-primary); }
+        .theme-toggle:hover { opacity: 1; }
+        .back-link { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 4px 12px; border: 1px solid var(--glass-border); border-radius: 8px; transition: all 0.2s ease; }
+        .back-link:hover { color: var(--epic-red); border-color: var(--epic-red); }
+        .report { padding: 80px 40px 60px; max-width: 920px; margin: 0 auto; }
+        .hero { margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--glass-border); }
+        .hero-logos { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .hero-logo-text { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .hero-divider { width: 20px; height: 2px; background: var(--epic-red); }
+        .hero-badge { display: inline-block; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; background: rgba(78,205,196,0.15); color: var(--success); }
+        .hero-title { font-size: 2.2rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 10px; line-height: 1.15; }
+        .hero-title .hl { color: var(--epic-red); }
+        .hero-subtitle { font-size: 1rem; color: var(--text-secondary); margin-bottom: 18px; }
+        .hero-meta { display: flex; flex-wrap: wrap; gap: 18px; }
+        .hero-meta-item { font-size: 0.75rem; color: var(--text-muted); }
+        .hero-meta-item strong { color: var(--text-secondary); }
+        .section { margin-bottom: 44px; }
+        .section-label { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--epic-red); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+        .section-label::after { content: ''; flex: 1; height: 1px; background: var(--glass-border); }
+        .version-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px; padding: 26px 30px; margin-bottom: 18px; }
+        .version-header { display: flex; gap: 14px; align-items: center; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--glass-border); flex-wrap: wrap; }
+        .version-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; background: rgba(255,0,80,0.1); color: var(--epic-red); padding: 5px 12px; border-radius: 4px; letter-spacing: 1px; }
+        .version-title { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.3px; }
+        .version-sub { font-size: 0.76rem; color: var(--text-muted); margin-left: auto; }
+        .version-body { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--text-secondary); line-height: 1.7; white-space: pre-wrap; background: var(--row-hover); border-radius: 10px; padding: 18px 22px; margin-top: 10px; word-break: break-word; max-height: 560px; overflow-y: auto; }
+        .version-body.long { max-height: 420px; }
+        .copy-btn { margin-top: 12px; display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; font-weight: 700; color: var(--epic-red); background: transparent; border: 1px solid var(--epic-red); border-radius: 6px; padding: 6px 14px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; letter-spacing: 1px; }
+        .copy-btn:hover { background: var(--epic-red); color: #fff; }
+        .copy-btn.copied { background: var(--success); border-color: var(--success); color: #fff; }
+        .tweet-list { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+        .tweet { background: var(--row-hover); border: 1px solid var(--glass-border); border-radius: 10px; padding: 14px 16px; }
+        .tweet-num { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; color: var(--epic-red); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .tweet-text { font-size: 0.88rem; color: var(--text-primary); white-space: pre-wrap; line-height: 1.6; }
+        .dm-templates { display: grid; gap: 14px; margin-top: 12px; }
+        .dm-template { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 12px; padding: 20px 22px; }
+        .dm-template-title { font-size: 0.82rem; font-weight: 800; color: var(--epic-red); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+        .checklist { list-style: none; margin-top: 12px; }
+        .checklist li { padding: 12px 16px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 10px; margin-bottom: 8px; font-size: 0.88rem; color: var(--text-secondary); display: flex; gap: 12px; align-items: flex-start; }
+        .checklist li::before { content: '☐'; color: var(--epic-red); font-weight: 800; font-size: 1.1rem; flex-shrink: 0; }
+        .context-box { background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--warning); border-radius: 0 12px 12px 0; padding: 18px 22px; margin-top: 12px; }
+        .context-box.context-info { border-left-color: var(--info); }
+        .context-box strong { color: var(--text-primary); display: block; margin-bottom: 8px; font-size: 0.9rem; }
+        .context-box p { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 6px; }
+        .context-box ul { margin: 6px 0 0 22px; font-size: 0.88rem; color: var(--text-secondary); }
+        .context-box li { margin-bottom: 6px; }
+        .footer { text-align: center; padding: 40px; font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid var(--glass-border); margin-top: 20px; }
+        .footer a { color: var(--epic-red); text-decoration: none; }
+        @media (max-width: 768px) {
+            .report { padding: 75px 18px 40px; }
+            .top-nav { padding: 0 18px; }
+            .top-nav-links { display: none; }
+            .hero-title { font-size: 1.6rem; }
+            .version-sub { margin-left: 0; flex-basis: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <div class="top-nav-logo">
+        <img src="https://www.epic.digital/hubfs/new/logo-epic-2026.svg" alt="EPIC" onerror="this.style.display='none'">
+        <span class="top-nav-title">10 · Manifesto Shareable</span>
+    </div>
+    <div class="top-nav-links">
+        <a class="top-nav-link" href="#compact">Compacta (WhatsApp)</a>
+        <a class="top-nav-link" href="#twitter">Twitter thread</a>
+        <a class="top-nav-link" href="#dms">DMs / Email</a>
+        <a class="top-nav-link" href="#landing">HTML landing</a>
+        <a class="top-nav-link" href="#deploy">Deploy</a>
+    </div>
+    <div class="top-nav-actions">
+        <a class="back-link" href="index.html">← Hub</a>
+        <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </div>
+</nav>
+
+<div class="report">
+
+    <div class="hero">
+        <div class="hero-logos">
+            <span class="hero-logo-text">GTM Kit · Jupiter</span>
+            <span class="hero-divider"></span>
+            <span class="hero-logo-text">Peca 10 / 10</span>
+        </div>
+        <span class="hero-badge">4 versoes · copy-paste pronto</span>
+        <h1 class="hero-title">Manifesto <span class="hl">Shareable</span></h1>
+        <p class="hero-subtitle">Versoes compartilhaveis do manifesto otimizadas para WhatsApp, Twitter/X, LinkedIn DM, email. Legivel sem zoom no celular. Cada versao tem botao de <strong>copiar</strong>.</p>
+        <div class="hero-meta">
+            <span class="hero-meta-item"><strong>Manifesto completo:</strong> <a href="https://governedbyhuman.com" style="color:var(--epic-red)">governedbyhuman.com</a></span>
+            <span class="hero-meta-item"><strong>Deck:</strong> <a href="https://governedbyhuman.com/deck.html" style="color:var(--epic-red)">deck.html</a></span>
+            <span class="hero-meta-item"><strong>Fonte:</strong> 10-MANIFESTO-SHAREABLE.md</span>
+        </div>
+    </div>
+
+    <div class="section" id="compact">
+        <div class="version-card">
+            <div class="version-header">
+                <span class="version-tag">VERSAO 01 · COMPACTA</span>
+                <span class="version-title">WhatsApp · DM · copy direto</span>
+                <span class="version-sub">~60 linhas · bloco unico</span>
+            </div>
+            <div class="version-body" id="compact-body">POWERED BY AI. GOVERNED BY HUMAN.
+
+Voce ja terceirizou demais.
+
+Pagou a agencia. Pagou a consultoria. Agora paga pela IA.
+E continua sem saber POR QUE esta tomando as decisoes que toma.
+
+A IA virou commodity. Todas as paginas estao iguais. Todos os anuncios convergiram. Todas as estrategias soam identicas — porque vem do mesmo modelo. Rene Girard em escala algoritmica.
+
+O dogma que ninguem quer admitir: "inteligencia e um recurso que voce compra de fora."
+O desejo reprimido: "eu quero voltar a entender profundamente as coisas."
+
+Nossa premissa e diferente:
+- IA executa volume.
+- Humano governa estrategia e integridade.
+- Decisoes tipo 2 (reversiveis) = use IA, va rapido.
+- Decisoes tipo 1 (irreversiveis) = humano no volante, sempre.
+
+Operamos em 3 camadas:
+1. EPIC — a casa (agencia, 9 anos, 100+ implementacoes HubSpot)
+2. ROF — a engine interna (4 pilares, 5 agentes IA, 5 camadas, 17 arquivos .md por cliente)
+3. Revenue Intelligence — o produto premium (Arquitetura Decisoria, 12 semanas, $150-250k)
+
+Dois frameworks proprietarios:
+- Category Leap (reposicionamento em 4 passos)
+- Arquitetura Decisoria (decisoes irreversiveis tipo 1)
+
+Prova:
+- NTIVA (MSP IT, EUA): +539% ROI acumulado 2022-2025, US$6.2M revenue. Sem escalar IA ainda.
+- iFood Ads: +294% capacidade de campanhas (250 → 850/mes), 90% faturamento auto, -60% tempo.
+- Quave ONE: Category Leap deployado (quave.categoryleap.com).
+
+Se voce tem uma decisao pela frente que nao pode voltar atras, a gente devia conversar.
+Se voce quer so otimizar algo que ja funciona, tem gente melhor que a gente pra isso.
+
+Powered by AI. Governed by Human.
+
+Manifesto completo: governedbyhuman.com
+Produto: revenueintelligence.app
+Casa: epic.digital
+
+Fabio Munhoz · CEO EPIC Digital
+Jeferson Venancio · Head of Paid Media &amp; Revenue Architecture</div>
+            <button class="copy-btn" data-copy="compact-body">📋 Copiar versao compacta</button>
+        </div>
+    </div>
+
+    <div class="section" id="twitter">
+        <div class="version-card">
+            <div class="version-header">
+                <span class="version-tag">VERSAO 02 · TWITTER / X</span>
+                <span class="version-title">Thread de 8 tweets</span>
+                <span class="version-sub">Cada tweet ~280 chars</span>
+            </div>
+            <div class="tweet-list">
+                <div class="tweet">
+                    <div class="tweet-num">Tweet 1/8</div>
+                    <div class="tweet-text" id="tw1">Voce ja terceirizou demais.
+
+Pagou a agencia. Pagou a consultoria. Agora paga pela IA.
+
+E continua sem saber por que esta tomando as decisoes que toma.
+
+🧵 Manifesto da EPIC Digital:</div>
+                    <button class="copy-btn" data-copy="tw1" style="margin-top:10px;">📋 Copiar</button>
+                </div>
+                <div class="tweet">
+                    <div class="tweet-num">Tweet 2/8</div>
+                    <div class="tweet-text" id="tw2">A IA virou commodity.
+
+Todas as landing pages ficaram iguais. Todos os anuncios convergiram. Todas as estrategias soam identicas — porque vem do mesmo modelo.
+
+Rene Girard em escala algoritmica.</div>
+                    <button class="copy-btn" data-copy="tw2" style="margin-top:10px;">📋 Copiar</button>
+                </div>
+                <div class="tweet">
+                    <div class="tweet-num">Tweet 3/8</div>
+                    <div class="tweet-text" id="tw3">O dogma que ninguem quer admitir:
+
+"Inteligencia e um recurso que voce compra de fora."
+
+O desejo reprimido:
+
+"Eu quero voltar a entender profundamente as coisas."</div>
+                    <button class="copy-btn" data-copy="tw3" style="margin-top:10px;">📋 Copiar</button>
+                </div>
+                <div class="tweet">
+                    <div class="tweet-num">Tweet 4/8</div>
+                    <div class="tweet-text" id="tw4">Nossa premissa e diferente:
+
+→ IA executa volume.
+→ Humano governa estrategia e integridade.
+
+Decisoes tipo 2 (reversiveis) = use IA, va rapido.
+Decisoes tipo 1 (irreversiveis) = humano no volante, SEMPRE.</div>
+                    <button class="copy-btn" data-copy="tw4" style="margin-top:10px;">📋 Copiar</button>
+                </div>
+                <div class="tweet">
+                    <div class="tweet-num">Tweet 5/8</div>
+                    <div class="tweet-text" id="tw5">Operamos em 3 camadas:
+
+1️⃣ EPIC — a casa. Agencia, 9 anos, 100+ implementacoes HubSpot.
+
+2️⃣ ROF — engine interna. 4 pilares + 5 agentes IA.
+
+3️⃣ Revenue Intelligence — produto premium. Programa 12 semanas para decisoes tipo 1.</div>
+                    <button class="copy-btn" data-copy="tw5" style="margin-top:10px;">📋 Copiar</button>
+                </div>
+                <div class="tweet">
+                    <div class="tweet-num">Tweet 6/8</div>
+                    <div class="tweet-text" id="tw6">A prova:
+
+📊 NTIVA (MSP IT EUA): +539% ROI em 3 anos. SEM escalar IA ainda.
+📊 iFood Ads: +294% capacidade (250 → 850 campanhas/mes). 90% faturamento auto.
+📊 Quave ONE: Category Leap deployado em quave.categoryleap.com</div>
+                    <button class="copy-btn" data-copy="tw6" style="margin-top:10px;">📋 Copiar</button>
+                </div>
+                <div class="tweet">
+                    <div class="tweet-num">Tweet 7/8</div>
+                    <div class="tweet-text" id="tw7">Se voce tem uma decisao pela frente que nao pode voltar atras, a gente devia conversar.
+
+Se voce quer so otimizar algo que ja funciona, tem gente melhor que a gente pra isso.</div>
+                    <button class="copy-btn" data-copy="tw7" style="margin-top:10px;">📋 Copiar</button>
+                </div>
+                <div class="tweet">
+                    <div class="tweet-num">Tweet 8/8</div>
+                    <div class="tweet-text" id="tw8">Powered by AI. Governed by Human.
+
+Manifesto: https://governedbyhuman.com
+Produto: https://revenueintelligence.app
+
+@fabiomunhoz + @jefersonvenancio
+
+EPIC Digital 🔴</div>
+                    <button class="copy-btn" data-copy="tw8" style="margin-top:10px;">📋 Copiar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="dms">
+        <div class="version-card">
+            <div class="version-header">
+                <span class="version-tag">VERSAO 03 · DMs e EMAIL</span>
+                <span class="version-title">Templates prontos para personalizar</span>
+                <span class="version-sub">WhatsApp · LinkedIn · Email</span>
+            </div>
+
+            <div class="dm-templates">
+                <div class="dm-template">
+                    <div class="dm-template-title">📱 WhatsApp / Signal / iMessage</div>
+                    <div class="version-body" id="dm-whats">Cara, esse e o manifesto da EPIC que eu comentei:
+👉 governedbyhuman.com
+
+A tese em uma frase: IA executa volume. Humano governa estrategia.
+
+Se tiver 2 min, le a secao do diagnostico — e o que esta acontecendo com o mercado agora.</div>
+                    <button class="copy-btn" data-copy="dm-whats">📋 Copiar</button>
+                </div>
+
+                <div class="dm-template">
+                    <div class="dm-template-title">💼 LinkedIn DM</div>
+                    <div class="version-body" id="dm-li">Oi [NOME], foi otimo te conhecer no BR Nation.
+
+Prometi te mandar a nossa tese. Ta aqui:
+→ governedbyhuman.com
+
+E o manifesto da EPIC sobre arquitetura de receita hibrida. 3 minutos de leitura, mas a densidade ta la.
+
+Se ressoar, me chama — posso te propor uma call de 45 min pra mapear 3 pontos cegos da sua operacao.
+
+Abraco.</div>
+                    <button class="copy-btn" data-copy="dm-li">📋 Copiar</button>
+                </div>
+
+                <div class="dm-template">
+                    <div class="dm-template-title">📧 Email (assunto: [NOME], o manifesto da EPIC que eu mencionei)</div>
+                    <div class="version-body" id="dm-email">[NOME],
+
+Conforme prometi — nossa tese completa:
+https://governedbyhuman.com
+
+Se a secao do "dogma" nao te incomodar minimamente, provavelmente a EPIC nao e pra voce. Se incomodar, vale continuarmos a conversa.
+
+Te ligo na proxima semana.
+
+Abraco,
+Fabio</div>
+                    <button class="copy-btn" data-copy="dm-email">📋 Copiar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="landing">
+        <div class="version-card">
+            <div class="version-header">
+                <span class="version-tag">VERSAO 04 · HTML LANDING</span>
+                <span class="version-title">Source HTML standalone</span>
+                <span class="version-sub">Para hosting simples alternativo</span>
+            </div>
+            <div class="context-box context-info">
+                <strong>Observacao</strong>
+                <p>O manifesto editorial completo ja esta em <a href="https://governedbyhuman.com" style="color:var(--epic-red)"><strong>governedbyhuman.com</strong></a> (design Brutalist Editorial). Este HTML simples e um <strong>backup leve</strong> — util se precisar hospedar rapido em outro dominio, Quave Cloud, Vercel, ou criar materia Medium/HTML static.</p>
+            </div>
+            <div class="version-body long" id="landing-body">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;pt-BR&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Powered by AI. Governed by Human. — EPIC Digital&lt;/title&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;A tese da EPIC Digital sobre arquitetura de receita hibrida: IA executa volume, humano governa estrategia.&quot;&gt;
+    &lt;meta property=&quot;og:title&quot; content=&quot;Powered by AI. Governed by Human.&quot;&gt;
+    &lt;meta property=&quot;og:description&quot; content=&quot;Voce ja terceirizou demais. Nossa tese sobre o futuro da arquitetura de receita.&quot;&gt;
+    &lt;meta property=&quot;og:image&quot; content=&quot;https://governedbyhuman.com/og-image.png&quot;&gt;
+    &lt;meta property=&quot;og:url&quot; content=&quot;https://governedbyhuman.com&quot;&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;style&gt;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #000; color: #fff; line-height: 1.7; padding: 40px 20px; }
+        .container { max-width: 680px; margin: 0 auto; }
+        h1 { font-size: 2.5rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 40px; line-height: 1.1; }
+        h1 .highlight { color: #FF0050; }
+        h2 { font-size: 1.3rem; font-weight: 800; margin-top: 48px; margin-bottom: 16px; color: #FF0050; }
+        p { margin-bottom: 20px; font-size: 1.05rem; color: rgba(255,255,255,0.85); }
+        blockquote { border-left: 3px solid #FF0050; padding-left: 20px; margin: 24px 0; font-style: italic; color: rgba(255,255,255,0.75); }
+        ul { margin: 20px 0 20px 24px; }
+        li { margin-bottom: 12px; color: rgba(255,255,255,0.85); }
+        strong { color: #fff; }
+        hr { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 40px 0; }
+        .footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+        .footer a { color: #FF0050; text-decoration: none; }
+        @media (max-width: 600px) { h1 { font-size: 2rem; } body { padding: 24px 16px; } }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;h1&gt;Powered by AI.&lt;br&gt;&lt;span class=&quot;highlight&quot;&gt;Governed by Human.&lt;/span&gt;&lt;/h1&gt;
+        &lt;p&gt;&lt;em&gt;EPIC Digital — Manifesto Abr/2026&lt;/em&gt;&lt;/p&gt;
+        &lt;hr&gt;
+        &lt;h2&gt;Voce ja terceirizou demais.&lt;/h2&gt;
+        &lt;p&gt;Pagou a agencia. Pagou a consultoria. Agora paga pela IA. E continua sem saber &lt;strong&gt;por que&lt;/strong&gt; esta tomando as decisoes que toma.&lt;/p&gt;
+        &lt;!-- Colar aqui o resto do manifesto em secoes h2 + p --&gt;
+        &lt;div class=&quot;footer&quot;&gt;
+            &lt;p&gt;&lt;strong&gt;Fabio Munhoz&lt;/strong&gt; · CEO EPIC Digital&lt;br&gt;
+            &lt;strong&gt;Jeferson Venancio&lt;/strong&gt; · Head of Paid Media &amp;amp; Revenue Architecture&lt;/p&gt;
+            &lt;p style=&quot;margin-top:16px&quot;&gt;
+                &lt;a href=&quot;https://revenueintelligence.app&quot;&gt;revenueintelligence.app&lt;/a&gt; ·
+                &lt;a href=&quot;https://categoryleap.com&quot;&gt;categoryleap.com&lt;/a&gt; ·
+                &lt;a href=&quot;https://epic.digital&quot;&gt;epic.digital&lt;/a&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+            <button class="copy-btn" data-copy="landing-body">📋 Copiar HTML</button>
+        </div>
+    </div>
+
+    <div class="section" id="deploy">
+        <div class="section-label">Checklist de deploy</div>
+        <ul class="checklist">
+            <li>Comprar dominio <strong>governedbyhuman.com</strong> no GoDaddy <em style="margin-left: 8px; color: var(--success);">✓ Feito</em></li>
+            <li>Apontar DNS CNAME para GitHub Pages / Quave Cloud / Vercel <em style="margin-left: 8px; color: var(--success);">✓ Feito</em></li>
+            <li>Hospedar o HTML (manifesto completo Brutalist Editorial) <em style="margin-left: 8px; color: var(--success);">✓ Feito</em></li>
+            <li>Criar imagem OG (<strong>og-image.png</strong>) — fundo preto + tagline grande</li>
+            <li>Testar preview no WhatsApp + LinkedIn + iMessage (com link unfurl)</li>
+            <li>Configurar analytics minima (Plausible ou Fathom — nao Google Analytics)</li>
+            <li>Redirect opcional: <strong>categoryleap.com/manifesto → governedbyhuman.com</strong></li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="footer">
+    EPIC Digital &mdash; GTM Kit Jupiter &mdash; Peca 10 · Manifesto Shareable &mdash; Abr 2026<br>
+    <a href="index.html">← Hub do Kit</a> &middot;
+    <a href="https://governedbyhuman.com">Manifesto completo</a> &middot;
+    <a href="https://governedbyhuman.com/deck.html">Deck</a>
+</div>
+
+<script>
+(function() {
+    const html = document.documentElement;
+    const toggleBtn = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('epic-theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+    toggleBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    window.toggleTheme = function() {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('epic-theme', next);
+        toggleBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+    };
+
+    document.querySelectorAll('.top-nav-link').forEach(link => {
+        link.addEventListener('click', e => {
+            const href = link.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetId = btn.getAttribute('data-copy');
+            const el = document.getElementById(targetId);
+            if (!el) return;
+            const text = el.textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const original = btn.textContent;
+                btn.textContent = '✓ Copiado';
+                btn.classList.add('copied');
+                setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 2000);
+            });
+        });
+    });
+})();
+</script>
+</body>
+</html>

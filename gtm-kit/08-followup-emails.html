@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <title>08 · Follow-up Emails — GTM Kit Jupiter</title>
+    <meta name="description" content="Templates T+1, T+3, T+7 para follow-up pos-evento. Copy-paste com botao. Versao short para A-tier. Regras de frequencia.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --epic-red: #FF0050; --success: #4ECDC4; --warning: #CC8800; --danger: #FF6B6B; --info: #6C9FFF; }
+        [data-theme="dark"] { --bg-primary: #000; --text-primary: #fff; --text-secondary: rgba(255,255,255,0.7); --text-muted: rgba(255,255,255,0.4); --border-color: rgba(255,255,255,0.1); --glass: rgba(255,255,255,0.03); --glass-border: rgba(255,255,255,0.06); --row-hover: rgba(255,255,255,0.04); --warning: #FFE66D; }
+        [data-theme="light"] { --bg-primary: #fff; --text-primary: #000; --text-secondary: rgba(0,0,0,0.7); --text-muted: rgba(0,0,0,0.4); --border-color: rgba(0,0,0,0.1); --glass: rgba(0,0,0,0.03); --glass-border: rgba(0,0,0,0.06); --row-hover: rgba(0,0,0,0.03); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-primary); color: var(--text-primary); transition: background-color 0.3s ease, color 0.3s ease; min-height: 100vh; line-height: 1.6; }
+        .top-nav { position: fixed; top: 0; left: 0; right: 0; height: 60px; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-color); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; }
+        [data-theme="light"] .top-nav { background: rgba(255,255,255,0.95); }
+        .top-nav-logo { display: flex; align-items: center; gap: 12px; }
+        .top-nav-logo img { height: 18px; width: auto; }
+        .top-nav-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
+        .top-nav-links { display: flex; gap: 18px; align-items: center; }
+        .top-nav-link { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); cursor: pointer; text-decoration: none; transition: color 0.2s ease; }
+        .top-nav-link:hover { color: var(--epic-red); }
+        .top-nav-actions { display: flex; align-items: center; gap: 12px; }
+        .theme-toggle { cursor: pointer; font-size: 1.1rem; opacity: 0.5; background: none; border: none; padding: 4px; color: var(--text-primary); }
+        .theme-toggle:hover { opacity: 1; }
+        .back-link { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 4px 12px; border: 1px solid var(--glass-border); border-radius: 8px; transition: all 0.2s ease; }
+        .back-link:hover { color: var(--epic-red); border-color: var(--epic-red); }
+        .report { padding: 80px 40px 60px; max-width: 880px; margin: 0 auto; }
+        .hero { margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--glass-border); }
+        .hero-logos { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .hero-logo-text { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .hero-divider { width: 20px; height: 2px; background: var(--epic-red); }
+        .hero-badge { display: inline-block; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; background: rgba(78,205,196,0.15); color: var(--success); }
+        .hero-title { font-size: 2.2rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 10px; line-height: 1.15; }
+        .hero-title .hl { color: var(--epic-red); }
+        .hero-subtitle { font-size: 1rem; color: var(--text-secondary); margin-bottom: 18px; }
+        .hero-meta { display: flex; flex-wrap: wrap; gap: 18px; }
+        .hero-meta-item { font-size: 0.75rem; color: var(--text-muted); }
+        .hero-meta-item strong { color: var(--text-secondary); }
+        .section { margin-bottom: 44px; }
+        .section-label { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--epic-red); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+        .section-label::after { content: ''; flex: 1; height: 1px; background: var(--glass-border); }
+        .email-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px; padding: 26px 30px; margin-bottom: 20px; }
+        .email-header { display: flex; gap: 14px; align-items: center; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--glass-border); flex-wrap: wrap; }
+        .email-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; background: rgba(255,0,80,0.1); color: var(--epic-red); padding: 5px 12px; border-radius: 4px; letter-spacing: 1px; }
+        .email-title { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.3px; }
+        .email-when { font-size: 0.74rem; color: var(--text-muted); margin-left: auto; }
+        .email-field { margin-bottom: 10px; }
+        .field-label { font-size: 0.7rem; font-weight: 800; color: var(--epic-red); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; }
+        .field-value { font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; color: var(--text-primary); background: var(--row-hover); padding: 8px 12px; border-radius: 6px; }
+        .email-body { font-family: 'Inter', sans-serif; font-size: 0.92rem; color: var(--text-secondary); line-height: 1.8; white-space: pre-wrap; background: var(--row-hover); border-radius: 10px; padding: 18px 22px; margin-top: 10px; }
+        .email-body strong { color: var(--text-primary); }
+        .email-body .var { background: rgba(255,0,80,0.15); color: var(--epic-red); padding: 1px 6px; border-radius: 3px; font-family: 'JetBrains Mono', monospace; font-size: 0.86rem; font-weight: 700; }
+        .copy-btn { margin-top: 12px; display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; font-weight: 700; color: var(--epic-red); background: transparent; border: 1px solid var(--epic-red); border-radius: 6px; padding: 6px 14px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; letter-spacing: 1px; }
+        .copy-btn:hover { background: var(--epic-red); color: #fff; }
+        .copy-btn.copied { background: var(--success); border-color: var(--success); color: #fff; }
+        .report-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 12px; }
+        .report-table th { padding: 10px 14px; text-align: left; font-weight: 700; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); background: var(--glass); border-bottom: 1px solid var(--glass-border); }
+        .report-table td { padding: 10px 14px; border-bottom: 1px solid var(--glass-border); color: var(--text-secondary); vertical-align: top; }
+        .report-table .name { font-weight: 700; color: var(--text-primary); }
+        .context-box { background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--warning); border-radius: 0 12px 12px 0; padding: 18px 22px; margin-top: 12px; }
+        .context-box.context-danger { border-left-color: var(--epic-red); }
+        .context-box.context-info { border-left-color: var(--info); }
+        .context-box.context-success { border-left-color: var(--success); }
+        .context-box strong { color: var(--text-primary); display: block; margin-bottom: 8px; font-size: 0.9rem; }
+        .context-box ul { margin: 6px 0 0 22px; font-size: 0.88rem; color: var(--text-secondary); }
+        .context-box li { margin-bottom: 6px; }
+        .context-box p { font-size: 0.88rem; color: var(--text-secondary); }
+        .footer { text-align: center; padding: 40px; font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid var(--glass-border); margin-top: 20px; }
+        .footer a { color: var(--epic-red); text-decoration: none; }
+        @media (max-width: 768px) {
+            .report { padding: 75px 18px 40px; }
+            .top-nav { padding: 0 18px; }
+            .top-nav-links { display: none; }
+            .hero-title { font-size: 1.6rem; }
+            .email-when { margin-left: 0; flex-basis: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <div class="top-nav-logo">
+        <img src="https://www.epic.digital/hubfs/new/logo-epic-2026.svg" alt="EPIC" onerror="this.style.display='none'">
+        <span class="top-nav-title">08 · Follow-up Emails</span>
+    </div>
+    <div class="top-nav-links">
+        <a class="top-nav-link" href="#t1">T+1</a>
+        <a class="top-nav-link" href="#t3">T+3</a>
+        <a class="top-nav-link" href="#t7">T+7</a>
+        <a class="top-nav-link" href="#short">Short (A-tier)</a>
+        <a class="top-nav-link" href="#dm">DM LinkedIn</a>
+        <a class="top-nav-link" href="#rules">Regras</a>
+    </div>
+    <div class="top-nav-actions">
+        <a class="back-link" href="index.html">← Hub</a>
+        <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </div>
+</nav>
+
+<div class="report">
+
+    <div class="hero">
+        <div class="hero-logos">
+            <span class="hero-logo-text">GTM Kit · Jupiter</span>
+            <span class="hero-divider"></span>
+            <span class="hero-logo-text">Peca 08 / 10</span>
+        </div>
+        <span class="hero-badge">T+1 · T+3 · T+7</span>
+        <h1 class="hero-title">Follow-up <span class="hl">Emails</span></h1>
+        <p class="hero-subtitle">Templates para acionar apos contato no evento. Personalizar <span class="var" style="background:rgba(255,0,80,0.15);color:var(--epic-red);padding:1px 6px;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:0.9rem;font-weight:700">[CAMPOS]</span> para cada prospect. Um email por vez. Esperar 72h antes de mandar o proximo.</p>
+        <div class="hero-meta">
+            <span class="hero-meta-item"><strong>Regra:</strong> 1 ideia por email</span>
+            <span class="hero-meta-item"><strong>Max follow-ups:</strong> 3 (apos T+7, silencio)</span>
+            <span class="hero-meta-item"><strong>Fonte:</strong> 08-FOLLOWUP-EMAILS.md</span>
+        </div>
+    </div>
+
+    <div class="section" id="t1">
+        <div class="email-card">
+            <div class="email-header">
+                <span class="email-tag">T+1</span>
+                <span class="email-title">Dia apos a conversa</span>
+                <span class="email-when">24-36h pos-evento</span>
+            </div>
+            <div class="email-field">
+                <div class="field-label">Assunto</div>
+                <div class="field-value">[NOME], prometi te mandar isso</div>
+            </div>
+            <div class="email-field">
+                <div class="field-label">Corpo do email</div>
+                <div class="email-body" id="t1-body">[NOME], prazer te conhecer no BR Nation ontem.
+
+Voce mencionou [DOR/TOPICO ESPECIFICO DISCUTIDO] e fiquei pensando depois da conversa. Tres pontos que acho que fazem sentido pra voce:
+
+1. [INSIGHT ESPECIFICO 1] — conectado diretamente com o que voce contou sobre [X]
+2. [INSIGHT ESPECIFICO 2] — e provavelmente o ponto cego que ninguem na sua agencia atual te apontou
+3. [INSIGHT ESPECIFICO 3] — pode ser o atalho que voce esta buscando
+
+Nossa tese completa esta em governedbyhuman.com. Se o tempo for curto, pule direto pra secao "O chamado" — vai te dizer se fazemos sentido como parceiros.
+
+Se quiser mergulhar um pouco, eu posso te propor uma call de 45 minutos. Sem compromisso. No final, voce sai com 3 pontos cegos da sua operacao de receita mapeados. Se nao fizer sentido continuar, voce ganhou o equivalente a um diagnostico que consultoria tradicional cobraria R$15-30k.
+
+Topa? Posso te mandar 2 horarios na proxima semana.
+
+Abraco,
+Fabio Munhoz
+CEO · EPIC Digital
+revenueintelligence.app · governedbyhuman.com</div>
+            </div>
+            <button class="copy-btn" data-copy="t1-body">📋 Copiar email</button>
+            <div class="context-box context-info" style="margin-top: 14px;">
+                <strong>Regras para personalizar</strong>
+                <ul>
+                    <li><strong>[NOME]</strong> — primeiro nome, nao &quot;Sr./Sra.&quot;</li>
+                    <li><strong>[DOR/TOPICO]</strong> — mencionar EXATAMENTE a frase que o prospect usou. Se nao lembra, nao invente — tire da sua nota de discovery.</li>
+                    <li><strong>[3 INSIGHTS]</strong> — devem ser especificos ao negocio do prospect. Nao copiar-colar. Cada insight = 1 linha conectando com a dor.</li>
+                </ul>
+                <p style="margin-top: 8px;"><strong>Quando mandar:</strong> 24-36h apos o evento. Nao antes (parece automatizado). Nao depois (frieza).</p>
+                <p><strong>Se nao responder em 5 dias:</strong> disparar T+3.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="t3">
+        <div class="email-card">
+            <div class="email-header">
+                <span class="email-tag">T+3</span>
+                <span class="email-title">Provocacao (sem resposta)</span>
+                <span class="email-when">4 dias pos-evento</span>
+            </div>
+            <div class="email-field">
+                <div class="field-label">Assunto</div>
+                <div class="field-value">[NOME], uma provocacao antes de voce esquecer da nossa conversa</div>
+            </div>
+            <div class="email-field">
+                <div class="field-label">Corpo do email</div>
+                <div class="email-body" id="t3-body">[NOME],
+
+Deve estar atolado. Sem pressao.
+
+So queria te deixar uma provocacao antes do assunto evaporar da sua agenda:
+
+Voce me contou que [DOR ESPECIFICA]. Pensei depois numa pergunta que talvez eu devesse ter feito na hora:
+
+> Se voce contratar mais 3 pessoas no seu time comercial, isso resolve o problema — ou so adia?
+
+Pergunto porque vejo muitos CEOs tentarem forcar o crescimento com mao de obra, quando o gargalo real esta em outro lugar. O NTIVA, que ja te mencionei, teve +539% de ROI em 3 anos sem escalar time. So reorganizando como a IA e humanos operavam juntos.
+
+A proposta da call de 45 minutos continua em pe. Se fizer sentido, me responde essa thread com "topo" e te mando 2 horarios.
+
+Se nao fizer sentido, me diz "nao rola" que eu saio da sua caixa. Sem problema.
+
+Abraco,
+Fabio</div>
+            </div>
+            <button class="copy-btn" data-copy="t3-body">📋 Copiar email</button>
+            <div class="context-box" style="margin-top: 14px;">
+                <strong>Personalizar</strong>
+                <ul>
+                    <li><strong>[DOR ESPECIFICA]</strong> — citacao literal do que ele disse. Mostra que voce ouviu.</li>
+                    <li><strong>Provocacao central</strong> — adaptar para o contexto. Se o prospect falou sobre &quot;nao saber onde investir proximo budget&quot;, mudar pra: <em>&quot;Se voce dobrar o investimento em midia paga, dobra o resultado — ou so acelera o desperdicio?&quot;</em></li>
+                </ul>
+                <p style="margin-top: 8px;"><strong>Se nao responder em 4 dias:</strong> disparar T+7.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="t7">
+        <div class="email-card">
+            <div class="email-header">
+                <span class="email-tag">T+7</span>
+                <span class="email-title">Ultima pergunta</span>
+                <span class="email-when">7 dias pos-evento</span>
+            </div>
+            <div class="email-field">
+                <div class="field-label">Assunto</div>
+                <div class="field-value">[NOME], ultima pergunta e eu fico quieto</div>
+            </div>
+            <div class="email-field">
+                <div class="field-label">Corpo do email</div>
+                <div class="email-body" id="t7-body">[NOME], ultima interacao dessa serie. Prometido.
+
+Voce provavelmente processou bastante coisa do BR Nation. Se a EPIC nao ficou no seu radar, eu respeito.
+
+Mas antes de eu sumir, uma ultima pergunta — nao pra mim, pra voce:
+
+> Voce sabe qual a proxima decisao que, se errada, vai custar 2+ anos de recuperacao?
+
+Se a resposta e clara: voce esta mais avancado que 90% dos CEOs que eu converso.
+Se a resposta e nebulosa: e exatamente esse nevoeiro que a EPIC foi construida pra dissipar.
+
+Nao precisa me responder. Se vier a ter luz sobre isso e quiser parceiro, voce sabe onde me achar:
+
+- LinkedIn: [URL FABIO]
+- Manifesto: governedbyhuman.com
+- Produto: revenueintelligence.app
+
+Que 2026 seja um ano que voce se orgulhe das decisoes que tomou.
+
+Abraco,
+Fabio</div>
+            </div>
+            <button class="copy-btn" data-copy="t7-body">📋 Copiar email</button>
+            <div class="context-box context-success" style="margin-top: 14px;">
+                <strong>Regra final</strong>
+                <p>Nao mandar mais emails dessa serie. Se ele responder daqui 3, 6, 12 meses — otimo. Se nao responder nunca — tambem otimo. A porta ficou aberta com dignidade.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="short">
+        <div class="email-card">
+            <div class="email-header">
+                <span class="email-tag">SHORT</span>
+                <span class="email-title">A-tier que pediu acao rapida</span>
+                <span class="email-when">T+1 alternativa</span>
+            </div>
+            <div class="email-field">
+                <div class="field-label">Assunto</div>
+                <div class="field-value">[NOME], a proposta — 2 horarios</div>
+            </div>
+            <div class="email-field">
+                <div class="field-label">Corpo do email</div>
+                <div class="email-body" id="short-body">[NOME],
+
+Conforme falamos ontem, aqui estao 2 horarios pra call de 45 minutos:
+
+- Terca 22/04 — 10h (BRT)
+- Quinta 24/04 — 15h (BRT)
+
+Me confirma qual funciona e mando o convite.
+
+Antes da call, vou ler a partir de [SEU SITE / LINKEDIN] e preparar 3 hipoteses sobre onde voce pode ter pontos cegos na operacao de receita. A call e basicamente a validacao (ou refutacao) dessas hipoteses.
+
+Preciso apenas de: seu contato de WhatsApp (pra alinhamento ultimo segundo) e 1 link publico que te represente (LinkedIn ou site da empresa).
+
+Abraco,
+Fabio Munhoz
+CEO · EPIC Digital</div>
+            </div>
+            <button class="copy-btn" data-copy="short-body">📋 Copiar email</button>
+        </div>
+    </div>
+
+    <div class="section" id="dm">
+        <div class="email-card">
+            <div class="email-header">
+                <span class="email-tag">DM</span>
+                <span class="email-title">LinkedIn DM (C-tier)</span>
+                <span class="email-when">Pos-evento</span>
+            </div>
+            <div class="email-field">
+                <div class="field-label">Mensagem direta — LinkedIn</div>
+                <div class="email-body" id="dm-body">Ola [NOME],
+
+Foi bom te conhecer no BR Nation. Nao vou te mandar email pra nao encher tua caixa — mas queria te deixar o manifesto da EPIC aqui, se quiser ver a tese: governedbyhuman.com
+
+Se algum dia fizer sentido conversarmos sobre como estruturar crescimento com IA sem virar commodity, meu DM esta aberto.
+
+Abraco, Fabio</div>
+            </div>
+            <button class="copy-btn" data-copy="dm-body">📋 Copiar DM</button>
+            <div class="context-box context-info" style="margin-top: 14px;">
+                <strong>Filosofia</strong>
+                <p>Curto. Sem venda. Fecha a porta com dignidade.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="rules">
+        <div class="section-label">Regras gerais de follow-up</div>
+
+        <div class="context-box context-success">
+            <strong>Sempre</strong>
+            <ul>
+                <li><strong>1 ideia principal por email.</strong> Nao empilhar.</li>
+                <li><strong>Subject line especifica.</strong> &quot;Conforme conversamos&quot; = lixo. &quot;[NOME], prometi te mandar isso&quot; = aberto.</li>
+                <li><strong>Primeiro nome no assunto.</strong> Aumenta open rate em ~20%.</li>
+                <li><strong>Nao anexar PDF no T+1.</strong> Forca o clique, nao o download. Link e sempre melhor.</li>
+                <li><strong>Assinatura simples:</strong> Nome / Cargo / 2 URLs. Sem logo gigante, sem banner.</li>
+            </ul>
+        </div>
+
+        <div class="context-box context-danger" style="margin-top: 12px;">
+            <strong>Nunca</strong>
+            <ul>
+                <li><strong>Nao usar &quot;so um ping rapido&quot;.</strong> Todo mundo detecta que e template.</li>
+                <li><strong>Nao &quot;espero sua resposta em 24h&quot;.</strong> Pressao barata.</li>
+                <li><strong>Nao P.S. falso.</strong> P.S. classico (&quot;a proposito, vi que voce esta na X empresa&quot;) virou signature de spam.</li>
+                <li><strong>Nao enviar horarios tipo &quot;quinta das 10h as 17h&quot;.</strong> Mostra que voce nao tem agenda. Envia 2 horarios especificos.</li>
+                <li><strong>Nao fazer follow-up mais de 3x.</strong> Apos T+7 silencio, vira stalker.</li>
+            </ul>
+        </div>
+
+        <div class="section-label" style="margin-top: 28px;">Frequencia por tier</div>
+        <table class="report-table">
+            <thead><tr><th>Contato no evento</th><th>T+1</th><th>T+3</th><th>T+7</th></tr></thead>
+            <tbody>
+                <tr><td class="name">A-tier</td><td>Sim, personalizado</td><td>Sim se sem resposta</td><td>Sim se ainda sem resposta</td></tr>
+                <tr><td class="name">B-tier</td><td>Sim, mais curto</td><td>Pular</td><td>Sim, ultima</td></tr>
+                <tr><td class="name">C-tier</td><td>Nao — LinkedIn DM 1x</td><td>—</td><td>—</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="footer">
+    EPIC Digital &mdash; GTM Kit Jupiter &mdash; Peca 08 · Follow-up Emails &mdash; Abr 2026<br>
+    <a href="index.html">← Hub do Kit</a> &middot;
+    <a href="09-narrative-arc-2min.html">Narrativa 2min →</a>
+</div>
+
+<script>
+(function() {
+    const html = document.documentElement;
+    const toggleBtn = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('epic-theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+    toggleBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    window.toggleTheme = function() {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('epic-theme', next);
+        toggleBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+    };
+
+    document.querySelectorAll('.top-nav-link').forEach(link => {
+        link.addEventListener('click', e => {
+            const href = link.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetId = btn.getAttribute('data-copy');
+            const el = document.getElementById(targetId);
+            if (!el) return;
+            const text = el.textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const original = btn.textContent;
+                btn.textContent = '✓ Copiado';
+                btn.classList.add('copied');
+                setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 2000);
+            });
+        });
+    });
+})();
+</script>
+</body>
+</html>

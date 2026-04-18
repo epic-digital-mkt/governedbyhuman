@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <title>05 · CTA Ladder — GTM Kit Jupiter</title>
+    <meta name="description" content="5 niveis escalonados de proximos passos. Nunca pular nivel. Timing de follow-up, scripts de recusa, e o que nao oferecer no evento.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --epic-red: #FF0050; --success: #4ECDC4; --warning: #CC8800; --danger: #FF6B6B; --info: #6C9FFF; }
+        [data-theme="dark"] { --bg-primary: #000; --text-primary: #fff; --text-secondary: rgba(255,255,255,0.7); --text-muted: rgba(255,255,255,0.4); --border-color: rgba(255,255,255,0.1); --glass: rgba(255,255,255,0.03); --glass-border: rgba(255,255,255,0.06); --row-hover: rgba(255,255,255,0.04); --warning: #FFE66D; }
+        [data-theme="light"] { --bg-primary: #fff; --text-primary: #000; --text-secondary: rgba(0,0,0,0.7); --text-muted: rgba(0,0,0,0.4); --border-color: rgba(0,0,0,0.1); --glass: rgba(0,0,0,0.03); --glass-border: rgba(0,0,0,0.06); --row-hover: rgba(0,0,0,0.03); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-primary); color: var(--text-primary); transition: background-color 0.3s ease, color 0.3s ease; min-height: 100vh; line-height: 1.6; }
+        .top-nav { position: fixed; top: 0; left: 0; right: 0; height: 60px; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-color); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; }
+        [data-theme="light"] .top-nav { background: rgba(255,255,255,0.95); }
+        .top-nav-logo { display: flex; align-items: center; gap: 12px; }
+        .top-nav-logo img { height: 18px; width: auto; }
+        .top-nav-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
+        .top-nav-links { display: flex; gap: 18px; align-items: center; }
+        .top-nav-link { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); cursor: pointer; text-decoration: none; transition: color 0.2s ease; }
+        .top-nav-link:hover { color: var(--epic-red); }
+        .top-nav-actions { display: flex; align-items: center; gap: 12px; }
+        .theme-toggle { cursor: pointer; font-size: 1.1rem; opacity: 0.5; background: none; border: none; padding: 4px; color: var(--text-primary); }
+        .theme-toggle:hover { opacity: 1; }
+        .back-link { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 4px 12px; border: 1px solid var(--glass-border); border-radius: 8px; transition: all 0.2s ease; }
+        .back-link:hover { color: var(--epic-red); border-color: var(--epic-red); }
+        .report { padding: 80px 40px 60px; max-width: 920px; margin: 0 auto; }
+        .hero { margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--glass-border); }
+        .hero-logos { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .hero-logo-text { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .hero-divider { width: 20px; height: 2px; background: var(--epic-red); }
+        .hero-badge { display: inline-block; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; background: rgba(78,205,196,0.15); color: var(--success); }
+        .hero-title { font-size: 2.2rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 10px; line-height: 1.15; }
+        .hero-title .hl { color: var(--epic-red); }
+        .hero-subtitle { font-size: 1rem; color: var(--text-secondary); margin-bottom: 18px; }
+        .hero-meta { display: flex; flex-wrap: wrap; gap: 18px; }
+        .hero-meta-item { font-size: 0.75rem; color: var(--text-muted); }
+        .hero-meta-item strong { color: var(--text-secondary); }
+        .section { margin-bottom: 44px; }
+        .section-label { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--epic-red); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+        .section-label::after { content: ''; flex: 1; height: 1px; background: var(--glass-border); }
+        .level { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px; padding: 22px 24px; margin-bottom: 14px; position: relative; transition: border-color 0.2s ease; }
+        .level:hover { border-color: var(--epic-red); }
+        .level-header { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 12px; }
+        .level-num { font-family: 'JetBrains Mono', monospace; font-size: 2.2rem; font-weight: 900; color: var(--epic-red); line-height: 1; letter-spacing: -1.5px; flex-shrink: 0; min-width: 60px; }
+        .level-title-group { flex: 1; }
+        .level-title { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.3px; }
+        .level-sub { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+        .level-row { font-size: 0.85rem; color: var(--text-secondary); margin-top: 10px; }
+        .level-row strong { color: var(--text-primary); display: block; margin-bottom: 4px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--epic-red); }
+        .level-quote { background: rgba(255,0,80,0.06); border-left: 3px solid var(--epic-red); padding: 12px 16px; border-radius: 0 8px 8px 0; font-style: italic; color: var(--text-primary); font-size: 0.92rem; margin-top: 6px; }
+        .report-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 12px; }
+        .report-table th { padding: 10px 14px; text-align: left; font-weight: 700; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); background: var(--glass); border-bottom: 1px solid var(--glass-border); }
+        .report-table td { padding: 10px 14px; border-bottom: 1px solid var(--glass-border); color: var(--text-secondary); vertical-align: top; }
+        .report-table tr:hover td { background: var(--row-hover); }
+        .report-table .name { font-weight: 700; color: var(--text-primary); }
+        .context-box { background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--warning); border-radius: 0 12px 12px 0; padding: 18px 22px; margin-top: 12px; }
+        .context-box.context-danger { border-left-color: var(--epic-red); }
+        .context-box.context-info { border-left-color: var(--info); }
+        .context-box strong { color: var(--text-primary); display: block; margin-bottom: 8px; font-size: 0.9rem; }
+        .context-box p { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 10px; }
+        .context-box p:last-child { margin-bottom: 0; }
+        .context-box ul { margin: 6px 0 0 20px; font-size: 0.88rem; color: var(--text-secondary); }
+        .context-box li { margin-bottom: 10px; }
+        .context-box li strong { display: inline; font-size: inherit; margin: 0; font-weight: 700; color: var(--text-primary); }
+        .refusal-grid { display: grid; gap: 12px; margin-top: 12px; }
+        .refusal { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 10px; padding: 16px 18px; }
+        .refusal-title { font-size: 0.78rem; font-weight: 700; color: var(--epic-red); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .refusal-quote { font-size: 0.92rem; color: var(--text-primary); font-style: italic; line-height: 1.6; }
+        .dont-list { list-style: none; margin-top: 12px; }
+        .dont-list li { padding: 12px 16px; background: var(--glass); border: 1px solid var(--glass-border); border-left: 3px solid var(--epic-red); border-radius: 0 10px 10px 0; margin-bottom: 8px; font-size: 0.88rem; color: var(--text-secondary); }
+        .dont-list li strong { color: var(--text-primary); }
+        .footer { text-align: center; padding: 40px; font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid var(--glass-border); margin-top: 20px; }
+        .footer a { color: var(--epic-red); text-decoration: none; }
+        @media (max-width: 768px) {
+            .report { padding: 75px 18px 40px; }
+            .top-nav { padding: 0 18px; }
+            .top-nav-links { display: none; }
+            .hero-title { font-size: 1.6rem; }
+            .level-header { flex-direction: column; gap: 6px; }
+            .level-num { font-size: 1.6rem; min-width: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <div class="top-nav-logo">
+        <img src="https://www.epic.digital/hubfs/new/logo-epic-2026.svg" alt="EPIC" onerror="this.style.display='none'">
+        <span class="top-nav-title">05 · CTA Ladder</span>
+    </div>
+    <div class="top-nav-links">
+        <a class="top-nav-link" href="#levels">5 Niveis</a>
+        <a class="top-nav-link" href="#timing">Timing</a>
+        <a class="top-nav-link" href="#refusals">Recusa</a>
+        <a class="top-nav-link" href="#never">NAO oferecer</a>
+    </div>
+    <div class="top-nav-actions">
+        <a class="back-link" href="index.html">← Hub</a>
+        <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </div>
+</nav>
+
+<div class="report">
+
+    <div class="hero">
+        <div class="hero-logos">
+            <span class="hero-logo-text">GTM Kit · Jupiter</span>
+            <span class="hero-divider"></span>
+            <span class="hero-logo-text">Peca 05 / 10</span>
+        </div>
+        <span class="hero-badge">Escalada · 1 nivel por conversa</span>
+        <h1 class="hero-title">CTA <span class="hl">Ladder</span></h1>
+        <p class="hero-subtitle">Sequencia escalonada de proximos passos. <strong>Nunca pedir o nivel 5 se o prospect ainda esta no 1.</strong> Subir um degrau por conversa, no maximo dois.</p>
+        <div class="hero-meta">
+            <span class="hero-meta-item"><strong>Regra:</strong> jamais saltar 2 → 5</span>
+            <span class="hero-meta-item"><strong>Evento:</strong> niveis 1 + 2 (max)</span>
+            <span class="hero-meta-item"><strong>Fonte:</strong> 05-CTA-LADDER.md</span>
+        </div>
+    </div>
+
+    <div class="section" id="levels">
+        <div class="section-label">5 Niveis escalonados</div>
+
+        <div class="level">
+            <div class="level-header">
+                <div class="level-num">01</div>
+                <div class="level-title-group">
+                    <div class="level-title">Conexao</div>
+                    <div class="level-sub">No evento · todo prospect</div>
+                </div>
+            </div>
+            <div class="level-row"><strong>Acao</strong>Trocar LinkedIn no ato.</div>
+            <div class="level-quote">Me adiciona no LinkedIn? Meu nome e Fabio Munhoz, EPIC Digital.</div>
+            <div class="level-row"><strong>Nao fazer</strong>Nao pedir cartao de visita. Nao prometer &quot;te mando material&quot; ainda.</div>
+            <div class="level-row"><strong>Pos-conversa</strong>Aceitar connection, enviar DM personalizada em 24h.</div>
+        </div>
+
+        <div class="level">
+            <div class="level-header">
+                <div class="level-num">02</div>
+                <div class="level-title-group">
+                    <div class="level-title">Contexto publico</div>
+                    <div class="level-sub">Quando prospect mostra interesse</div>
+                </div>
+            </div>
+            <div class="level-row"><strong>Acao</strong>Compartilhar URL do manifesto / framework.</div>
+            <div class="level-quote">Nossa tese esta em governedbyhuman.com. Se voce quiser ver o framework aplicado num caso real, categoryleap.com. Te mando no LinkedIn depois.</div>
+            <div class="level-row"><strong>Sinal</strong>Prospect faz 1+ pergunta de aprofundamento, ou fala &quot;achei interessante&quot;.</div>
+            <div class="level-row"><strong>Pos-conversa</strong>DM com links diretos + quote pessoal (&quot;lembrei da sua pergunta sobre X&quot;).</div>
+        </div>
+
+        <div class="level">
+            <div class="level-header">
+                <div class="level-num">03</div>
+                <div class="level-title-group">
+                    <div class="level-title">Diagnostico gratuito</div>
+                    <div class="level-sub">Prospect engajado · B/A-tier</div>
+                </div>
+            </div>
+            <div class="level-row"><strong>Acao</strong>Call de 45 minutos gratuita — diagnostico dos 3 pontos cegos na operacao de receita.</div>
+            <div class="level-quote">Posso te propor o seguinte: 45 minutos de call, sem compromisso. No final, voce sai com 3 pontos cegos da sua operacao mapeados. Se fizer sentido continuar, a gente fala em comercial — se nao fizer, voce ganhou um raio-x que custaria dezenas de milhares se voce contratasse consultoria.</div>
+            <div class="level-row"><strong>Sinal</strong>Prospect A/B-tier com dor clara + poder de decisao (ou champion).</div>
+            <div class="level-row"><strong>Pos-conversa</strong>Agendar no proprio evento ou ate T+3. Levar resumo das 3 dores identificadas.</div>
+        </div>
+
+        <div class="level">
+            <div class="level-header">
+                <div class="level-num">04</div>
+                <div class="level-title-group">
+                    <div class="level-title">Raio-X pago</div>
+                    <div class="level-sub">Prospect qualificado · quer profundidade</div>
+                </div>
+            </div>
+            <div class="level-row"><strong>Acao</strong>Raio-X pago de 2 semanas.</div>
+            <div class="level-quote">Se voce quiser mergulhar mesmo, a gente faz um Raio-X — 2 semanas, R$25-40k (ou $25-40k se EUA). Entregavel: Mapa de Metabolismo Decisorio + Custo da Nao-Metabolizacao em dolares. Te diz exatamente onde sua operacao esta sangrando receita e qual o tamanho do buraco. Se voce decidir seguir com a gente depois, o valor do Raio-X e creditado no proximo programa.</div>
+            <div class="level-row"><strong>Sinal</strong>Prospect fez a call diagnostico + validou problema + tem budget + quer acao concreta.</div>
+            <div class="level-row"><strong>Posicionamento</strong>Ancorar em &quot;custa menos que um mes de agencia, entrega um ano de clareza&quot;.</div>
+        </div>
+
+        <div class="level">
+            <div class="level-header">
+                <div class="level-num">05</div>
+                <div class="level-title-group">
+                    <div class="level-title">Programa completo</div>
+                    <div class="level-sub">Prospect convertido</div>
+                </div>
+            </div>
+            <div class="level-row"><strong>Acao</strong>Revenue Intelligence (12 sem, $150-250k) · projeto iFood-style (fee fixo + revenue share) · ROF end-to-end.</div>
+            <div class="level-quote">Beleza. Com base no Raio-X, eu monto uma proposta personalizada. Formato: fase de Redesenho 4 semanas + Arena 6 semanas + Soberania Operacional continua. Ticket na faixa de X. Componente de performance atrelado a KPIs que a gente define juntos.</div>
+            <div class="level-row"><strong>Sinal</strong>Prospect ja fez Raio-X + ve valor concreto + entende pricing baseado em resultado.</div>
+            <div class="level-row"><strong>Posicionamento</strong>&quot;Parceria, nao fornecedor.&quot; Contract SOW com SMUs + revenue share.</div>
+        </div>
+
+        <div class="context-box context-danger" style="margin-top: 16px;">
+            <strong>Regra inviolavel</strong>
+            <p><strong>Um nivel por conversa, no maximo dois.</strong> Nunca saltar do 2 pro 5 direto. Mesmo que o prospect peca. A EPIC nao e empresa de &quot;aqui esta a proposta, assina ai&quot;. Somos parceiros que constroem contexto juntos.</p>
+        </div>
+    </div>
+
+    <div class="section" id="timing">
+        <div class="section-label">Timing de follow-up (matriz)</div>
+        <table class="report-table">
+            <thead>
+                <tr><th>Nivel no evento</th><th>T+1</th><th>T+3</th><th>T+7</th><th>T+14</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="name">01 · Conexao</td>
+                    <td>LinkedIn DM + link manifesto</td>
+                    <td>Comment no ultimo post</td>
+                    <td>DM com artigo relevante</td>
+                    <td>Newsletter / podcast</td>
+                </tr>
+                <tr>
+                    <td class="name">02 · Contexto</td>
+                    <td>Email com 1 case + pergunta direta</td>
+                    <td>—</td>
+                    <td>Email com insight aprofundado</td>
+                    <td>Oferecer diagnostico 03</td>
+                </tr>
+                <tr>
+                    <td class="name">03 · Diagnostico agendado</td>
+                    <td>Confirmacao horario + pauta</td>
+                    <td>Call acontece</td>
+                    <td>Resumo 3 pontos cegos + proposta Raio-X</td>
+                    <td>Follow-up decisao</td>
+                </tr>
+                <tr>
+                    <td class="name">04 · Raio-X agendado</td>
+                    <td>Contrato / PO</td>
+                    <td>Kickoff</td>
+                    <td>Entregas semana 1</td>
+                    <td>Entrega Raio-X</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section" id="refusals">
+        <div class="section-label">Scripts de recusa (se prospect nao topar subir)</div>
+        <div class="refusal-grid">
+            <div class="refusal">
+                <div class="refusal-title">Recusa nivel 3 · &ldquo;nao tenho tempo agora&rdquo;</div>
+                <div class="refusal-quote">Tudo bem. Me diz o seguinte — o que precisa mudar na sua semana pra voce achar 45 min? Te ligo quando isso acontecer. Enquanto isso, segue esse link [manifesto] e me fala depois se fez sentido.</div>
+            </div>
+            <div class="refusal">
+                <div class="refusal-title">Recusa nivel 4 · &ldquo;nao tenho budget agora&rdquo;</div>
+                <div class="refusal-quote">Entendi. Dois caminhos: 1) espero seu proximo ciclo de budget (quando?); ou 2) dividimos em pagamentos menores. Qual voce prefere?</div>
+            </div>
+            <div class="refusal">
+                <div class="refusal-title">Recusa nivel 5 · &ldquo;preciso pensar&rdquo;</div>
+                <div class="refusal-quote">Claro. Me fala o que te faria dizer sim em 30 dias. E o que te faria dizer nao. Os dois lados.</div>
+            </div>
+        </div>
+        <div class="context-box context-info" style="margin-top: 14px;">
+            <strong>Principio</strong>
+            <p>Nunca insistir na hora. Sempre deixar a porta aberta com uma <strong>pergunta que o prospect tem que pensar</strong>.</p>
+        </div>
+    </div>
+
+    <div class="section" id="never">
+        <div class="section-label">O que NAO oferecer no evento</div>
+        <ul class="dont-list">
+            <li><strong>❌ Desconto.</strong> &ldquo;Negociamos valor apos o Raio-X — primeiro a gente descobre o problema, depois fala de preco.&rdquo;</li>
+            <li><strong>❌ Prazo &ldquo;pra fechar hoje&rdquo;.</strong> Nao somos vendedor de carro.</li>
+            <li><strong>❌ &quot;Prove que voce e bom&quot; challenge gratuito.</strong> Isso e commodity.</li>
+            <li><strong>❌ Referral bonus.</strong> Voce da isso pra quem confia em voce, nao pra quem acabou de conhecer.</li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="footer">
+    EPIC Digital &mdash; GTM Kit Jupiter &mdash; Peca 05 · CTA Ladder &mdash; Abr 2026<br>
+    <a href="index.html">← Hub do Kit</a> &middot;
+    <a href="04-discovery-questions.html">← Discovery</a> &middot;
+    <a href="06-deck-copy.html">Deck Copy →</a>
+</div>
+
+<script>
+(function() {
+    const html = document.documentElement;
+    const toggleBtn = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('epic-theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+    toggleBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    window.toggleTheme = function() {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('epic-theme', next);
+        toggleBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+    };
+
+    document.querySelectorAll('.top-nav-link').forEach(link => {
+        link.addEventListener('click', e => {
+            const href = link.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+})();
+</script>
+</body>
+</html>

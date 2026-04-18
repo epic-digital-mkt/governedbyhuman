@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <title>03 · ICP Scoring — GTM Kit Jupiter</title>
+    <meta name="description" content="Rubrica rapida para qualificar prospects no evento. 8 criterios, red flags, green flags. Tier A/B/C/NQ para follow-up.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --epic-red: #FF0050; --success: #4ECDC4; --warning: #CC8800; --danger: #FF6B6B; --info: #6C9FFF; }
+        [data-theme="dark"] { --bg-primary: #000; --text-primary: #fff; --text-secondary: rgba(255,255,255,0.7); --text-muted: rgba(255,255,255,0.4); --border-color: rgba(255,255,255,0.1); --glass: rgba(255,255,255,0.03); --glass-border: rgba(255,255,255,0.06); --row-hover: rgba(255,255,255,0.04); --warning: #FFE66D; }
+        [data-theme="light"] { --bg-primary: #fff; --text-primary: #000; --text-secondary: rgba(0,0,0,0.7); --text-muted: rgba(0,0,0,0.4); --border-color: rgba(0,0,0,0.1); --glass: rgba(0,0,0,0.03); --glass-border: rgba(0,0,0,0.06); --row-hover: rgba(0,0,0,0.03); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-primary); color: var(--text-primary); transition: background-color 0.3s ease, color 0.3s ease; min-height: 100vh; line-height: 1.6; }
+        .top-nav { position: fixed; top: 0; left: 0; right: 0; height: 60px; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-color); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; }
+        [data-theme="light"] .top-nav { background: rgba(255,255,255,0.95); }
+        .top-nav-logo { display: flex; align-items: center; gap: 12px; }
+        .top-nav-logo img { height: 18px; width: auto; }
+        .top-nav-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
+        .top-nav-links { display: flex; gap: 20px; align-items: center; }
+        .top-nav-link { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); cursor: pointer; text-decoration: none; transition: color 0.2s ease; }
+        .top-nav-link:hover { color: var(--epic-red); }
+        .top-nav-actions { display: flex; align-items: center; gap: 12px; }
+        .theme-toggle { cursor: pointer; font-size: 1.1rem; opacity: 0.5; background: none; border: none; padding: 4px; color: var(--text-primary); }
+        .theme-toggle:hover { opacity: 1; }
+        .back-link { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 4px 12px; border: 1px solid var(--glass-border); border-radius: 8px; transition: all 0.2s ease; }
+        .back-link:hover { color: var(--epic-red); border-color: var(--epic-red); }
+        .report { padding: 80px 40px 60px; max-width: 920px; margin: 0 auto; }
+        .hero { margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--glass-border); }
+        .hero-logos { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .hero-logo-text { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .hero-divider { width: 20px; height: 2px; background: var(--epic-red); }
+        .hero-badge { display: inline-block; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; background: rgba(78,205,196,0.15); color: var(--success); }
+        .hero-title { font-size: 2.2rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 10px; line-height: 1.15; }
+        .hero-title .hl { color: var(--epic-red); }
+        .hero-subtitle { font-size: 1rem; color: var(--text-secondary); margin-bottom: 18px; }
+        .hero-meta { display: flex; flex-wrap: wrap; gap: 18px; }
+        .hero-meta-item { font-size: 0.75rem; color: var(--text-muted); }
+        .hero-meta-item strong { color: var(--text-secondary); }
+        .section { margin-bottom: 44px; }
+        .section-label { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--epic-red); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+        .section-label::after { content: ''; flex: 1; height: 1px; background: var(--glass-border); }
+        .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 12px; }
+        .tier-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 12px; padding: 16px 18px; text-align: center; }
+        .tier-card.tier-a { border-top: 4px solid var(--success); }
+        .tier-card.tier-b { border-top: 4px solid var(--info); }
+        .tier-card.tier-c { border-top: 4px solid var(--warning); }
+        .tier-card.tier-nq { border-top: 4px solid var(--danger); }
+        .tier-range { font-family: 'JetBrains Mono', monospace; font-size: 1.8rem; font-weight: 900; color: var(--epic-red); letter-spacing: -1px; line-height: 1; }
+        .tier-name { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-top: 4px; }
+        .tier-desc { font-size: 0.78rem; color: var(--text-secondary); margin-top: 8px; line-height: 1.4; }
+        .criterion { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 12px; padding: 18px 20px; margin-bottom: 12px; display: flex; gap: 16px; align-items: flex-start; }
+        .criterion-num { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 900; color: var(--epic-red); line-height: 1; flex-shrink: 0; letter-spacing: -1px; min-width: 40px; }
+        .criterion-body { flex: 1; }
+        .criterion-title { font-size: 1rem; font-weight: 800; margin-bottom: 8px; }
+        .scale-list { list-style: none; font-size: 0.84rem; color: var(--text-secondary); display: grid; gap: 4px; }
+        .scale-list li { display: flex; gap: 8px; align-items: flex-start; }
+        .scale-list li .pt { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--epic-red); flex-shrink: 0; min-width: 22px; }
+        .context-box { background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--warning); border-radius: 0 12px 12px 0; padding: 18px 22px; margin-top: 12px; }
+        .context-box.context-danger { border-left-color: var(--epic-red); }
+        .context-box.context-success { border-left-color: var(--success); }
+        .context-box strong { color: var(--text-primary); display: block; margin-bottom: 8px; font-size: 0.9rem; }
+        .context-box ul { margin: 0 0 0 20px; font-size: 0.88rem; color: var(--text-secondary); }
+        .context-box li { margin-bottom: 8px; }
+        .context-box li strong { display: inline; font-weight: 700; color: var(--text-primary); font-size: inherit; margin: 0; }
+        .scorecard { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 12px; padding: 20px 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; color: var(--text-secondary); white-space: pre; overflow-x: auto; line-height: 1.8; }
+        .footer { text-align: center; padding: 40px; font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid var(--glass-border); margin-top: 20px; }
+        .footer a { color: var(--epic-red); text-decoration: none; }
+        @media (max-width: 768px) {
+            .report { padding: 75px 18px 40px; }
+            .top-nav { padding: 0 18px; }
+            .top-nav-links { display: none; }
+            .hero-title { font-size: 1.6rem; }
+            .criterion { flex-direction: column; gap: 8px; }
+            .criterion-num { font-size: 1.3rem; min-width: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <div class="top-nav-logo">
+        <img src="https://www.epic.digital/hubfs/new/logo-epic-2026.svg" alt="EPIC" onerror="this.style.display='none'">
+        <span class="top-nav-title">03 · ICP Scoring</span>
+    </div>
+    <div class="top-nav-links">
+        <a class="top-nav-link" href="#tiers">Tiers</a>
+        <a class="top-nav-link" href="#criteria">8 Criterios</a>
+        <a class="top-nav-link" href="#flags">Flags</a>
+        <a class="top-nav-link" href="#scorecard">Scorecard</a>
+    </div>
+    <div class="top-nav-actions">
+        <a class="back-link" href="index.html">← Hub</a>
+        <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </div>
+</nav>
+
+<div class="report">
+
+    <div class="hero">
+        <div class="hero-logos">
+            <span class="hero-logo-text">GTM Kit · Jupiter</span>
+            <span class="hero-divider"></span>
+            <span class="hero-logo-text">Peca 03 / 10</span>
+        </div>
+        <span class="hero-badge">Rubrica de qualificacao</span>
+        <h1 class="hero-title">ICP <span class="hl">Scoring Rubric</span></h1>
+        <p class="hero-subtitle">Rubrica rapida para qualificar prospects no corredor do evento. Durante/apos a conversa, preencher mental ou no celular. <strong>8 criterios, cada um 0-3 pontos. Total 0-24.</strong> Nota final determina prioridade de follow-up.</p>
+        <div class="hero-meta">
+            <span class="hero-meta-item"><strong>Uso:</strong> BR Nation (corredor, mesa)</span>
+            <span class="hero-meta-item"><strong>Output:</strong> Tier A/B/C/NQ + proximo passo</span>
+            <span class="hero-meta-item"><strong>Fonte:</strong> 03-ICP-SCORING.md</span>
+        </div>
+    </div>
+
+    <div class="section" id="tiers">
+        <div class="section-label">4 Tiers de classificacao</div>
+        <div class="tier-grid">
+            <div class="tier-card tier-a">
+                <div class="tier-range">20-24</div>
+                <div class="tier-name">A-tier</div>
+                <div class="tier-desc">Priorizar follow-up <strong>T+1</strong>. Preparar proposta customizada.</div>
+            </div>
+            <div class="tier-card tier-b">
+                <div class="tier-range">14-19</div>
+                <div class="tier-name">B-tier</div>
+                <div class="tier-desc">Follow-up <strong>T+3</strong>. Enviar manifesto + case especifico.</div>
+            </div>
+            <div class="tier-card tier-c">
+                <div class="tier-range">8-13</div>
+                <div class="tier-name">C-tier</div>
+                <div class="tier-desc">Follow-up <strong>T+7</strong>. LinkedIn connect + newsletter.</div>
+            </div>
+            <div class="tier-card tier-nq">
+                <div class="tier-range">&lt; 8</div>
+                <div class="tier-name">Nao Qualificado</div>
+                <div class="tier-desc">Connect so se afinidade pessoal forte.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="criteria">
+        <div class="section-label">8 Criterios (0-3 pontos cada)</div>
+
+        <div class="criterion">
+            <div class="criterion-num">01</div>
+            <div class="criterion-body">
+                <div class="criterion-title">Porte / Receita anual</div>
+                <ul class="scale-list">
+                    <li><span class="pt">3</span>US$50M+ (ICP Revenue Intelligence) ou R$100M+ BR</li>
+                    <li><span class="pt">2</span>R$20M-R$100M ou US$10M-US$50M</li>
+                    <li><span class="pt">1</span>R$5M-R$20M</li>
+                    <li><span class="pt">0</span>Abaixo disso</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="criterion">
+            <div class="criterion-num">02</div>
+            <div class="criterion-body">
+                <div class="criterion-title">Setor / Industria</div>
+                <ul class="scale-list">
+                    <li><span class="pt">3</span>Tech / SaaS / Services / MSP / Fintech / Healthcare (IT foco)</li>
+                    <li><span class="pt">2</span>Varejo em transformacao digital, educacao privada, industria 4.0</li>
+                    <li><span class="pt">1</span>Tradicional em inicio de transformacao digital</li>
+                    <li><span class="pt">0</span>Fora do nosso territorio (agro puro, commodity industrial, governo)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="criterion">
+            <div class="criterion-num">03</div>
+            <div class="criterion-body">
+                <div class="criterion-title">Maturidade digital</div>
+                <ul class="scale-list">
+                    <li><span class="pt">3</span>Tem CRM (HubSpot, Salesforce, Pipedrive), usa analytics, ja fez projetos de transformacao digital</li>
+                    <li><span class="pt">2</span>Tem CRM basico e algumas automacoes</li>
+                    <li><span class="pt">1</span>Esta comecando — planilhas + WhatsApp</li>
+                    <li><span class="pt">0</span>Zero digitalizacao</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="criterion">
+            <div class="criterion-num">04</div>
+            <div class="criterion-body">
+                <div class="criterion-title">Budget / Apetite de investimento</div>
+                <ul class="scale-list">
+                    <li><span class="pt">3</span>Ja investiu $50k+/ano em agencia/consultoria e esta aberto a fazer novamente</li>
+                    <li><span class="pt">2</span>Investe R$15-50k/mes em marketing</li>
+                    <li><span class="pt">1</span>Investe algo pequeno mas esta crescendo</li>
+                    <li><span class="pt">0</span>Nao investe ou nao tem budget</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="criterion">
+            <div class="criterion-num">05</div>
+            <div class="criterion-body">
+                <div class="criterion-title">Insatisfacao com fornecedor atual</div>
+                <ul class="scale-list">
+                    <li><span class="pt">3</span>Acabou de trocar ou esta prestes a trocar agencia/consultoria por decepcao com ROI</li>
+                    <li><span class="pt">2</span>Insatisfeito, avaliando alternativas</li>
+                    <li><span class="pt">1</span>Relacao estavel mas ve espaco para melhorar</li>
+                    <li><span class="pt">0</span>Satisfeito / nao tem fornecedor / nao pensa no assunto</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="criterion">
+            <div class="criterion-num">06</div>
+            <div class="criterion-body">
+                <div class="criterion-title">Apetite de risco / Velocidade de decisao</div>
+                <ul class="scale-list">
+                    <li><span class="pt">3</span>Dono ou C-level. Decide e executa. Historico de apostas calculadas.</li>
+                    <li><span class="pt">2</span>VP com poder de aprovacao ate certo ticket</li>
+                    <li><span class="pt">1</span>Gerente que precisa escalar para comite</li>
+                    <li><span class="pt">0</span>Sem poder de decisao</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="criterion">
+            <div class="criterion-num">07</div>
+            <div class="criterion-body">
+                <div class="criterion-title">Decisao tipo 1 (irreversivel) em pauta</div>
+                <ul class="scale-list">
+                    <li><span class="pt">3</span>Tem decisao grande nos proximos 12 meses: entrar em mercado, M&amp;A, descontinuar produto, reposicionar categoria</li>
+                    <li><span class="pt">2</span>Tem decisao media: novo canal, novo segmento, ampliar time senior</li>
+                    <li><span class="pt">1</span>Otimizacao do que ja existe</li>
+                    <li><span class="pt">0</span>Nao tem nada concreto em pauta</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="criterion">
+            <div class="criterion-num">08</div>
+            <div class="criterion-body">
+                <div class="criterion-title">Fit cultural / POV valorizado</div>
+                <ul class="scale-list">
+                    <li><span class="pt">3</span>Ja citou frustracao com &quot;IA generica&quot;, &quot;consultoria que entrega PDF&quot;, &quot;agencia que so executa&quot;</li>
+                    <li><span class="pt">2</span>Valoriza pensamento estrategico + estao-abertos-a-conceitos</li>
+                    <li><span class="pt">1</span>Neutro — quer saber resultados</li>
+                    <li><span class="pt">0</span>So quer tatica / performance pura</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="flags">
+        <div class="section-label">Red flags / Green flags</div>
+
+        <div class="context-box context-danger">
+            <strong>🚩 Red flags — zerar score mesmo se pontuou alto (recolocar em C-tier ou abaixo)</strong>
+            <ul>
+                <li><strong>&quot;Eu quero automacao com IA pra substituir pessoas&quot;</strong> — valor incompativel</li>
+                <li><strong>&quot;Qual o seu preco por hora?&quot;</strong> — nao entende modelo SMU/revenue share, disputa no canal errado</li>
+                <li><strong>&quot;Preciso de ate 3 agencias competindo&quot;</strong> — commodity mindset, nao servimos</li>
+                <li><strong>&quot;Posso ver primeiro com meu procurement?&quot;</strong> — processo burocratico, tempo de fechamento &gt; 6 meses</li>
+            </ul>
+        </div>
+
+        <div class="context-box context-success" style="margin-top: 14px;">
+            <strong>🟢 Green flags — somar +2 no total</strong>
+            <ul>
+                <li><strong>&quot;Ja li algum case ou ouvi falar da EPIC&quot;</strong> — pre-qualificado mentalmente</li>
+                <li><strong>&quot;Tenho um evento/lancamento/marco em X meses e preciso de parceiro&quot;</strong> — tem urgencia real</li>
+                <li><strong>&quot;Nao quero ficar testando coisa nova, quero algo comprovado&quot;</strong> — caminho direto para NTIVA/iFood</li>
+                <li><strong>&quot;Voces atendem EUA?&quot;</strong> — target Revenue Intelligence</li>
+                <li><strong>&quot;Meu CEO quer algo grande, mas eu nao sei por onde comecar&quot;</strong> — decisao tipo 1 no horizonte, com champion interno</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section" id="scorecard">
+        <div class="section-label">Quick scorecard (para preencher no celular)</div>
+        <div class="scorecard">Porte:          [ 0 / 1 / 2 / 3 ]
+Setor:          [ 0 / 1 / 2 / 3 ]
+Maturidade:     [ 0 / 1 / 2 / 3 ]
+Budget:         [ 0 / 1 / 2 / 3 ]
+Insatisf.:      [ 0 / 1 / 2 / 3 ]
+Apetite:        [ 0 / 1 / 2 / 3 ]
+Tipo 1:         [ 0 / 1 / 2 / 3 ]
+Fit cultural:   [ 0 / 1 / 2 / 3 ]
+
+Green flags (+2 cada):  [ __ ]
+Red flags (-8):         [ __ ]
+
+TOTAL: ____ / 24
+
+TIER: [ A / B / C / NQ ]
+PROXIMO PASSO: __________________</div>
+    </div>
+
+</div>
+
+<div class="footer">
+    EPIC Digital &mdash; GTM Kit Jupiter &mdash; Peca 03 · ICP Scoring &mdash; Abr 2026<br>
+    <a href="index.html">← Hub do Kit</a> &middot;
+    <a href="04-discovery-questions.html">Discovery Questions →</a>
+</div>
+
+<script>
+(function() {
+    const html = document.documentElement;
+    const toggleBtn = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('epic-theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+    toggleBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    window.toggleTheme = function() {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('epic-theme', next);
+        toggleBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+    };
+
+    document.querySelectorAll('.top-nav-link').forEach(link => {
+        link.addEventListener('click', e => {
+            const href = link.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+})();
+</script>
+</body>
+</html>

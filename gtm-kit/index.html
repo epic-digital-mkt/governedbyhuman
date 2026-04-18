@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <title>GTM Kit — Jupiter · EPIC Digital · Abr 2026</title>
+    <meta name="description" content="Arsenal GTM completo para BR Nation. 10 pecas: elevator pitch, battle card, ICP, discovery, CTA ladder, deck, posts LinkedIn, emails, narrativa 2min, manifesto shareable.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --epic-black: #000000;
+            --epic-white: #FFFFFF;
+            --epic-red: #FF0050;
+            --success: #4ECDC4;
+            --warning: #CC8800;
+            --danger: #FF6B6B;
+            --info: #6C9FFF;
+        }
+        [data-theme="dark"] {
+            --bg-primary: #000000; --bg-secondary: #0a0a0a; --bg-tertiary: #111111;
+            --text-primary: #FFFFFF; --text-secondary: rgba(255,255,255,0.7); --text-muted: rgba(255,255,255,0.4);
+            --border-color: rgba(255,255,255,0.1);
+            --glass: rgba(255,255,255,0.03); --glass-border: rgba(255,255,255,0.06);
+            --glass-hover: rgba(255,255,255,0.08); --row-hover: rgba(255,255,255,0.04);
+            --warning: #FFE66D;
+        }
+        [data-theme="light"] {
+            --bg-primary: #FFFFFF; --bg-secondary: #F5F5F5; --bg-tertiary: #EBEBEB;
+            --text-primary: #000000; --text-secondary: rgba(0,0,0,0.7); --text-muted: rgba(0,0,0,0.4);
+            --border-color: rgba(0,0,0,0.1);
+            --glass: rgba(0,0,0,0.03); --glass-border: rgba(0,0,0,0.06);
+            --glass-hover: rgba(0,0,0,0.08); --row-hover: rgba(0,0,0,0.03);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary); color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            min-height: 100vh; line-height: 1.6;
+        }
+
+        /* NAV */
+        .top-nav {
+            position: fixed; top: 0; left: 0; right: 0; height: 60px;
+            background: rgba(0,0,0,0.95); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color); z-index: 1000;
+            display: flex; align-items: center; justify-content: space-between; padding: 0 40px;
+        }
+        [data-theme="light"] .top-nav { background: rgba(255,255,255,0.95); }
+        .top-nav-logo { display: flex; align-items: center; gap: 12px; }
+        .top-nav-logo img { height: 18px; width: auto; }
+        .top-nav-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
+        .top-nav-links { display: flex; gap: 20px; align-items: center; }
+        .top-nav-link { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: color 0.2s ease; text-decoration: none; }
+        .top-nav-link:hover { color: var(--epic-red); }
+        .top-nav-actions { display: flex; align-items: center; gap: 12px; }
+        .theme-toggle { cursor: pointer; font-size: 1.1rem; opacity: 0.5; transition: opacity 0.2s ease; background: none; border: none; padding: 4px; color: var(--text-primary); }
+        .theme-toggle:hover { opacity: 1; }
+        .back-link { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 4px 12px; border: 1px solid var(--glass-border); border-radius: 8px; transition: all 0.2s ease; }
+        .back-link:hover { color: var(--epic-red); border-color: var(--epic-red); }
+
+        /* CONTENT */
+        .report { padding: 80px 40px 60px; max-width: 1040px; margin: 0 auto; }
+
+        /* HERO */
+        .hero { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--glass-border); }
+        .hero-logos { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .hero-logo-text { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .hero-divider { width: 20px; height: 2px; background: var(--epic-red); }
+        .hero-badge { display: inline-block; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
+        .badge-active { background: rgba(78,205,196,0.15); color: var(--success); }
+        .hero-title { font-size: 2.6rem; font-weight: 900; letter-spacing: -1.5px; margin-bottom: 12px; line-height: 1.1; }
+        .hero-title .hl { color: var(--epic-red); }
+        .hero-subtitle { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 20px; max-width: 760px; }
+        .hero-meta { display: flex; flex-wrap: wrap; gap: 24px; }
+        .hero-meta-item { font-size: 0.75rem; color: var(--text-muted); }
+        .hero-meta-item strong { color: var(--text-secondary); font-weight: 700; }
+
+        /* METRICS */
+        .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 48px; }
+        .metric {
+            text-align: center; background: var(--glass); border: 1px solid var(--glass-border);
+            border-radius: 12px; padding: 22px 14px; transition: border-color 0.2s ease;
+        }
+        .metric:hover { border-color: var(--epic-red); }
+        .metric .num { font-size: 2.2rem; font-weight: 900; color: var(--epic-red); line-height: 1; letter-spacing: -1px; }
+        .metric .label { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-top: 6px; }
+        .metric .sub { font-size: 0.68rem; color: var(--text-muted); margin-top: 4px; }
+
+        /* SECTIONS */
+        .section { margin-bottom: 56px; }
+        .section-label {
+            font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;
+            color: var(--epic-red); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+        }
+        .section-label::after { content: ''; flex: 1; height: 1px; background: var(--glass-border); }
+
+        /* KIT GRID */
+        .kit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+        .kit-card {
+            background: var(--glass); border: 1px solid var(--glass-border);
+            border-radius: 14px; padding: 22px; transition: all 0.2s ease;
+            text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 10px;
+            position: relative; overflow: hidden;
+        }
+        .kit-card:hover { border-color: var(--epic-red); transform: translateY(-2px); }
+        .kit-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--epic-red); opacity: 0; transition: opacity 0.2s ease;
+        }
+        .kit-card:hover::before { opacity: 1; }
+        .kit-num { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 600; color: var(--text-muted); letter-spacing: 1px; }
+        .kit-title { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.3px; line-height: 1.2; }
+        .kit-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; flex: 1; }
+        .kit-cta { font-size: 0.72rem; font-weight: 700; color: var(--epic-red); text-transform: uppercase; letter-spacing: 1.2px; margin-top: 4px; }
+        .kit-cta::after { content: ' \2192'; }
+
+        /* FLOW */
+        .flow-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+        .flow-step {
+            background: var(--glass); border: 1px solid var(--glass-border);
+            border-radius: 10px; padding: 16px; position: relative;
+        }
+        .flow-step .step-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--epic-red); font-weight: 600; margin-bottom: 6px; }
+        .flow-step .step-title { font-size: 0.9rem; font-weight: 800; margin-bottom: 4px; }
+        .flow-step .step-desc { font-size: 0.78rem; color: var(--text-muted); }
+
+        /* CONTEXT */
+        .context-box {
+            background: var(--glass); border: 1px solid var(--glass-border);
+            border-left: 4px solid var(--warning); border-radius: 0 12px 12px 0;
+            padding: 18px 22px; margin-top: 12px;
+        }
+        .context-box strong { color: var(--text-primary); }
+        .context-box p { font-size: 0.88rem; color: var(--text-secondary); margin-top: 8px; }
+        .context-box.context-danger { border-left-color: var(--epic-red); }
+        .context-box.context-info { border-left-color: var(--info); }
+
+        /* FOOTER */
+        .footer {
+            text-align: center; padding: 40px; font-size: 0.72rem; color: var(--text-muted);
+            border-top: 1px solid var(--glass-border); margin-top: 20px;
+        }
+        .footer a { color: var(--epic-red); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .report { padding: 75px 18px 40px; }
+            .top-nav { padding: 0 18px; }
+            .top-nav-links { display: none; }
+            .hero-title { font-size: 1.85rem; }
+            .metrics { grid-template-columns: repeat(2, 1fr); }
+            .kit-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <div class="top-nav-logo">
+        <img src="https://www.epic.digital/hubfs/new/logo-epic-2026.svg" alt="EPIC" onerror="this.style.display='none'">
+        <span class="top-nav-title">GTM Kit · Jupiter</span>
+    </div>
+    <div class="top-nav-links">
+        <a class="top-nav-link" href="#metrics">Metricas</a>
+        <a class="top-nav-link" href="#kit">10 Pecas</a>
+        <a class="top-nav-link" href="#flow">Como usar</a>
+        <a class="top-nav-link" href="https://governedbyhuman.com">Manifesto</a>
+        <a class="top-nav-link" href="https://governedbyhuman.com/deck.html">Deck</a>
+    </div>
+    <div class="top-nav-actions">
+        <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </div>
+</nav>
+
+<div class="report">
+
+    <div class="hero" id="top">
+        <div class="hero-logos">
+            <span class="hero-logo-text">EPIC Digital</span>
+            <span class="hero-divider"></span>
+            <span class="hero-logo-text">BR Nation 2026</span>
+        </div>
+        <span class="hero-badge badge-active">Ativo · Evento 18-19 Abr</span>
+        <h1 class="hero-title">GTM Kit <span class="hl">— Arsenal Completo</span></h1>
+        <p class="hero-subtitle">10 pecas calibradas para ancorar a narrativa &quot;Powered by AI · Governed by Human&quot; no BR Nation e nas semanas seguintes. Elevator pitches, battle card, ICP scoring, discovery questions, CTA ladder, deck copy, posts LinkedIn, emails de follow-up, narrativa decoravel e manifesto shareable.</p>
+        <div class="hero-meta">
+            <span class="hero-meta-item"><strong>Projeto:</strong> Jupiter</span>
+            <span class="hero-meta-item"><strong>Fase:</strong> GTM Launch</span>
+            <span class="hero-meta-item"><strong>Time:</strong> Fabio Munhoz + Jeferson Venancio</span>
+            <span class="hero-meta-item"><strong>Categoria:</strong> Revenue Intelligence</span>
+            <span class="hero-meta-item"><strong>Atualizado:</strong> 2026-04-18</span>
+        </div>
+    </div>
+
+    <div class="metrics" id="metrics">
+        <div class="metric"><div class="num">+539%</div><div class="label">ROI NTIVA</div><div class="sub">2022-2025 · sem IA escalada</div></div>
+        <div class="metric"><div class="num">+294%</div><div class="label">Capacidade iFood</div><div class="sub">250 &rarr; 850 campanhas/mes</div></div>
+        <div class="metric"><div class="num">100+</div><div class="label">HubSpot Impl.</div><div class="sub">10 paises</div></div>
+        <div class="metric"><div class="num">9 anos</div><div class="label">EPIC</div><div class="sub">agencia + engine + produto</div></div>
+    </div>
+
+    <div class="section" id="kit">
+        <div class="section-label">10 Pecas do Kit</div>
+        <div class="kit-grid">
+
+            <a class="kit-card" href="01-elevator-pitch.html">
+                <span class="kit-num">01 / ELEVATOR</span>
+                <span class="kit-title">Elevator Pitches</span>
+                <span class="kit-desc">3 versoes calibradas por tempo (30s / 60s / 2min). Cheat sheet de numeros para decorar. Perguntas-arma para puxar conversa.</span>
+                <span class="kit-cta">Abrir</span>
+            </a>
+
+            <a class="kit-card" href="02-battle-card.html">
+                <span class="kit-num">02 / BATTLE CARD</span>
+                <span class="kit-title">Battle Card 1-pager</span>
+                <span class="kit-desc">Quem somos, o que nao somos (inclui Anti-GaaS), 3 camadas, frameworks, cases, pricing SMU + revenue share, ICP, CTA ladder.</span>
+                <span class="kit-cta">Abrir</span>
+            </a>
+
+            <a class="kit-card" href="03-icp-scoring.html">
+                <span class="kit-num">03 / ICP SCORING</span>
+                <span class="kit-title">Rubrica de Qualificacao</span>
+                <span class="kit-desc">8 criterios 0-3 pontos, red flags que zeram o score, green flags que somam +2. Tier A/B/C/NQ para follow-up.</span>
+                <span class="kit-cta">Abrir</span>
+            </a>
+
+            <a class="kit-card" href="04-discovery-questions.html">
+                <span class="kit-num">04 / DISCOVERY</span>
+                <span class="kit-title">16 Perguntas de Descoberta</span>
+                <span class="kit-desc">GTM motion, data &amp; stack, decisoes tipo 1, ambicao e fit. Perguntas-arma de alta intensidade para A-tier.</span>
+                <span class="kit-cta">Abrir</span>
+            </a>
+
+            <a class="kit-card" href="05-cta-ladder.html">
+                <span class="kit-num">05 / CTA LADDER</span>
+                <span class="kit-title">5 Niveis de Conversao</span>
+                <span class="kit-desc">Conexao &rarr; contexto publico &rarr; diagnostico 45min &rarr; Raio-X pago &rarr; programa completo. Timing de follow-up e scripts de recusa.</span>
+                <span class="kit-cta">Abrir</span>
+            </a>
+
+            <a class="kit-card" href="06-deck-copy.html">
+                <span class="kit-num">06 / DECK COPY</span>
+                <span class="kit-title">Roteiro 10 Slides</span>
+                <span class="kit-desc">Copy slide-a-slide (Hero &rarr; Pergunta &rarr; Diagnostico &rarr; Prova &rarr; Chamado). Versao curta 4 slides. Cue cards orais.</span>
+                <span class="kit-cta">Abrir</span>
+            </a>
+
+            <a class="kit-card" href="07-linkedin-posts.html">
+                <span class="kit-num">07 / LINKEDIN</span>
+                <span class="kit-title">3 Posts (Pre / Durante / Pos)</span>
+                <span class="kit-desc">Copy pronta, timing de publicacao, principios de copywriting, plano B se nao performar. Hashtags niche.</span>
+                <span class="kit-cta">Abrir</span>
+            </a>
+
+            <a class="kit-card" href="08-followup-emails.html">
+                <span class="kit-num">08 / EMAILS</span>
+                <span class="kit-title">Follow-ups T+1 / T+3 / T+7</span>
+                <span class="kit-desc">Templates personalizaveis com botao copiar. Versao short para A-tier. LinkedIn DM para C-tier. Regras de frequencia.</span>
+                <span class="kit-cta">Abrir</span>
+            </a>
+
+            <a class="kit-card" href="09-narrative-arc-2min.html">
+                <span class="kit-num">09 / NARRATIVA 2MIN</span>
+                <span class="kit-title">Arco Oral Decoravel</span>
+                <span class="kit-desc">4 atos (Ancora &rarr; Diagnostico &rarr; Alternativa &rarr; Prova+Chamado). Gestos sugeridos, pausas intencionais, variantes por tipo de prospect.</span>
+                <span class="kit-cta">Abrir</span>
+            </a>
+
+            <a class="kit-card" href="10-manifesto-shareable.html">
+                <span class="kit-num">10 / MANIFESTO</span>
+                <span class="kit-title">Versoes Shareable</span>
+                <span class="kit-desc">Pronto-pra-copiar: WhatsApp, Twitter thread, LinkedIn DM, email. Botao de copy por versao. Landing HTML standalone.</span>
+                <span class="kit-cta">Abrir</span>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="section" id="flow">
+        <div class="section-label">Como usar no evento (fluxo ideal)</div>
+        <div class="flow-grid">
+            <div class="flow-step">
+                <div class="step-tag">▶ ANTES</div>
+                <div class="step-title">Decore 01 + 09</div>
+                <div class="step-desc">Elevator 60s + narrativa 2min. Teste em voz alta 3x.</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-tag">▶ ABERTURA</div>
+                <div class="step-title">Elevator 30s</div>
+                <div class="step-desc">No corredor, cumprimento rapido. Filtra interesse.</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-tag">▶ MEIO</div>
+                <div class="step-title">Discovery 04 + ICP 03</div>
+                <div class="step-desc">3-5 perguntas. Score mental A/B/C. Nunca todas.</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-tag">▶ FECHAMENTO</div>
+                <div class="step-title">CTA Ladder 05</div>
+                <div class="step-desc">Nivel 1 (LinkedIn) ou 2 (manifesto). Nunca saltar.</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-tag">▶ T+1</div>
+                <div class="step-title">LinkedIn 07 + Email 08</div>
+                <div class="step-desc">Post durante evento. Follow-up personalizado 24h.</div>
+            </div>
+            <div class="flow-step">
+                <div class="step-tag">▶ T+3/T+7</div>
+                <div class="step-title">Ladder sobe</div>
+                <div class="step-desc">Nivel 3 (diagnostico gratuito) se A/B-tier.</div>
+            </div>
+        </div>
+
+        <div class="context-box context-danger" style="margin-top: 24px;">
+            <strong>Anti-posicionamento critico:</strong>
+            <p>A EPIC NAO e Growth-as-a-Service (GaaS). GaaS vende braco de elite. A gente vende o <strong>cerebro</strong> &mdash; arquitetura decisoria com governanca humana. Modelo hibrido: retainer de governanca + performance fee sobre <strong>receita incremental auditada</strong>. Skin-in-the-game sem virar agencia de aposta. Categoria: <strong>Revenue Architect</strong>, nao Growth Partner.</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    EPIC Digital &mdash; Revenue Architecture Consultancy &mdash; GTM Kit Jupiter &mdash; Abr 2026<br>
+    <a href="https://governedbyhuman.com">governedbyhuman.com</a> &middot;
+    <a href="https://revenueintelligence.app">revenueintelligence.app</a> &middot;
+    <a href="https://epic.digital">epic.digital</a>
+</div>
+
+<script>
+(function() {
+    const html = document.documentElement;
+    const toggleBtn = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('epic-theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+    toggleBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    window.toggleTheme = function() {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('epic-theme', next);
+        toggleBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+    };
+
+    document.querySelectorAll('.top-nav-link').forEach(link => {
+        link.addEventListener('click', e => {
+            const href = link.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+})();
+</script>
+</body>
+</html>

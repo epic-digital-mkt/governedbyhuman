@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <title>01 · Elevator Pitches — GTM Kit Jupiter</title>
+    <meta name="description" content="3 versoes de elevator pitch (30s / 60s / 2min) para decorar antes do evento. Cheat sheet de numeros. Perguntas-arma.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --epic-red: #FF0050; --success: #4ECDC4; --warning: #CC8800; --danger: #FF6B6B; --info: #6C9FFF; }
+        [data-theme="dark"] { --bg-primary: #000; --bg-secondary: #0a0a0a; --text-primary: #fff; --text-secondary: rgba(255,255,255,0.7); --text-muted: rgba(255,255,255,0.4); --border-color: rgba(255,255,255,0.1); --glass: rgba(255,255,255,0.03); --glass-border: rgba(255,255,255,0.06); --row-hover: rgba(255,255,255,0.04); --warning: #FFE66D; }
+        [data-theme="light"] { --bg-primary: #fff; --bg-secondary: #F5F5F5; --text-primary: #000; --text-secondary: rgba(0,0,0,0.7); --text-muted: rgba(0,0,0,0.4); --border-color: rgba(0,0,0,0.1); --glass: rgba(0,0,0,0.03); --glass-border: rgba(0,0,0,0.06); --row-hover: rgba(0,0,0,0.03); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-primary); color: var(--text-primary); transition: background-color 0.3s ease, color 0.3s ease; min-height: 100vh; line-height: 1.6; }
+        .top-nav { position: fixed; top: 0; left: 0; right: 0; height: 60px; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-color); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; }
+        [data-theme="light"] .top-nav { background: rgba(255,255,255,0.95); }
+        .top-nav-logo { display: flex; align-items: center; gap: 12px; }
+        .top-nav-logo img { height: 18px; width: auto; }
+        .top-nav-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
+        .top-nav-links { display: flex; gap: 20px; align-items: center; }
+        .top-nav-link { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); cursor: pointer; text-decoration: none; transition: color 0.2s ease; }
+        .top-nav-link:hover { color: var(--epic-red); }
+        .top-nav-actions { display: flex; align-items: center; gap: 12px; }
+        .theme-toggle { cursor: pointer; font-size: 1.1rem; opacity: 0.5; background: none; border: none; padding: 4px; color: var(--text-primary); }
+        .theme-toggle:hover { opacity: 1; }
+        .back-link { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 4px 12px; border: 1px solid var(--glass-border); border-radius: 8px; transition: all 0.2s ease; }
+        .back-link:hover { color: var(--epic-red); border-color: var(--epic-red); }
+        .report { padding: 80px 40px 60px; max-width: 880px; margin: 0 auto; }
+        .hero { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--glass-border); }
+        .hero-logos { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .hero-logo-text { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+        .hero-divider { width: 20px; height: 2px; background: var(--epic-red); }
+        .hero-badge { display: inline-block; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; background: rgba(78,205,196,0.15); color: var(--success); }
+        .hero-title { font-size: 2.2rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 10px; line-height: 1.15; }
+        .hero-title .hl { color: var(--epic-red); }
+        .hero-subtitle { font-size: 1rem; color: var(--text-secondary); margin-bottom: 20px; }
+        .hero-meta { display: flex; flex-wrap: wrap; gap: 20px; }
+        .hero-meta-item { font-size: 0.75rem; color: var(--text-muted); }
+        .hero-meta-item strong { color: var(--text-secondary); font-weight: 700; }
+        .section { margin-bottom: 48px; }
+        .section-label { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--epic-red); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+        .section-label::after { content: ''; flex: 1; height: 1px; background: var(--glass-border); }
+        .pitch-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 600; color: var(--text-muted); margin-bottom: 10px; letter-spacing: 0.5px; }
+        .pitch-meta .tag-time { display: inline-block; padding: 2px 8px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 4px; color: var(--epic-red); margin-right: 8px; }
+        .pitch-quote { background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--epic-red); border-radius: 0 12px 12px 0; padding: 24px 26px; font-size: 1rem; line-height: 1.7; color: var(--text-primary); font-style: italic; margin-bottom: 14px; }
+        .pitch-quote em { color: var(--epic-red); font-style: italic; font-weight: 500; }
+        .pitch-hook { background: transparent; border: 1px dashed var(--glass-border); border-radius: 10px; padding: 14px 18px; font-size: 0.88rem; color: var(--text-secondary); font-style: italic; }
+        .pitch-hook strong { color: var(--text-primary); font-style: normal; font-weight: 700; display: block; margin-bottom: 6px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--epic-red); }
+        .principle-list { list-style: none; margin-top: 12px; }
+        .principle-list li { padding: 14px 18px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 10px; margin-bottom: 10px; font-size: 0.9rem; color: var(--text-secondary); display: flex; gap: 12px; align-items: flex-start; }
+        .principle-list li::before { content: '→'; color: var(--epic-red); font-weight: 800; flex-shrink: 0; }
+        .principle-list strong { color: var(--text-primary); }
+        .arm-list { margin-top: 12px; }
+        .arm-list .arm-q { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; font-size: 0.95rem; color: var(--text-primary); font-style: italic; }
+        .report-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 12px; }
+        .report-table th { padding: 10px 14px; text-align: left; font-weight: 700; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); background: var(--glass); border-bottom: 1px solid var(--glass-border); }
+        .report-table td { padding: 10px 14px; border-bottom: 1px solid var(--glass-border); color: var(--text-secondary); vertical-align: top; }
+        .report-table tr:hover td { background: var(--row-hover); }
+        .report-table .name { font-weight: 700; color: var(--text-primary); }
+        .report-table .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--epic-red); font-weight: 700; }
+        .context-box { background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--warning); border-radius: 0 12px 12px 0; padding: 18px 22px; margin-top: 12px; }
+        .context-box.context-danger { border-left-color: var(--epic-red); }
+        .context-box strong { color: var(--text-primary); display: block; margin-bottom: 8px; font-size: 0.88rem; }
+        .context-box p { font-size: 0.88rem; color: var(--text-secondary); }
+        .footer { text-align: center; padding: 40px; font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid var(--glass-border); margin-top: 20px; }
+        .footer a { color: var(--epic-red); text-decoration: none; }
+        @media (max-width: 768px) {
+            .report { padding: 75px 18px 40px; }
+            .top-nav { padding: 0 18px; }
+            .top-nav-links { display: none; }
+            .hero-title { font-size: 1.6rem; }
+            .pitch-quote { font-size: 0.95rem; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <div class="top-nav-logo">
+        <img src="https://www.epic.digital/hubfs/new/logo-epic-2026.svg" alt="EPIC" onerror="this.style.display='none'">
+        <span class="top-nav-title">01 · Elevator Pitches</span>
+    </div>
+    <div class="top-nav-links">
+        <a class="top-nav-link" href="#pitch-30">30s</a>
+        <a class="top-nav-link" href="#pitch-60">60s</a>
+        <a class="top-nav-link" href="#pitch-2m">2min</a>
+        <a class="top-nav-link" href="#principles">Principios</a>
+        <a class="top-nav-link" href="#numbers">Numeros</a>
+    </div>
+    <div class="top-nav-actions">
+        <a class="back-link" href="index.html">← Hub</a>
+        <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </div>
+</nav>
+
+<div class="report">
+
+    <div class="hero">
+        <div class="hero-logos">
+            <span class="hero-logo-text">GTM Kit · Jupiter</span>
+            <span class="hero-divider"></span>
+            <span class="hero-logo-text">Peca 01 / 10</span>
+        </div>
+        <span class="hero-badge">Decoravel · Teste em voz alta</span>
+        <h1 class="hero-title">Elevator <span class="hl">Pitches</span></h1>
+        <p class="hero-subtitle">3 versoes calibradas por tempo. Decorar a estrutura, nao o texto. Testar em voz alta antes do evento. Regra: sempre qualificar o interlocutor antes de abrir o pitch longo.</p>
+        <div class="hero-meta">
+            <span class="hero-meta-item"><strong>Autor:</strong> Fabio Munhoz</span>
+            <span class="hero-meta-item"><strong>Contexto:</strong> BR Nation 18-19 Abr</span>
+            <span class="hero-meta-item"><strong>Fonte:</strong> 01-ELEVATOR-PITCH.md</span>
+        </div>
+    </div>
+
+    <div class="context-box context-danger">
+        <strong>Anti-posicionamento critico (aplicar em qualquer versao):</strong>
+        <p>A EPIC NAO e Growth-as-a-Service (GaaS). GaaS vende braco de elite. A gente vende o <strong>cerebro</strong> — arquitetura decisoria com governanca humana. Modelo hibrido: retainer de governanca + performance fee sobre <strong>receita incremental auditada</strong>. Skin-in-the-game sem virar agencia de aposta. Categoria: <strong>Revenue Architect</strong>, nao Growth Partner. Usar esse anti-posicionamento sempre que detectar que o prospect esta mentalmente categorizando voce como GaaS.</p>
+    </div>
+
+    <div class="section" id="pitch-30">
+        <div class="section-label">Versao 30 segundos</div>
+        <div class="pitch-meta"><span class="tag-time">⏱ 00:30</span>Em pe, cumprimento curto</div>
+        <div class="pitch-quote">Eu sou o Fabio, da EPIC. A gente projeta motores de receita para empresas que querem escalar com IA sem virar mais uma commodity. Metodologia hibrida: IA executa volume, humano governa estrategia. Ultimo case, NTIVA nos EUA — <em>539% de ROI em 3 anos</em>, e isso ainda sem escalar IA. Com IA estruturada, o potencial dobra.</div>
+        <div class="pitch-hook">
+            <strong>Gancho de transicao</strong>
+            Voce esta em que setor? [pausa] Quer saber se a gente ja trabalhou com algo parecido?
+        </div>
+    </div>
+
+    <div class="section" id="pitch-60">
+        <div class="section-label">Versao 60 segundos</div>
+        <div class="pitch-meta"><span class="tag-time">⏱ 01:00</span>Apresentacao completa</div>
+        <div class="pitch-quote">A gente e a EPIC, tem 9 anos, ja fez mais de 100 implementacoes HubSpot em 10 paises. Mas aqui vai o que mudou: a IA virou commodity. Todo mundo tem Claude, GPT, Gemini. Resultado? Todas as paginas, anuncios e estrategias estao ficando iguais. <em>Girard em escala algoritmica.</em><br><br>A gente nao compete nesse eixo. A gente projeta, implementa e audita motores de receita — especificos pro seu negocio, sob governanca humana, com IA fazendo o volume. <em>Powered by AI, Governed by Human.</em><br><br>A gente nao e Growth-as-a-Service. GaaS vende braco de elite. A gente vende o <em>cerebro</em> — arquitetura decisoria. Modelo hibrido: retainer de governanca + performance fee sobre receita incremental auditada. Skin-in-the-game sem virar agencia de aposta.<br><br>Dois cases: iFood Ads, levamos de 250 pra 850 campanhas por mes, <em>+294% capacidade</em>. E NTIVA, MSP americano, <em>539% de ROI em 3 anos</em> — sem escalar IA ainda.<br><br>Quando a gente estrutura IA dentro da metodologia, o chao muda. Voce ja investiu em alguma agencia ou consultoria que nao entregou o ROI prometido? Acho que a gente tem assunto.</div>
+        <div class="pitch-hook">
+            <strong>Gancho de transicao</strong>
+            Posso te mostrar no celular em 2 minutos, ou prefere trocar LinkedIn e mando contexto depois?
+        </div>
+    </div>
+
+    <div class="section" id="pitch-2m">
+        <div class="section-label">Versao 2 minutos (prospect interessado)</div>
+        <div class="pitch-meta"><span class="tag-time">⏱ 02:00</span>Conversa profunda</div>
+        <div class="pitch-quote">Deixa eu te contar a tese.<br><br>A IA democratizou execucao. E o problema disso ninguem fala: se voce e seu concorrente usam o mesmo modelo para decidir, voces chegam na mesma conclusao. <em>Homogeneizacao estrategica. Oceano vermelho algoritmico.</em><br><br>O dogma que ninguem quer admitir e: <em>"para ter IA boa, basta comprar o modelo maior."</em> E todo CEO que ja comprou um relatorio da McKinsey sabe a verdade — nao comprou a analise, comprou a <em>cobertura politica</em> pra decidir. Agora com IA piorou: <em>"a IA sugeriu"</em> virou o novo <em>"a McKinsey recomendou"</em>.<br><br>A EPIC opera numa premissa diferente. A gente trabalha em 3 camadas. A primeira e a casa — a agencia, reposicionada. A segunda e o ROF, Revenue Orchestration Framework — nossa infraestrutura interna, 4 pilares, 5 agentes de IA, 5 camadas tecnicas, 17 arquivos markdown por cliente. Reduz 37 etapas para 19, 30 dias para 7. Nao vendemos o ROF — o cliente ve o resultado. A terceira camada e Revenue Intelligence, nosso produto premium pra decisoes irreversiveis: onde crescer, quem comprar, o que descontinuar, como reposicionar categoria.<br><br>A gente tem dois frameworks publicaveis. O <em>Category Leap</em>, que reposiciona a categoria do cliente — ja aplicamos em Quave, MedConnect, ClearSale. E a <em>Arquitetura Decisoria</em>, programa de 12 semanas baseado em decisoes tipo 1 de Bezos — as irreversiveis.<br><br>A prova: NTIVA, MSP de IT nos EUA, <em>539% de ROI em 3 anos</em>. iFood, <em>+294% de capacidade</em> de campanhas publicitarias. Quave, reposicionada em 4 meses com landing em quave.categoryleap.com.<br><br>A pergunta que eu faria pra voce: <em>qual a proxima decisao grande que voce tem pela frente nos proximos 12 meses?</em> Se for uma decisao que voce nao pode voltar atras, a gente devia conversar. Se for so otimizar algo que ja funciona, existem empresas melhores que a gente pra isso.</div>
+        <div class="pitch-hook">
+            <strong>Gancho de transicao</strong>
+            Posso te enviar o manifesto depois? E so governedbyhuman.com. Ali voce ve o POV completo.
+        </div>
+    </div>
+
+    <div class="section" id="principles">
+        <div class="section-label">Principios para decorar</div>
+        <ul class="principle-list">
+            <li><span><strong>Abrir com tensao, nao com EPIC.</strong> O mercado nao quer ouvir &quot;quem somos&quot;. Quer saber &quot;qual dor voce resolve&quot;.</span></li>
+            <li><span><strong>Usar numeros exatos.</strong> 539%, 294%. Nunca arredondar. Precisao = credibilidade.</span></li>
+            <li><span><strong>Qualificar o interlocutor antes do pitch longo.</strong> &quot;Em que setor voce esta?&quot; filtra tempo desperdicado.</span></li>
+            <li><span><strong>&quot;Sem escalar IA ainda&quot; e uma arma.</strong> Implica que o potencial vai dobrar. Cria FOMO.</span></li>
+            <li><span><strong>Anti-posicionamento: sempre um &quot;nao somos&quot; no meio.</strong> Especialmente: <em>&quot;nao somos GaaS / Growth Partner&quot;</em> — e o erro de categorizacao mais comum.</span></li>
+            <li><span><strong>Encerrar com pergunta que o prospect tem que pensar.</strong> Nao com &quot;te mando material&quot;. Se a resposta for automatica, o pitch ainda nao estava forte.</span></li>
+        </ul>
+    </div>
+
+    <div class="section" id="arms">
+        <div class="section-label">Perguntas-arma (puxar conversa)</div>
+        <div class="arm-list">
+            <div class="arm-q">&ldquo;Qual a ultima decisao estrategica que voce tomou e hoje se arrepende? Como voce tomou ela?&rdquo;</div>
+            <div class="arm-q">&ldquo;Se eu te desse acesso a mesma IA que sua agencia usa, voce acha que conseguiria os mesmos resultados?&rdquo;</div>
+            <div class="arm-q">&ldquo;Voce ja investiu em consultoria ou IA nos ultimos 2 anos? Tipo &lsquo;realmente valeu&rsquo;?&rdquo;</div>
+            <div class="arm-q">&ldquo;Qual seu proximo movimento grande? Entrar em mercado? Lancar produto? Comprar empresa? Voce tem confianca na direcao?&rdquo;</div>
+        </div>
+    </div>
+
+    <div class="section" id="numbers">
+        <div class="section-label">Cheat sheet de numeros (memorizar)</div>
+        <table class="report-table">
+            <thead>
+                <tr><th>Numero</th><th>Contexto</th><th>Atribuicao</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="mono">+539%</td><td>ROI acumulado desde 2022</td><td class="name">NTIVA (MSP IT, EUA)</td></tr>
+                <tr><td class="mono">+161%</td><td>Revenue growth 2022-2025</td><td class="name">NTIVA</td></tr>
+                <tr><td class="mono">$6.2M</td><td>Receita adicional</td><td class="name">NTIVA</td></tr>
+                <tr><td class="mono">+27%</td><td>YoY 2024-2025</td><td class="name">NTIVA</td></tr>
+                <tr><td class="mono">+294%</td><td>Capacidade campanhas/mes</td><td class="name">iFood Ads</td></tr>
+                <tr><td class="mono">250 → 850</td><td>Campanhas mensais</td><td class="name">iFood</td></tr>
+                <tr><td class="mono">1.200</td><td>Meta fim 2026</td><td class="name">iFood</td></tr>
+                <tr><td class="mono">90%</td><td>Faturamento automatizado</td><td class="name">iFood</td></tr>
+                <tr><td class="mono">-60%</td><td>Tempo de processamento</td><td class="name">iFood</td></tr>
+                <tr><td class="mono">37 → 19</td><td>Etapas processo (-49%)</td><td class="name">ROF impact</td></tr>
+                <tr><td class="mono">30d → 7d</td><td>Kickoff → Lancamento</td><td class="name">ROF impact</td></tr>
+                <tr><td class="mono">100+</td><td>Implementacoes HubSpot</td><td class="name">EPIC</td></tr>
+                <tr><td class="mono">10</td><td>Paises atendidos</td><td class="name">EPIC</td></tr>
+                <tr><td class="mono">9 anos</td><td>Tempo no HubSpot</td><td class="name">EPIC</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="footer">
+    EPIC Digital &mdash; GTM Kit Jupiter &mdash; Peca 01 &mdash; Abr 2026<br>
+    <a href="index.html">← Hub do Kit</a> &middot;
+    <a href="https://governedbyhuman.com">Manifesto</a> &middot;
+    <a href="https://governedbyhuman.com/deck.html">Deck</a>
+</div>
+
+<script>
+(function() {
+    const html = document.documentElement;
+    const toggleBtn = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('epic-theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+    toggleBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    window.toggleTheme = function() {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('epic-theme', next);
+        toggleBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+    };
+
+    document.querySelectorAll('.top-nav-link').forEach(link => {
+        link.addEventListener('click', e => {
+            const href = link.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+})();
+</script>
+</body>
+</html>
